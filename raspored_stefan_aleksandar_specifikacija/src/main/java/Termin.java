@@ -1,46 +1,53 @@
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class Termin {
 
-    private LocalDateTime pocetak;
-    private LocalDateTime kraj;
     private String mesto;
+    private LocalDate pocetakDan;
+    private String pocetakVreme;
+    private LocalDate krajDan;
+    private String krajVreme;
     private Map<String, String> dodaci;
+    // u dodatke moze da spada i predmet koji se predaje
     public Termin(){
         this.dodaci = new HashMap<>();
     }
 
-    public Termin(LocalDateTime pocetak, LocalDateTime kraj, String mesto){
-        this.pocetak = pocetak;
-        this.kraj = kraj;
+    public Termin(String mesto, LocalDate pocetakDan, String pocetakVreme, LocalDate krajDan, String krajVreme){
         this.mesto = mesto;
+        this.pocetakDan = pocetakDan;
+        this.pocetakVreme = pocetakVreme;
+        this.krajDan = krajDan;
+        this.krajVreme = krajVreme;
         this.dodaci = new HashMap<>();
     }
 
-    public Termin(LocalDateTime pocetak, LocalDateTime kraj, String mesto, Map<String, String> dodaci){
-        this.pocetak = pocetak;
-        this.kraj = kraj;
+    public Termin(String mesto, LocalDate pocetakDan, String pocetakVreme, LocalDate krajDan, String krajVreme, Map<String, String> dodaci){
         this.mesto = mesto;
+        this.pocetakDan = pocetakDan;
+        this.pocetakVreme = pocetakVreme;
+        this.krajDan = krajDan;
+        this.krajVreme = krajVreme;
         this.dodaci = dodaci;
     }
 
-    public LocalDateTime getPocetak() {
-        return pocetak;
+    public LocalDate getPocetakDan() {
+        return pocetakDan;
     }
 
-    public void setPocetak(LocalDateTime pocetak) {
-        this.pocetak = pocetak;
+    public void setPocetakDan(LocalDate pocetakDan) {
+        this.pocetakDan = pocetakDan;
     }
 
-    public LocalDateTime getKraj() {
-        return kraj;
+    public LocalDate getKrajDan() {
+        return krajDan;
     }
 
-    public void setKraj(LocalDateTime kraj) {
-        this.kraj = kraj;
+    public void setKrajDan(LocalDate krajDan) {
+        this.krajDan = krajDan;
     }
 
     public String getMesto() {
@@ -49,6 +56,22 @@ public class Termin {
 
     public void setMesto(String mesto) {
         this.mesto = mesto;
+    }
+
+    public String getPocetakVreme() {
+        return pocetakVreme;
+    }
+
+    public void setPocetakVreme(String pocetakVreme) {
+        this.pocetakVreme = pocetakVreme;
+    }
+
+    public String getKrajVreme() {
+        return krajVreme;
+    }
+
+    public void setKrajVreme(String krajVreme) {
+        this.krajVreme = krajVreme;
     }
 
     public Map<String, String> getDodaci() {
@@ -64,11 +87,11 @@ public class Termin {
         if(this == obj) return true;
         if(obj == null || getClass() != obj.getClass()) return false;
         Termin t = (Termin) obj;
-        return Objects.equals(pocetak, t.pocetak) && Objects.equals(kraj, t.kraj) && Objects.equals(mesto, t.mesto);
+        return Objects.equals(pocetakDan, t.pocetakDan) && Objects.equals(krajDan, t.krajDan) && Objects.equals(mesto, t.mesto);
     }
 
     @Override
     public String toString() {
-        return "Termin: pocetak = " + pocetak + ", kraj = " + kraj + ", mesto = " + mesto + ", dodatno = " + dodaci;
+        return "Termin: pocetak = " + pocetakDan + ", kraj = " + krajDan + ", mesto = " + mesto + ", dodatno = " + dodaci;
     }
 }

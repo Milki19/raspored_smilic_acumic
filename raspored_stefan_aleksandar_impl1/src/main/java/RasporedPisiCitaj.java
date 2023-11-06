@@ -4,7 +4,7 @@ import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
 import java.io.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -46,17 +46,25 @@ public class RasporedPisiCitaj extends Raspored{
 
                 String columnName = konfiguracija.getCustom();
 
-                if (mapiranje.get(columnIndex).equals("mesto")) {
+                if (mapiranje.get(columnIndex).equals("Mesto")) {
                     termin.setMesto(record.get(columnIndex));
-                } else if (mapiranje.get(columnIndex).equals("pocetak")) {
-                    LocalDateTime startDateTime = LocalDateTime.parse(record.get(columnIndex), formatter);
-                    termin.setPocetak(startDateTime);
-                } else if (mapiranje.get(columnIndex).equals("kraj")) {
-                    LocalDateTime endDateTime = LocalDateTime.parse(record.get(columnIndex), formatter);
-                    termin.setKraj(endDateTime);
+                } else if (mapiranje.get(columnIndex).equals("PocetakDan")) {
+                    LocalDate startDateTime = LocalDate.parse(record.get(columnIndex), formatter);
+                    termin.setPocetakDan(startDateTime);
+                } else if (mapiranje.get(columnIndex).equals("PocetakVreme")) {
+                    LocalDate startDateTime = LocalDate.parse(record.get(columnIndex), formatter);
+                    termin.setPocetakDan(startDateTime);
+                } else if (mapiranje.get(columnIndex).equals("KrajDan")) {
+                    LocalDate endDateTime = LocalDate.parse(record.get(columnIndex), formatter);
+                    termin.setKrajDan(endDateTime);
+                } else if (mapiranje.get(columnIndex).equals("KrajVreme")) {
+                    LocalDate startDateTime = LocalDate.parse(record.get(columnIndex), formatter);
+                    termin.setPocetakDan(startDateTime);
                 } else if (mapiranje.get(columnIndex).equals("dodatak")) {
                     termin.getDodaci().put(columnName, record.get(columnIndex));
                 }
+
+                //SREDITI OVO
             }
 
             getSviTermini().add(termin);
@@ -97,8 +105,8 @@ public class RasporedPisiCitaj extends Raspored{
 
         for (Termin termin : super.getSviTermini()) {
             csvPrinter.printRecord(
-                    termin.getPocetak(),
-                    termin.getKraj(),
+                    termin.getPocetakDan(),
+                    termin.getKrajDan(),
                     termin.getMesto()
             );
         }
