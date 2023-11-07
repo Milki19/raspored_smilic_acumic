@@ -33,4 +33,9 @@ public class Konfiguracija {
     public void setOriginal(String original) {
         this.original = original;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return false;
+    }
 }
