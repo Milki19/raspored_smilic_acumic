@@ -6,9 +6,9 @@ import java.util.Objects;
 public class Termin {
 
     private String mesto;
-    private LocalDate pocetakDan;
+    private String pocetakDan;
     private String pocetakVreme;
-    private LocalDate krajDan;
+    private String krajDan;
     private String krajVreme;
     private Map<String, String> dodaci;
     // u dodatke moze da spada i predmet koji se predaje
@@ -16,7 +16,7 @@ public class Termin {
         this.dodaci = new HashMap<>();
     }
 
-    public Termin(String mesto, LocalDate pocetakDan, String pocetakVreme, LocalDate krajDan, String krajVreme){
+    public Termin(String mesto, String pocetakDan, String pocetakVreme, String krajDan, String krajVreme){
         this.mesto = mesto;
         this.pocetakDan = pocetakDan;
         this.pocetakVreme = pocetakVreme;
@@ -25,7 +25,7 @@ public class Termin {
         this.dodaci = new HashMap<>();
     }
 
-    public Termin(String mesto, LocalDate pocetakDan, String pocetakVreme, LocalDate krajDan, String krajVreme, Map<String, String> dodaci){
+    public Termin(String mesto, String pocetakDan, String pocetakVreme, String krajDan, String krajVreme, Map<String, String> dodaci){
         this.mesto = mesto;
         this.pocetakDan = pocetakDan;
         this.pocetakVreme = pocetakVreme;
@@ -34,19 +34,19 @@ public class Termin {
         this.dodaci = dodaci;
     }
 
-    public LocalDate getPocetakDan() {
+    public String getPocetakDan() {
         return pocetakDan;
     }
 
-    public void setPocetakDan(LocalDate pocetakDan) {
+    public void setPocetakDan(String pocetakDan) {
         this.pocetakDan = pocetakDan;
     }
 
-    public LocalDate getKrajDan() {
+    public String getKrajDan() {
         return krajDan;
     }
 
-    public void setKrajDan(LocalDate krajDan) {
+    public void setKrajDan(String krajDan) {
         this.krajDan = krajDan;
     }
 

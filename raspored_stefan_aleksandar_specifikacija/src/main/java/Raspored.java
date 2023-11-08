@@ -11,7 +11,6 @@ public abstract class Raspored {
     public abstract boolean exportujPodatke(String path) throws IOException;
 
     public List<Termin> getSviTermini() {
-        if(sviTermini == null) return new ArrayList<>();
         return sviTermini;
     }
 

@@ -11,6 +11,10 @@ import java.util.*;
 
 public class RasporedPisiCitajApache extends Raspored{
 
+    public RasporedPisiCitajApache() {
+        this.sviTermini = new ArrayList<>();
+    }
+
     @Override
     public boolean ucitajPodatke(String path, String configPath) throws IOException {
         ucitajApache(path, configPath);
@@ -28,15 +32,11 @@ public class RasporedPisiCitajApache extends Raspored{
         FileReader fileReader = new FileReader(path);
         CSVParser csvParser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(fileReader);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(mapa.get(-1));
-
         for (CSVRecord record : csvParser) {
             Termin termin = new Termin();
 
             for (Konfiguracija konfiguracija : mapiranje) {
                 int columnIndex = konfiguracija.getIndex();
-
-                if(columnIndex == -1) continue;
 
                 String columnName = konfiguracija.getCustom();
 
@@ -45,12 +45,10 @@ public class RasporedPisiCitajApache extends Raspored{
                         termin.setMesto(record.get(columnIndex));
                         break;
                     case "pocetakDan":
-                        LocalDate pocetakDan = LocalDate.parse(record.get(columnIndex), formatter);
-                        termin.setPocetakDan(pocetakDan);
+                        termin.setPocetakDan(record.get(columnIndex));
                         break;
                     case "krajDan":
-                        LocalDate krajDan = LocalDate.parse(record.get(columnIndex), formatter);
-                        termin.setKrajDan(krajDan);
+                        termin.setKrajDan(record.get(columnIndex));
                         break;
                     case "pocetakVreme":
                         termin.setPocetakVreme(record.get(columnIndex));
@@ -63,7 +61,6 @@ public class RasporedPisiCitajApache extends Raspored{
                         break;
                 }
 
-                //SREDITI OVO
             }
 
             getSviTermini().add(termin);
