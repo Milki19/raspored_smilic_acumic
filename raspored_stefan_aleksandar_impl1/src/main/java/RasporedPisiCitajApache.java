@@ -5,17 +5,11 @@ import org.apache.commons.csv.CSVRecord;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class RasporedPisiCitajApache extends Raspored{
-
-    private String porekloFajla;
-
-    public RasporedPisiCitajApache(String porekloFajla) {
-        this.porekloFajla = porekloFajla;
-    }
-
 
     @Override
     public boolean ucitajPodatke(String path, String configPath) throws IOException {
@@ -46,22 +40,27 @@ public class RasporedPisiCitajApache extends Raspored{
 
                 String columnName = konfiguracija.getCustom();
 
-                if (mapiranje.get(columnIndex).equals("Mesto")) {
-                    termin.setMesto(record.get(columnIndex));
-                } else if (mapiranje.get(columnIndex).equals("PocetakDan")) {
-                    LocalDate startDateTime = LocalDate.parse(record.get(columnIndex), formatter);
-                    termin.setPocetakDan(startDateTime);
-                } else if (mapiranje.get(columnIndex).equals("PocetakVreme")) {
-                    LocalDate startDateTime = LocalDate.parse(record.get(columnIndex), formatter);
-                    termin.setPocetakDan(startDateTime);
-                } else if (mapiranje.get(columnIndex).equals("KrajDan")) {
-                    LocalDate endDateTime = LocalDate.parse(record.get(columnIndex), formatter);
-                    termin.setKrajDan(endDateTime);
-                } else if (mapiranje.get(columnIndex).equals("KrajVreme")) {
-                    LocalDate startDateTime = LocalDate.parse(record.get(columnIndex), formatter);
-                    termin.setPocetakDan(startDateTime);
-                } else if (mapiranje.get(columnIndex).equals("dodatak")) {
-                    termin.getDodaci().put(columnName, record.get(columnIndex));
+                switch (mapa.get(columnIndex)) {
+                    case "mesto":
+                        termin.setMesto(record.get(columnIndex));
+                        break;
+                    case "pocetakDan":
+                        LocalDate pocetakDan = LocalDate.parse(record.get(columnIndex), formatter);
+                        termin.setPocetakDan(pocetakDan);
+                        break;
+                    case "krajDan":
+                        LocalDate krajDan = LocalDate.parse(record.get(columnIndex), formatter);
+                        termin.setKrajDan(krajDan);
+                        break;
+                    case "pocetakVreme":
+                        termin.setPocetakVreme(record.get(columnIndex));
+                        break;
+                    case "krajVreme":
+                        termin.setKrajVreme(record.get(columnIndex));
+                        break;
+                    case "dodaci":
+                        termin.getDodaci().put(columnName, record.get(columnIndex));
+                        break;
                 }
 
                 //SREDITI OVO
