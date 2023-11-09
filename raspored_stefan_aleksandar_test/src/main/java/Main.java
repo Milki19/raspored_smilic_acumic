@@ -4,20 +4,19 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        RasporedPisiCitajApache rasporedPisiCitajApache = new RasporedPisiCitajApache();
-
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Unesite putanju do fajla i konfiguracionog fajla u obliku: putanjaDoFajla,putanjaDoKonfiguracije");
+        System.out.println("Unesite putanju do fajla: ");
         String linija = scanner.nextLine();
-        try{
-            rasporedPisiCitajApache.ucitajPodatke(linija.split(",")[0], linija.split(",")[1]);
-            System.out.println(rasporedPisiCitajApache.getSviTermini());
-        }catch (IOException e){
-            System.out.println("Greska pri citanju fajlova");
-            return;
-        }
 
-        if(linija.contains(".csv")) {
+        if(linija.contains(",")){
+            RasporedPisiCitajApache rasporedPisiCitajApache = new RasporedPisiCitajApache();
+            try{
+                rasporedPisiCitajApache.ucitajPodatke(linija);
+                System.out.println(rasporedPisiCitajApache.getSviTermini());
+            }catch (IOException e){
+                System.out.println("Greska pri citanju fajlova");
+                return;
+            }
             System.out.println("Unesite prvi i poslednji dan rasporeda u zadatom formatu, razdvajajuci ih razmakom: mm/dd/yyyy");
             linija = scanner.nextLine();
             rasporedPisiCitajApache.ucitajPocetakKraj(linija);
@@ -37,8 +36,15 @@ public class Main {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else{
-
+        } else {
+            RasporedPisiCitajJSON rasporedPisiCitajJSON = new RasporedPisiCitajJSON();
+            try{
+                rasporedPisiCitajJSON.ucitajPodatke(linija);
+                System.out.println(rasporedPisiCitajJSON.getSviTermini());
+            }catch (IOException e){
+                System.out.println("Greska pri citanju fajlova");
+            }
         }
+
     }
 }

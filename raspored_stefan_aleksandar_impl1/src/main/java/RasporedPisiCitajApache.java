@@ -14,8 +14,9 @@ public class RasporedPisiCitajApache extends Raspored{
     }
 
     @Override
-    public boolean ucitajPodatke(String path, String configPath) throws IOException {
-        ucitajApache(path, configPath);
+    public boolean ucitajPodatke(String path) throws IOException {
+        String[] niz = path.split(",");
+        ucitajApache(niz[0], niz[1]);
         return true;
     }
 
@@ -97,11 +98,11 @@ public class RasporedPisiCitajApache extends Raspored{
 
     @Override
     public boolean exportujPodatke(String path) throws IOException {
-        writeData(path);
+        ispisi(path);
         return true;
     }
 
-    private void writeData(String path) throws IOException{
+    private void ispisi(String path) throws IOException{
         FileWriter fileWriter = new FileWriter(path);
         CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT);
 

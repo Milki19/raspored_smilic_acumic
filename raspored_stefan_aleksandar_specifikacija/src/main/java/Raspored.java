@@ -11,7 +11,7 @@ public abstract class Raspored {
     protected String pocetakRadnogVremena;
     protected String krajRadnogVremena;
 
-    public abstract boolean ucitajPodatke(String path, String configPath) throws IOException;
+    public abstract boolean ucitajPodatke(String path) throws IOException;
 
     public abstract boolean exportujPodatke(String path) throws IOException;
 
