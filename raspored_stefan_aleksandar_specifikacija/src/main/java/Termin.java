@@ -1,4 +1,6 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -6,48 +8,40 @@ import java.util.Objects;
 public class Termin {
 
     private String mesto;
-    private String pocetakDan;
+    private String datum;
     private String pocetakVreme;
-    private String krajDan;
     private String krajVreme;
     private Map<String, String> dodaci;
+    private String dan;
     // u dodatke moze da spada i predmet koji se predaje
     public Termin(){
         this.dodaci = new HashMap<>();
     }
 
-    public Termin(String mesto, String pocetakDan, String pocetakVreme, String krajDan, String krajVreme){
+    public Termin(String mesto, String dan, String datum, String pocetakVreme, String krajVreme){
         this.mesto = mesto;
-        this.pocetakDan = pocetakDan;
+        this.datum = datum;
         this.pocetakVreme = pocetakVreme;
-        this.krajDan = krajDan;
         this.krajVreme = krajVreme;
         this.dodaci = new HashMap<>();
+        this.dan = dan;
     }
 
-    public Termin(String mesto, String pocetakDan, String pocetakVreme, String krajDan, String krajVreme, Map<String, String> dodaci){
+    public Termin(String mesto, String dan, String datum, String pocetakVreme, String krajVreme, Map<String, String> dodaci){
         this.mesto = mesto;
-        this.pocetakDan = pocetakDan;
+        this.datum = datum;
         this.pocetakVreme = pocetakVreme;
-        this.krajDan = krajDan;
         this.krajVreme = krajVreme;
         this.dodaci = dodaci;
+        this.dan = dan;
     }
 
-    public String getPocetakDan() {
-        return pocetakDan;
+    public String getDatum() {
+        return datum;
     }
 
-    public void setPocetakDan(String pocetakDan) {
-        this.pocetakDan = pocetakDan;
-    }
-
-    public String getKrajDan() {
-        return krajDan;
-    }
-
-    public void setKrajDan(String krajDan) {
-        this.krajDan = krajDan;
+    public void setDatum(String datum) {
+        this.datum = datum;
     }
 
     public String getMesto() {
@@ -82,16 +76,24 @@ public class Termin {
         this.dodaci = dodaci;
     }
 
+    public String getDan() {
+        return dan;
+    }
+
+    public void setDan(String dan) {
+        this.dan = dan;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if(this == obj) return true;
         if(obj == null || getClass() != obj.getClass()) return false;
         Termin t = (Termin) obj;
-        return Objects.equals(pocetakDan, t.pocetakDan) && Objects.equals(krajDan, t.krajDan) && Objects.equals(mesto, t.mesto);
+        return Objects.equals(datum, t.datum) && Objects.equals(pocetakVreme, t.pocetakVreme) && Objects.equals(mesto, t.mesto);
     }
 
     @Override
     public String toString() {
-        return "Termin: pocetak = " + pocetakDan + ", kraj = " + krajDan + ", mesto = " + mesto + ", dodatno = " + dodaci;
+        return dan + ", " + datum + " " + pocetakVreme + "-" + krajVreme + "h, " + mesto;
     }
 }

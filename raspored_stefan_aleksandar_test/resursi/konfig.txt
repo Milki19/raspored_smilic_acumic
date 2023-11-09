@@ -1,7 +1,7 @@
 0 Mesto mesto
-1 PocetakDan pocetakDan
-2 PocetakVreme pocetakVreme
-3 KrajDan krajDan
+1 Dan dan
+2 Datum datum
+3 PocetakVreme pocetakVreme
 4 KrajVreme krajVreme
 5 Predmet dodaci
 6 Profesor dodaci

@@ -4,21 +4,27 @@ import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
 import java.io.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class RasporedPisiCitajApache extends Raspored{
 
     public RasporedPisiCitajApache() {
         this.sviTermini = new ArrayList<>();
+        this.neradniDani = new ArrayList<>();
     }
 
     @Override
     public boolean ucitajPodatke(String path, String configPath) throws IOException {
         ucitajApache(path, configPath);
         return true;
+    }
+
+    public void ucitajNeradneDane(String s){
+        int n = s.split(" ").length;
+        String[] niz = s.split(" ");
+        for(int i = 0; i < n; i++){
+            getNeradniDani().add(niz[i]);
+        }
     }
 
     private void ucitajApache(String path, String configPath) throws IOException {
@@ -44,11 +50,11 @@ public class RasporedPisiCitajApache extends Raspored{
                     case "mesto":
                         termin.setMesto(record.get(columnIndex));
                         break;
-                    case "pocetakDan":
-                        termin.setPocetakDan(record.get(columnIndex));
+                    case "datum":
+                        termin.setDatum(record.get(columnIndex));
                         break;
-                    case "krajDan":
-                        termin.setKrajDan(record.get(columnIndex));
+                    case "dan":
+                        termin.setDan(record.get(columnIndex));
                         break;
                     case "pocetakVreme":
                         termin.setPocetakVreme(record.get(columnIndex));
@@ -101,13 +107,43 @@ public class RasporedPisiCitajApache extends Raspored{
 
         for (Termin termin : super.getSviTermini()) {
             csvPrinter.printRecord(
-                    termin.getPocetakDan(),
-                    termin.getKrajDan(),
-                    termin.getMesto()
+                    termin.getDan() + ", "
+                    + termin.getDatum() + " "
+                    + termin.getPocetakVreme() + "-"
+                    + termin.getKrajVreme() + "h, "
+                    + termin.getMesto()
             );
         }
 
         csvPrinter.close();
         fileWriter.close();
     }
+
+    public void ispisiNeradneDane() {
+        for(String s : neradniDani){
+            System.out.println(s);
+        }
+    }
+
+    public void ucitajPocetakKraj(String s){
+        String[] niz = s.split(" ");
+        setPocetakRasporeda(niz[0]);
+        setKrajRasporeda(niz[1]);
+    }
+
+    public void ispisiOba(){
+        System.out.println(getPocetakRasporeda() + " " + getKrajRasporeda());
+        System.out.println(getPocetakRadnogVremena() + " " + getKrajRadnogVremena());
+    }
+
+    public void ucitajRadnoVreme(String s){
+        String[] niz = s.split(" ");
+        setPocetakRadnogVremena(niz[0]);
+        setKrajRadnogVremena(niz[1]);
+    }
 }
+
+/*
+raspored_stefan_aleksandar_test/resursi/termini.csv,raspored_stefan_aleksandar_test/resursi/konfig.txt
+11/11/2023 12/11/2023 31/12/2023 01/01/2024
+*/
