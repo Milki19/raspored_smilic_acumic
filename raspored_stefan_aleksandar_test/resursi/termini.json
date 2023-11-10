@@ -19,7 +19,7 @@
           "predavac" : "Mladen Jovanovic"
         },
         {
-          "racunar" : "da"
+          "racunar" : "DA"
         }]
     },
     {
@@ -30,14 +30,14 @@
       "krajVreme" : "12:30",
       "dodaci" : [
         {
-        "predmet": "SK"
+          "predmet": "SK"
         },
         {
-          "predavac": "Bojana Dimic Surla"
+          "predavac" : "Bojana Dimic Surla"
         },
         {
-        "racunar" : "Ne"
-      }]
+          "racunar" : "NE"
+        }]
     },
     {
       "mesto" : "RAF3",
@@ -53,8 +53,8 @@
           "predavac": "Lazar Dejanovic"
         },
         {
-        "racunar" : "DA"
-      }]
+          "racunar" : "DA"
+        }]
     }
   ]
 }
