@@ -94,6 +94,6 @@ public class Termin {
 
     @Override
     public String toString() {
-        return dan + ", " + datum + " " + pocetakVreme + "-" + krajVreme + "h, " + mesto;
+        return dan + ", " + datum + " " + pocetakVreme + "-" + krajVreme + "h, " + mesto + " " + dodaci;
     }
 }

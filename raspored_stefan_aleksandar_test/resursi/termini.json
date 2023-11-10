@@ -3,7 +3,7 @@
   "krajRasporeda" : "30/09/2023",
   "pocetakRadnogVremena" : "09:00",
   "krajRadnogVremena" : "21:00",
-  "neradniDani" : "11/11/2023 12/11/2023 31/12/2023 01/01/2024",
+  "neradniDani" : ["11/11/2023", "12/11/2023", "31/12/2023", "01/01/2024"],
   "sviTermini" : [
     {
       "mesto" : "RAF1",
@@ -11,16 +11,12 @@
       "datum" : "10/30/2023",
       "pocetakVreme" : "09:15",
       "krajVreme" : "11:15",
-      "dodaci" : [
+      "dodaci" :
         {
-          "predmet": "UUP"
-        },
-        {
-          "predavac" : "Mladen Jovanovic"
-        },
-        {
+          "predmet": "UUP",
+          "predavac" : "Mladen Jovanovic",
           "racunar" : "DA"
-        }]
+        }
     },
     {
       "mesto" : "RAF2",
@@ -28,16 +24,11 @@
       "datum" : "10/30/2023",
       "pocetakVreme" : "09:30",
       "krajVreme" : "12:30",
-      "dodaci" : [
-        {
-          "predmet": "SK"
-        },
-        {
-          "predavac" : "Bojana Dimic Surla"
-        },
-        {
-          "racunar" : "NE"
-        }]
+      "dodaci" : {
+        "predmet": "UUP",
+        "predavac" : "Mladen Jovanovic",
+        "racunar" : "DA"
+      }
     },
     {
       "mesto" : "RAF3",
@@ -45,16 +36,11 @@
       "datum" : "10/30/2023",
       "pocetakVreme" : "10:00",
       "krajVreme" : "13:00",
-      "dodaci" : [
-        {
-          "predmet": "UUP"
-        },
-        {
-          "predavac": "Lazar Dejanovic"
-        },
-        {
-          "racunar" : "DA"
-        }]
+      "dodaci" : {
+        "predmet": "UUP",
+        "predavac" : "Mladen Jovanovic",
+        "racunar" : "DA"
+      }
     }
   ]
 }

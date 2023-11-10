@@ -1,8 +1,8 @@
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Raspored {
+public class Raspored {
+
 
     protected List<Termin> sviTermini;
     protected List<String> neradniDani;
@@ -11,47 +11,56 @@ public abstract class Raspored {
     protected String pocetakRadnogVremena;
     protected String krajRadnogVremena;
 
-    public abstract boolean ucitajPodatke(String path) throws IOException;
-
-    public abstract boolean exportujPodatke(String path) throws IOException;
+    public Raspored(){
+        sviTermini = new ArrayList<>();
+        neradniDani = new ArrayList<>();
+    }
 
     public List<Termin> getSviTermini() {
         return sviTermini;
+    }
+
+    public void setSviTermini(List<Termin> sviTermini) {
+        this.sviTermini = sviTermini;
     }
 
     public List<String> getNeradniDani() {
         return neradniDani;
     }
 
-    public void setPocetakRasporeda(String pocetakRasporeda) {
-        this.pocetakRasporeda = pocetakRasporeda;
-    }
-
-    public void setKrajRasporeda(String krajRasporeda) {
-        this.krajRasporeda = krajRasporeda;
-    }
-
-    public void setPocetakRadnogVremena(String pocetakRadnogVremena) {
-        this.pocetakRadnogVremena = pocetakRadnogVremena;
-    }
-
-    public void setKrajRadnogVremena(String krajRadnogVremena) {
-        this.krajRadnogVremena = krajRadnogVremena;
+    public void setNeradniDani(List<String> neradniDani) {
+        this.neradniDani = neradniDani;
     }
 
     public String getPocetakRasporeda() {
         return pocetakRasporeda;
     }
 
+    public void setPocetakRasporeda(String pocetakRasporeda) {
+        this.pocetakRasporeda = pocetakRasporeda;
+    }
+
     public String getKrajRasporeda() {
         return krajRasporeda;
+    }
+
+    public void setKrajRasporeda(String krajRasporeda) {
+        this.krajRasporeda = krajRasporeda;
     }
 
     public String getPocetakRadnogVremena() {
         return pocetakRadnogVremena;
     }
 
+    public void setPocetakRadnogVremena(String pocetakRadnogVremena) {
+        this.pocetakRadnogVremena = pocetakRadnogVremena;
+    }
+
     public String getKrajRadnogVremena() {
         return krajRadnogVremena;
+    }
+
+    public void setKrajRadnogVremena(String krajRadnogVremena) {
+        this.krajRadnogVremena = krajRadnogVremena;
     }
 }

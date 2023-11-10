@@ -9,10 +9,10 @@ public class Main {
         String linija = scanner.nextLine();
 
         if(linija.contains(",")){
-            RasporedPisiCitajApache rasporedPisiCitajApache = new RasporedPisiCitajApache();
+            RasporedAPisiCitajApache rasporedPisiCitajApache = new RasporedAPisiCitajApache();
             try{
                 rasporedPisiCitajApache.ucitajPodatke(linija);
-                System.out.println(rasporedPisiCitajApache.getSviTermini());
+                System.out.println(rasporedPisiCitajApache.raspored.getSviTermini());
             }catch (IOException e){
                 System.out.println("Greska pri citanju fajlova");
                 return;
@@ -23,7 +23,6 @@ public class Main {
             System.out.println("Unesite pocetak i kraj radnog vremena u zadatom formatu, razdvajajuci ih razmakom: hh:mm");
             linija = scanner.nextLine();
             rasporedPisiCitajApache.ucitajRadnoVreme(linija);
-            rasporedPisiCitajApache.ispisiOba();
             System.out.println("Unesite neradne dane u zadatom formatu, razdvajajuci ih razmakom: mm/dd/yyyy");
             linija = scanner.nextLine();
             rasporedPisiCitajApache.ucitajNeradneDane(linija);
@@ -37,11 +36,12 @@ public class Main {
                 e.printStackTrace();
             }
         } else {
-            RasporedPisiCitajJSON rasporedPisiCitajJSON = new RasporedPisiCitajJSON();
+            RasporedAPisiCitajJSON rasporedPisiCitajJSON = new RasporedAPisiCitajJSON();
             try{
                 rasporedPisiCitajJSON.ucitajPodatke(linija);
-                System.out.println(rasporedPisiCitajJSON.getSviTermini());
+                System.out.println(rasporedPisiCitajJSON.raspored.getSviTermini());
             }catch (IOException e){
+                e.printStackTrace();
                 System.out.println("Greska pri citanju fajlova");
             }
         }

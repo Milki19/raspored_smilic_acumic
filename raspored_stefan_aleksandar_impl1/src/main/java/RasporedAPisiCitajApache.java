@@ -6,11 +6,10 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.*;
 import java.util.*;
 
-public class RasporedPisiCitajApache extends Raspored{
+public class RasporedAPisiCitajApache extends RasporedA {
 
-    public RasporedPisiCitajApache() {
-        this.sviTermini = new ArrayList<>();
-        this.neradniDani = new ArrayList<>();
+    public RasporedAPisiCitajApache() {
+        this.raspored = new Raspored();
     }
 
     @Override
@@ -24,7 +23,7 @@ public class RasporedPisiCitajApache extends Raspored{
         int n = s.split(" ").length;
         String[] niz = s.split(" ");
         for(int i = 0; i < n; i++){
-            getNeradniDani().add(niz[i]);
+            raspored.getNeradniDani().add(niz[i]);
         }
     }
 
@@ -70,7 +69,7 @@ public class RasporedPisiCitajApache extends Raspored{
 
             }
 
-            getSviTermini().add(termin);
+            raspored.getSviTermini().add(termin);
 
         }
 
@@ -106,7 +105,7 @@ public class RasporedPisiCitajApache extends Raspored{
         FileWriter fileWriter = new FileWriter(path);
         CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT);
 
-        for (Termin termin : super.getSviTermini()) {
+        for (Termin termin : super.raspored.getSviTermini()) {
             csvPrinter.printRecord(
                     termin.getDan() + ", "
                     + termin.getDatum() + " "
@@ -121,26 +120,21 @@ public class RasporedPisiCitajApache extends Raspored{
     }
 
     public void ispisiNeradneDane() {
-        for(String s : neradniDani){
+        for(String s : raspored.neradniDani){
             System.out.println(s);
         }
     }
 
     public void ucitajPocetakKraj(String s){
         String[] niz = s.split(" ");
-        setPocetakRasporeda(niz[0]);
-        setKrajRasporeda(niz[1]);
-    }
-
-    public void ispisiOba(){
-        System.out.println(getPocetakRasporeda() + " " + getKrajRasporeda());
-        System.out.println(getPocetakRadnogVremena() + " " + getKrajRadnogVremena());
+        raspored.setPocetakRasporeda(niz[0]);
+        raspored.setKrajRasporeda(niz[1]);
     }
 
     public void ucitajRadnoVreme(String s){
         String[] niz = s.split(" ");
-        setPocetakRadnogVremena(niz[0]);
-        setKrajRadnogVremena(niz[1]);
+        raspored.setPocetakRadnogVremena(niz[0]);
+        raspored.setKrajRadnogVremena(niz[1]);
     }
 }
 
