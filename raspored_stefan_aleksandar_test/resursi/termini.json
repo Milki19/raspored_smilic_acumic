@@ -1,45 +1,80 @@
 {
-  "pocetakRasporeda" : "01/10/2023",
-  "krajRasporeda" : "30/09/2023",
-  "pocetakRadnogVremena" : "09:00",
-  "krajRadnogVremena" : "21:00",
-  "neradniDani" : ["11/11/2023", "12/11/2023", "31/12/2023", "01/01/2024"],
-  "sviTermini" : [
+  "pocetakRasporeda": "01/10/2023",
+  "krajRasporeda": "25/01/2024",
+  "pocetakRadnogVremena": "09:00",
+  "krajRadnogVremena": "21:00",
+  "neradniDani": ["11/11/2023", "12/11/2023", "31/12/2023", "01/01/2024"],
+  "sviTermini": [
     {
-      "mesto" : "RAF1",
-      "dan" : "Ponedeljak",
-      "datum" : "10/30/2023",
-      "pocetakVreme" : "09:15",
-      "krajVreme" : "11:15",
-      "dodaci" :
-        {
-          "predmet": "UUP",
-          "predavac" : "Mladen Jovanovic",
-          "racunar" : "DA"
-        }
-    },
-    {
-      "mesto" : "RAF2",
-      "dan" : "Ponedeljak",
-      "datum" : "10/30/2023",
-      "pocetakVreme" : "09:30",
-      "krajVreme" : "12:30",
-      "dodaci" : {
-        "predmet": "UUP",
-        "predavac" : "Mladen Jovanovic",
-        "racunar" : "DA"
+      "mesto": "Raf05 (u)",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "pocetakVreme": "14:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Verovatnoca i statistika",
+        "tip": "V",
+        "predavac": "Maric Nevena"
       }
     },
     {
-      "mesto" : "RAF3",
-      "dan" : "Ponedeljak",
-      "datum" : "10/30/2023",
-      "pocetakVreme" : "10:00",
-      "krajVreme" : "13:00",
-      "dodaci" : {
-        "predmet": "UUP",
-        "predavac" : "Mladen Jovanovic",
-        "racunar" : "DA"
+      "mesto": "Raf02 (u)",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "pocetakVreme": "14:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Skript jezici",
+        "tip": "V",
+        "predavac": "Ciganovic Igor"
+      }
+    },
+    {
+      "mesto": "Raf01 (u)",
+      "dan": "ČET",
+      "datum": "05/10/2023",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Programski prevodioci",
+        "tip": "V",
+        "predavac": "Stojanovic Mihajlo"
+      }
+    },
+    {
+      "mesto": "Raf05 (u)",
+      "dan": "PON",
+      "datum": "09/10/2023",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Softverske komponente",
+        "tip": "V",
+        "predavac": "Najdic Jefimija"
+      }
+    },
+    {
+      "mesto": "Rg07 (u)",
+      "dan": "UTO",
+      "datum": "10/10/2023",
+      "pocetakVreme": "09:15",
+      "krajVreme": "11:00",
+      "dodaci": {
+        "predmet": "Testiranje softvera",
+        "tip": "V",
+        "predavac": "Ivkovic Sava"
+      }
+    },
+    {
+      "mesto": "Raf05 (u)",
+      "dan": "SRE",
+      "datum": "11/10/2023",
+      "pocetakVreme": "18:15",
+      "krajVreme": "20:00",
+      "dodaci": {
+        "predmet": "Verovatnoca i statistika",
+        "tip": "V",
+        "predavac": "Maric Nevena"
       }
     }
   ]

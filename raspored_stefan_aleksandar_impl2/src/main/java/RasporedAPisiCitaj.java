@@ -6,9 +6,9 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.*;
 import java.util.*;
 
-public class RasporedAPisiCitajApache extends RasporedA {
+public class RasporedAPisiCitaj extends RasporedA  {
 
-    public RasporedAPisiCitajApache() {
+    public RasporedAPisiCitaj () {
         this.raspored = new Raspored();
     }
 
@@ -26,8 +26,27 @@ public class RasporedAPisiCitajApache extends RasporedA {
             raspored.getNeradniDani().add(niz[i]);
         }
     }
+    private static List<Konfiguracija> citajKonfiguraciju(String configPath) throws FileNotFoundException {
 
-    private void ucitajApache(String path, String configPath) throws IOException {
+        List<Konfiguracija> mapiranje = new ArrayList<>();
+
+        File file = new File(configPath);
+        Scanner sc = new Scanner(file);
+
+        while (sc.hasNextLine()){
+            String line = sc.nextLine();
+            String[] split = line.split(" ", 3);
+
+            mapiranje.add(new Konfiguracija(Integer.valueOf(split[0]), split[1], split[2]));
+        }
+
+        sc.close();
+
+
+        return mapiranje;
+    }
+
+    private void ucitajApache(String path, String configPath) throws IOException{
         List<Konfiguracija> mapiranje = citajKonfiguraciju(configPath);
         Map<Integer, String> mapa = new HashMap<>();
 
@@ -75,26 +94,6 @@ public class RasporedAPisiCitajApache extends RasporedA {
 
     }
 
-    private static List<Konfiguracija> citajKonfiguraciju(String configPath) throws FileNotFoundException {
-
-        List<Konfiguracija> mapiranje = new ArrayList<>();
-
-        File file = new File(configPath);
-        Scanner sc = new Scanner(file);
-
-        while (sc.hasNextLine()){
-            String line = sc.nextLine();
-            String[] split = line.split(" ", 3);
-
-            mapiranje.add(new Konfiguracija(Integer.valueOf(split[0]), split[1], split[2]));
-        }
-
-        sc.close();
-
-
-        return mapiranje;
-    }
-
     @Override
     public boolean exportujPodatke(String path) throws IOException {
         ispisi(path);
@@ -108,10 +107,9 @@ public class RasporedAPisiCitajApache extends RasporedA {
         for (Termin termin : super.raspored.getSviTermini()) {
             csvPrinter.printRecord(
                     termin.getDan() + ", "
-                    + termin.getDatum() + " "
-                    + termin.getPocetakVreme() + "-"
-                    + termin.getKrajVreme() + "h, "
-                    + termin.getMesto()
+                            + termin.getPocetakVreme() + "-"
+                            + termin.getKrajVreme() + "h, "
+                            + termin.getMesto()
             );
         }
 
@@ -138,8 +136,4 @@ public class RasporedAPisiCitajApache extends RasporedA {
     }
 }
 
-/*
-raspored_stefan_aleksandar_test/resursi/RAFraspored.csv
-raspored_stefan_aleksandar_test/resursi/konfig.txt
-11/11/2023 12/11/2023 31/12/2023 01/01/2024
-*/
+
