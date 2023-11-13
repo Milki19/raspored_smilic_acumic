@@ -7,6 +7,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Unesite putanju do fajla: ");
         String linija = scanner.nextLine();
+        RasporedAPisiCitaj rasporedPisiCitaj = new RasporedAPisiCitaj();
 
         if(linija.contains(".csv")){
             String prviDeo = linija;
@@ -14,41 +15,42 @@ public class Main {
             linija = scanner.nextLine();
             String drugiDeo = linija;
             String path = prviDeo + "," + drugiDeo;
-            RasporedAPisiCitajApache rasporedPisiCitajApache = new RasporedAPisiCitajApache();
+
             try{
-                rasporedPisiCitajApache.ucitajPodatke(path);
-                System.out.println(rasporedPisiCitajApache.raspored.getSviTermini());
+                rasporedPisiCitaj.ucitajPodatke(path);
+                System.out.println(rasporedPisiCitaj.raspored.getSviTermini());
             }catch (IOException e){
                 System.out.println("Greska pri citanju fajlova");
                 return;
             }
             System.out.println("Unesite prvi i poslednji dan rasporeda u zadatom formatu, razdvajajuci ih razmakom: dd/mm/yyyy");
             linija = scanner.nextLine();
-            rasporedPisiCitajApache.ucitajPocetakKraj(linija);
+            rasporedPisiCitaj.ucitajPocetakKraj(linija);
             System.out.println("Unesite pocetak i kraj radnog vremena u zadatom formatu, razdvajajuci ih razmakom: hh:mm");
             linija = scanner.nextLine();
-            rasporedPisiCitajApache.ucitajRadnoVreme(linija);
+            rasporedPisiCitaj.ucitajRadnoVreme(linija);
             System.out.println("Unesite neradne dane u zadatom formatu, razdvajajuci ih razmakom: dd/mm/yyyy");
             linija = scanner.nextLine();
-            rasporedPisiCitajApache.ucitajNeradneDane(linija);
-            rasporedPisiCitajApache.ispisiNeradneDane();
+            rasporedPisiCitaj.ucitajNeradneDane(linija);
+            rasporedPisiCitaj.ispisiNeradneDane();
 
-            System.out.println("Unesite naziv izlaznog fajla");
+            System.out.println("Unesite naziv izlaznog fajla:");
             linija = scanner.nextLine();
             try {
-                rasporedPisiCitajApache.exportujPodatke(linija);
+                rasporedPisiCitaj.exportujPodatke(linija);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
-            RasporedAPisiCitajJSON rasporedPisiCitajJSON = new RasporedAPisiCitajJSON();
             try{
-                rasporedPisiCitajJSON.ucitajPodatke(linija);
-                System.out.println(rasporedPisiCitajJSON.raspored.getSviTermini());
-                rasporedPisiCitajJSON.exportujPodatke("raspored_stefan_aleksandar_test/resursi/noviTermini.txt");
+                rasporedPisiCitaj.ucitajPodatke(linija);
+                System.out.println(rasporedPisiCitaj.raspored.getSviTermini());
+                System.out.println("Unesite naziv izlaznog fajla:");
+                linija = scanner.nextLine();
+                rasporedPisiCitaj.exportujPodatke(linija);
             }catch (IOException e){
                 e.printStackTrace();
-                System.out.println("Greska pri citanju fajlova");
+                System.out.println("Greska pri citanju fajlova.");
             }
         }
 

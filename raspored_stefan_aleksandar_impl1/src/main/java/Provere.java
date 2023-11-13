@@ -1,4 +1,4 @@
-public class Provere extends RasporedAPisiCitajApache {
+public class Provere extends RasporedAPisiCitaj {
 
     public boolean proveraNeradniDan(String dan){
 

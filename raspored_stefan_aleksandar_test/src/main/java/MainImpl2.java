@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.Scanner;
-
+/*
 public class MainImpl2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -84,3 +84,4 @@ public class MainImpl2 {
 //
     }
 }
+*/
