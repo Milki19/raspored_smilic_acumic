@@ -8,6 +8,9 @@ import java.util.*;
 
 public class RasporedAPisiCitaj extends RasporedA  {
 
+    private String pocetakDatum;
+    private String krajDatum;
+
     public RasporedAPisiCitaj () {
         this.raspored = new Raspored();
     }
@@ -70,7 +73,8 @@ public class RasporedAPisiCitaj extends RasporedA  {
                         termin.setMesto(record.get(columnIndex));
                         break;
                     case "datum":
-                        termin.setDatum(record.get(columnIndex));
+                        termin.setDatum(pocetakDatum);
+                        termin.setKrajDatum(krajDatum);
                         break;
                     case "dan":
                         termin.setDan(record.get(columnIndex));
@@ -107,9 +111,11 @@ public class RasporedAPisiCitaj extends RasporedA  {
         for (Termin termin : super.raspored.getSviTermini()) {
             csvPrinter.printRecord(
                     termin.getDan() + ", "
+                            + termin.getKrajDatum() + ","
                             + termin.getPocetakVreme() + "-"
                             + termin.getKrajVreme() + "h, "
-                            + termin.getMesto()
+                            + termin.getMesto() + ", "
+                            + termin.getDatum()
             );
         }
 
@@ -133,6 +139,26 @@ public class RasporedAPisiCitaj extends RasporedA  {
         String[] niz = s.split(" ");
         raspored.setPocetakRadnogVremena(niz[0]);
         raspored.setKrajRadnogVremena(niz[1]);
+    }
+
+    public String getPocetakDatum() {
+        return pocetakDatum;
+    }
+
+    public void setPocetakDatum(String pocetakDatum) {
+        this.pocetakDatum = pocetakDatum;
+    }
+
+    public String getKrajDatum() {
+        return krajDatum;
+    }
+
+    public void setKrajDatum(String krajDatum) {
+        this.krajDatum = krajDatum;
+    }
+
+    public Raspored getRaspored () {
+        return this.raspored;
     }
 }
 
