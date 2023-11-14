@@ -47,24 +47,43 @@ public class RasporedAPisiCitaj extends RasporedA{
     }
 
     private void ispisiPDF(String path) throws IOException{
+
         PDDocument document = new PDDocument();
-
         PDPage page = new PDPage();
-
         document.addPage(page);
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
         contentStream.setFont(PDType1Font.HELVETICA, 12);
-        contentStream.beginText();
-        contentStream.newLineAtOffset(100, 700);
 
-        for(Termin t : this.raspored.getSviTermini()){
-            contentStream.showText("Dan: " + t.getDan() + " ");
-            contentStream.showText("Datum: " + t.getDatum() + " ");
-            contentStream.showText("Pocetak: " + t.getPocetakVreme() + " ");
-            contentStream.showText("Kraj: " + t.getKrajVreme() + " ");
-            contentStream.showText("Mesto: " + t.getMesto());
-            contentStream.newLine();
+        float y = 750;
+        float yGranica = 100;
+
+        contentStream.beginText();
+        contentStream.newLineAtOffset(100, y);
+
+        for (Termin t : this.raspored.getSviTermini()) {
+            if (y < yGranica) {
+                contentStream.endText();
+                contentStream.close();
+
+                page = new PDPage();
+                document.addPage(page);
+                contentStream = new PDPageContentStream(document, page);
+                contentStream.setFont(PDType1Font.HELVETICA, 12);
+
+                y = 750;
+                contentStream.beginText();
+                contentStream.newLineAtOffset(100, y);
+            }
+
+            contentStream.moveTextPositionByAmount(0, -20);
+            contentStream.showText("Dan: " + t.getDan());
+            contentStream.showText(", Datum: " + t.getDatum());
+            contentStream.showText(", Pocetak: " + t.getPocetakVreme());
+            contentStream.showText(", Kraj: " + t.getKrajVreme());
+            contentStream.showText(", Mesto: " + t.getMesto());
+
+            y -= 20;
         }
 
         contentStream.endText();
@@ -75,10 +94,10 @@ public class RasporedAPisiCitaj extends RasporedA{
         String linija = sc.nextLine();
 
         document.save(linija + path);
-
         document.close();
-
     }
+
+
 
     private void ispisiJSON(String path) throws IOException{
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();

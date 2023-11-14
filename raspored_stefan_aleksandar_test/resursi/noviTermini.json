@@ -150,7 +150,7 @@
     },
     {
       "mesto": "Rg07",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "05/10/2023",
       "pocetakVreme": "11:15",
       "krajVreme": "13:00",
@@ -162,7 +162,7 @@
     },
     {
       "mesto": "Raf01",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "05/10/2023",
       "pocetakVreme": "13:15",
       "krajVreme": "15:00",
@@ -318,7 +318,7 @@
     },
     {
       "mesto": "Raf09",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "16/10/2023",
       "pocetakVreme": "14:15",
       "krajVreme": "16:00",
@@ -330,7 +330,7 @@
     },
     {
       "mesto": "Raf09",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "16/10/2023",
       "pocetakVreme": "16:15",
       "krajVreme": "18:00",
@@ -366,7 +366,7 @@
     },
     {
       "mesto": "Raf03",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "19/10/2023",
       "pocetakVreme": "11:15",
       "krajVreme": "13:00",
@@ -378,7 +378,7 @@
     },
     {
       "mesto": "Raf01",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "19/10/2023",
       "pocetakVreme": "09:15",
       "krajVreme": "11:00",
@@ -426,7 +426,7 @@
     },
     {
       "mesto": "Raf21",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "26/10/2023",
       "pocetakVreme": "17:15",
       "krajVreme": "19:00",
@@ -906,7 +906,7 @@
     },
     {
       "mesto": "Raf20",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "02/11/2023",
       "pocetakVreme": "18:15",
       "krajVreme": "21:00",
@@ -918,7 +918,7 @@
     },
     {
       "mesto": "Raf04",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "02/11/2023",
       "pocetakVreme": "15:15",
       "krajVreme": "17:00",
@@ -930,7 +930,7 @@
     },
     {
       "mesto": "Raf04",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "02/11/2023",
       "pocetakVreme": "13:15",
       "krajVreme": "15:00",
@@ -942,7 +942,7 @@
     },
     {
       "mesto": "Raf07",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "02/11/2023",
       "pocetakVreme": "15:15",
       "krajVreme": "17:00",
@@ -954,7 +954,7 @@
     },
     {
       "mesto": "Raf21",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "02/11/2023",
       "pocetakVreme": "13:15",
       "krajVreme": "15:00",
@@ -966,7 +966,7 @@
     },
     {
       "mesto": "RAF04",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "02/11/2023",
       "pocetakVreme": "11:15",
       "krajVreme": "13:00",
@@ -978,7 +978,7 @@
     },
     {
       "mesto": "Rg02",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "02/11/2023",
       "pocetakVreme": "15:15",
       "krajVreme": "17:00",
@@ -990,7 +990,7 @@
     },
     {
       "mesto": "Raf01",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "02/11/2023",
       "pocetakVreme": "17:15",
       "krajVreme": "19:00",
@@ -1002,7 +1002,7 @@
     },
     {
       "mesto": "Rg07",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "02/11/2023",
       "pocetakVreme": "13:15",
       "krajVreme": "15:00",
@@ -1134,7 +1134,7 @@
     },
     {
       "mesto": "Raf01",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "09/11/2023",
       "pocetakVreme": "15:15",
       "krajVreme": "17:00",
@@ -1182,7 +1182,7 @@
     },
     {
       "mesto": "Raf07",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "16/11/2023",
       "pocetakVreme": "11:15",
       "krajVreme": "13:00",
@@ -1194,7 +1194,7 @@
     },
     {
       "mesto": "Raf01",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "16/11/2023",
       "pocetakVreme": "09:15",
       "krajVreme": "11:00",
@@ -1206,7 +1206,7 @@
     },
     {
       "mesto": "Raf04",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "16/11/2023",
       "pocetakVreme": "15:15",
       "krajVreme": "17:00",
@@ -1254,7 +1254,7 @@
     },
     {
       "mesto": "Rg07",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "23/11/2023",
       "pocetakVreme": "09:15",
       "krajVreme": "11:00",
@@ -1338,7 +1338,7 @@
     },
     {
       "mesto": "Rg07",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "30/11/2023",
       "pocetakVreme": "11:15",
       "krajVreme": "13:00",
@@ -1350,7 +1350,7 @@
     },
     {
       "mesto": "Kolarac3",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "30/11/2023",
       "pocetakVreme": "14:15",
       "krajVreme": "16:00",
@@ -1458,7 +1458,7 @@
     },
     {
       "mesto": "Raf04",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "07/12/2023",
       "pocetakVreme": "09:15",
       "krajVreme": "11:00",
@@ -1542,7 +1542,7 @@
     },
     {
       "mesto": "Kolarac3",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "14/12/2023",
       "pocetakVreme": "11:15",
       "krajVreme": "13:00",
@@ -1566,7 +1566,7 @@
     },
     {
       "mesto": "Raf14",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "15/12/2023",
       "pocetakVreme": "16:15",
       "krajVreme": "19:00",
@@ -1578,7 +1578,7 @@
     },
     {
       "mesto": "Raf13",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "15/12/2023",
       "pocetakVreme": "11:15",
       "krajVreme": "13:00",
@@ -1590,7 +1590,7 @@
     },
     {
       "mesto": "Raf14",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "15/12/2023",
       "pocetakVreme": "13:15",
       "krajVreme": "14:00",
@@ -1686,7 +1686,7 @@
     },
     {
       "mesto": "Raf14",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "21/12/2023",
       "pocetakVreme": "14:15",
       "krajVreme": "16:00",
@@ -1770,7 +1770,7 @@
     },
     {
       "mesto": "Raf01",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "11/01/2024",
       "pocetakVreme": "17:15",
       "krajVreme": "19:00",
@@ -1782,7 +1782,7 @@
     },
     {
       "mesto": "Rg07",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "11/01/2024",
       "pocetakVreme": "13:15",
       "krajVreme": "15:00",
@@ -1794,7 +1794,7 @@
     },
     {
       "mesto": "Raf06",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "11/01/2024",
       "pocetakVreme": "14:15",
       "krajVreme": "16:00",
@@ -1830,7 +1830,7 @@
     },
     {
       "mesto": "Raf06",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "12/01/2024",
       "pocetakVreme": "16:15",
       "krajVreme": "18:00",
@@ -1938,7 +1938,7 @@
     },
     {
       "mesto": "Raf05",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "18/01/2024",
       "pocetakVreme": "18:15",
       "krajVreme": "21:00",
@@ -1950,7 +1950,7 @@
     },
     {
       "mesto": "Raf05",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "18/01/2024",
       "pocetakVreme": "15:15",
       "krajVreme": "18:00",
@@ -2010,7 +2010,7 @@
     },
     {
       "mesto": "Raf07",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "25/01/2024",
       "pocetakVreme": "11:15",
       "krajVreme": "13:00",
@@ -2022,7 +2022,7 @@
     },
     {
       "mesto": "Rg04",
-      "dan": "\u010cET",
+      "dan": "CET",
       "datum": "25/01/2024",
       "pocetakVreme": "15:15",
       "krajVreme": "17:00",
