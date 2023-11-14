@@ -4,7 +4,13 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.pdfbox.pdmodel.PDAppearanceContentStream;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
+import javax.swing.text.Document;
 import java.io.*;
 import java.util.*;
 
@@ -40,7 +46,37 @@ public class RasporedAPisiCitaj extends RasporedA{
         return false;
     }
 
-    private void ispisiPDF(String path) {
+    private void ispisiPDF(String path) throws IOException{
+        PDDocument document = new PDDocument();
+
+        PDPage page = new PDPage();
+
+        document.addPage(page);
+        PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+        contentStream.setFont(PDType1Font.HELVETICA, 12);
+        contentStream.beginText();
+        contentStream.newLineAtOffset(100, 700);
+
+        for(Termin t : this.raspored.getSviTermini()){
+            contentStream.showText("Dan: " + t.getDan() + " ");
+            contentStream.showText("Datum: " + t.getDatum() + " ");
+            contentStream.showText("Pocetak: " + t.getPocetakVreme() + " ");
+            contentStream.showText("Kraj: " + t.getKrajVreme() + " ");
+            contentStream.showText("Mesto: " + t.getMesto());
+            contentStream.newLine();
+        }
+
+        contentStream.endText();
+        contentStream.close();
+
+        System.out.println("Unesite destinaciju na kojoj zelite da bude fajl: ");
+        Scanner sc = new Scanner(System.in);
+        String linija = sc.nextLine();
+
+        document.save(linija + path);
+
+        document.close();
 
     }
 
