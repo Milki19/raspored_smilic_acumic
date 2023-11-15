@@ -141,6 +141,7 @@ public class RasporedAImpl extends RasporedA  {
         raspored.setKrajRadnogVremena(niz[1]);
     }
 
+    @Override
     public void interakcija(){
         System.out.println("Izabite sta sledece zelite da uradite, tako sto napisete broj koji se nalazi ispred: \n");
         System.out.println("1. Dodati termin\n");
@@ -270,6 +271,16 @@ public class RasporedAImpl extends RasporedA  {
 
     @Override
     public void pretrazi5(String dan) {
+
+    }
+
+    @Override
+    public void proveri() {
+
+    }
+
+    @Override
+    public void proveri23456(String pocetakDatum, String krajDatum, String pocetakVreme, String krajVrene, String dan) {
 
     }
 

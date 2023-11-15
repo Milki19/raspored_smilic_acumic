@@ -54,6 +54,9 @@ public class DodatneFunkcionalnosti {
         raspored.getSviTermini().add(noviTermin);
         System.out.println("Novi termin uspešno dodat u raspored.");
     }
+
+
+
     public Map<String, String> getDodaci() {
 
         return dodaci;

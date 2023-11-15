@@ -48,16 +48,110 @@ public class RasporedAImpl extends RasporedA{
     }
 
     @Override
+    public void interakcija(){
+        System.out.println("\nIzabite sta sledece zelite da uradite, tako sto napisete broj koji se nalazi ispred:");
+        System.out.println("1. Dodati termin");
+        System.out.println("2. Izbrisati termin");
+        System.out.println("3. Izmeniti termin");
+        System.out.println("4. Pretraziti termine");
+        System.out.println("5. Pogledati slobodne termine");
+        System.out.println("6. Izadji");
+        Scanner sc = new Scanner(System.in);
+        String linija = sc.nextLine();
+
+        if(linija.equals("1")){
+            dodajTermin();
+        }else if(linija.equals("2")){
+
+        }else if(linija.equals("3")){
+
+        }else if(linija.equals("4")){
+            pretrazi();
+        }else if(linija.equals("5")){
+            proveri();
+        }else if(linija.equals("6")){
+
+        }else{
+            System.out.println("Niste izabrali validnu opciju:\n");
+            interakcija();
+        }
+    }
+
+    @Override
+    public void proveri() {
+        System.out.println("\nIzaberite po cemu zelite da pretrazite slobodne termine razvodejene razmakom:");
+        System.out.println("1. Mesto");
+        System.out.println("2. Pocetni datum");
+        System.out.println("3. Krajnji datum");
+        System.out.println("4. Pocetno vreme");
+        System.out.println("5. Krajnje vreme");
+        System.out.println("6. Dan\n");
+
+        Scanner sc = new Scanner(System.in);
+        String linija = sc.nextLine();
+
+        // 1 3 5
+
+        String[] niz = linija.split(" ");
+
+        int flag1 = 0;
+        int flag2 = 0;
+        int flag3 = 0;
+        int flag4 = 0;
+        int flag5 = 0;
+        int flag6 = 0;
+
+        for(int i = 0; i < niz.length; i++){
+            if(niz[i].equals("1")){
+                flag1 = 1;
+            }
+            if(niz[i].equals("2")){
+                flag2 = 1;
+            }
+            if(niz[i].equals("3")){
+                flag3 = 1;
+            }
+            if(niz[i].equals("4")){
+                flag4 = 1;
+            }
+            if(niz[i].equals("5")){
+                flag5 = 1;
+            }
+            if(niz[i].equals("6")){
+                flag6 = 1;
+            }
+        }
+
+        if(flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 1 && flag6 == 1){
+            System.out.println("Unesite pocetni datum, krajnji datum, pocetno vreme, krajnje vreme i dan za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy dd/mm/yyyy hh:mm hh:mm DAN");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            proveri23456(split[0], split[1], split[2], split[3], split[4]);
+        }
+
+    }
+
+    @Override
+    public void proveri23456(String pocetakDatum, String krajDatum, String pocetakVreme, String krajVrene, String dan) {
+        for(Termin t : getRaspored().sviTermini){
+            if(t.getDan().equals(dan)){
+
+            }
+        }
+    }
+
+
+    @Override
     public void dodajTermin(){
         DodatneFunkcionalnosti df = new DodatneFunkcionalnosti();
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Unesite podatke u sledeceom formatu: Mesto,Dan,Datum,PocetakVreme,KrajVreme");
+        System.out.println("Unesite obavezne podatke za (mesto, dan, datum, pocetno vreme, krajnje vreme) u sledeceom formatu: mesto DAN dd/mm/yyyy hh:mm hh:mm");
         //Raf04,PON,02/10/2022,09:15,11:00
         //Raf04,PON,22/10/2022,09:15,11:00
         //"Raf04","PON","02/10/2022","09:15","11:00","Poslovne aplikacije","Mijatovic Igor","DA"
         String linija = sc.nextLine();
-        String[] split = linija.split(",", 6);
+        String[] split = linija.split(" ", 6);
         for (String s : split) {
             System.out.println(s);
         }
@@ -89,14 +183,6 @@ public class RasporedAImpl extends RasporedA{
         int flag3 = 0;
         int flag4 = 0;
         int flag5 = 0;
-
-        /*
-        mesto;
-        datum;
-        pocetakVreme;
-        krajVreme;
-        dan;
-         */
 
         for(int i = 0; i < niz.length; i++){
             if(niz[i].equals("1")){
@@ -726,7 +812,6 @@ public class RasporedAImpl extends RasporedA{
             pretrazi();
         }else interakcija();
     }
-
     private void ispisiPDF(String path) throws IOException{
 
         PDDocument document = new PDDocument();
@@ -919,32 +1004,6 @@ public class RasporedAImpl extends RasporedA{
         String[] niz = s.split(" ");
         raspored.setPocetakRadnogVremena(niz[0]);
         raspored.setKrajRadnogVremena(niz[1]);
-    }
-
-    public void interakcija(){
-        System.out.println("\nIzabite sta sledece zelite da uradite, tako sto napisete broj koji se nalazi ispred:");
-        System.out.println("1. Dodati termin");
-        System.out.println("2. Izbrisati termin");
-        System.out.println("3. Izmeniti termin");
-        System.out.println("4. Pretraziti termine");
-        System.out.println("5. Izadji");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-
-        if(linija.equals("1")){
-            dodajTermin();
-        }else if(linija.equals("2")){
-
-        }else if(linija.equals("3")){
-
-        }else if(linija.equals("4")){
-            pretrazi();
-        }else if(linija.equals("5")){
-
-        }else{
-            System.out.println("Niste izabrali validnu opciju:\n");
-            interakcija();
-        }
     }
 
     public String getPocetakDatum() {

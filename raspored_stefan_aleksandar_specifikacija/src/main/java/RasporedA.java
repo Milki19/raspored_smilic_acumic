@@ -8,6 +8,7 @@ public abstract class RasporedA {
     public abstract boolean ucitajPodatke(String path) throws IOException;
 
     public abstract boolean exportujPodatke(String path) throws IOException;
+    public abstract void interakcija();
 
     public abstract void dodajTermin();
 
@@ -31,4 +32,8 @@ public abstract class RasporedA {
     public abstract void pretrazi345(String pocetakVreme, String krajVreme, String dan);
     public abstract void pretrazi4(String krajVreme);
     public abstract void pretrazi5(String dan);
+
+    public abstract void proveri();
+    public abstract void proveri23456(String pocetakDatum, String krajDatum, String pocetakVreme, String krajVrene, String dan);
+
 }
