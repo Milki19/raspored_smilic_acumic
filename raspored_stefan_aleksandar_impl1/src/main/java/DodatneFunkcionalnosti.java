@@ -20,19 +20,19 @@ public class DodatneFunkcionalnosti {
 
     public void dodajNoviTermin(Raspored raspored, String mesto, String dan, String datum, String krajDatum, String pocetakVreme, String krajVreme) {
 
-        if (krajDatum.isEmpty() || krajDatum == null)
-            krajDatum = datum;
+        krajDatum = datum;
 
-        LocalTime tPV = LocalTime.parse(pocetakVreme);
-        LocalTime tKV = LocalTime.parse(krajVreme);
-        LocalDate tDatum = LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        LocalDate kDatum = LocalDate.parse(krajDatum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalTime tPV = LocalTime.parse(pocetakVreme);  //terminpocetnovreme
+        LocalTime tKV = LocalTime.parse(krajVreme);     //kraj
+        LocalDate tDatum = LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));   //pocetnidatum
+        LocalDate kDatum = LocalDate.parse(krajDatum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));   //krajdatunnovog
 
 
 
         for (Termin postojeciTermin : raspored.getSviTermini()) {
             LocalDate oPDatum = LocalDate.parse(postojeciTermin.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             LocalDate oKDatum = LocalDate.parse(postojeciTermin.getKrajDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+//            LocalDate oKDatum = LocalDate.parse(postojeciTermin.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
             if((tDatum.isBefore(oKDatum) || tDatum.equals(oKDatum)) && (!kDatum.isAfter(oPDatum) || kDatum.equals(oPDatum))) {
                 System.out.println(tDatum.isBefore(oKDatum) || tDatum.equals(oKDatum));
@@ -41,6 +41,7 @@ public class DodatneFunkcionalnosti {
                 if(postojeciTermin.getMesto().equals(mesto)) {
                     System.out.println("Mesto if");
                     if(tPV.isBefore(LocalTime.parse(postojeciTermin.getKrajVreme())) && tKV.isAfter(LocalTime.parse(postojeciTermin.getPocetakVreme())) ) {
+                        //Raf04,PON,22/10/2022,09:15,11:00
                         System.out.println("Termin postoji");
                         return;
                     }
@@ -53,8 +54,8 @@ public class DodatneFunkcionalnosti {
         raspored.getSviTermini().add(noviTermin);
         System.out.println("Novi termin uspešno dodat u raspored.");
     }
-
     public Map<String, String> getDodaci() {
+
         return dodaci;
     }
 

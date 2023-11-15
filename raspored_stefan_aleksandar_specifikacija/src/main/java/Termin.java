@@ -23,6 +23,7 @@ public class Termin {
     public Termin(String mesto, String dan, String datum, String pocetakVreme, String krajVreme){
         this.mesto = mesto;
         this.datum = datum;
+        this.krajDatum = datum;
         this.pocetakVreme = pocetakVreme;
         this.krajVreme = krajVreme;
         this.dodaci = new HashMap<>();
@@ -42,6 +43,7 @@ public class Termin {
     public Termin(String mesto, String dan, String datum, String pocetakVreme, String krajVreme, Map<String, String> dodaci){
         this.mesto = mesto;
         this.datum = datum;
+        this.krajDatum = datum;
         this.pocetakVreme = pocetakVreme;
         this.krajVreme = krajVreme;
         this.dodaci = dodaci;
@@ -104,45 +106,31 @@ public class Termin {
         this.dan = dan;
     }
 
-    public boolean podudara (Termin termin) {
+    public boolean podudara (Termin termin, Termin o) {
         //30/10/2023,11:15
-        DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy,hh:mm");
 
-        Date oPV = new Date();
-        Date oKV = new Date();
-        Date tPV = new Date();
-        Date tKV = new Date();
+        LocalTime tPV = LocalTime.parse (termin.pocetakVreme);
+        LocalTime tKV = LocalTime.parse (termin.krajVreme);
+        LocalTime oPV = LocalTime.parse (o.pocetakVreme);
+        LocalTime oKV = LocalTime.parse (o.krajVreme);
 
-        try {
-            oPV = dateFormat.parse(this.getDatum() + "," + this.getPocetakVreme());
-            oKV = dateFormat.parse(this.getDatum() + "," +this.getKrajVreme());
-            tPV = dateFormat.parse(termin.getDatum() + "," +termin.getPocetakVreme());
-            tKV = dateFormat.parse(termin.getDatum()+ "," +termin.getKrajVreme());
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+        LocalDate tDatum = LocalDate.parse(termin.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate oDatum = LocalDate.parse(o.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
+        System.out.println("Termin.datum = " + termin.getDatum() + "\n this.datum = " + o.getDatum());
 
-        if (tPV.getTime() > tKV.getTime()) {
-            System.err.println("Niste uneli dobro vreme, pocetak mora biti pre kraja");
+        //Ovo moze ako je drugacije mesto
+        if (tDatum.isEqual(oDatum) && ((tPV.isBefore(oKV) && tKV.isAfter(oPV)) || (oPV.isBefore(tKV) && oKV.isAfter(tPV)))) {
             return true;
         }
 
-//        System.out.println("tPV.getTime() > oPV.getTime()" + (tPV.getTime() > oPV.getTime()));
-//        System.out.println("tPV.getTime() < oKV.getTime()" + (tPV.getTime() < oKV.getTime()));
-//        System.out.println("tKV.getTime() > oPV.getTime()" + (tKV.getTime() > oPV.getTime()));
-//        System.out.println("tKV.getTime() < oKV.getTime()" + (tKV.getTime() < oKV.getTime()));
-
-        if (((tPV.getTime() > oPV.getTime() &&
-                tPV.getTime() < oKV.getTime()) ||
-                (tKV.getTime() > oPV.getTime() &&
-                        tKV.getTime() < oKV.getTime())) &&
-                termin.getMesto().equalsIgnoreCase(this.mesto) &&
-                termin.getDatum().equals(this.datum)) {
+        if (termin.getMesto().equalsIgnoreCase(o.getMesto())) {
             return true;
         }
 
-
+        if (termin.getDatum().equals(o.getDatum())) {
+            return true;
+        }
         return false;
     }
 
@@ -151,7 +139,10 @@ public class Termin {
         if(this == obj) return true;
         if(obj == null || getClass() != obj.getClass()) return false;
         Termin t = (Termin) obj;
-        return Objects.equals(datum, t.datum) && Objects.equals(pocetakVreme, t.pocetakVreme) && Objects.equals(mesto.toUpperCase(), t.mesto.toUpperCase());
+        return  Objects.equals(datum, t.datum)
+                && Objects.equals(pocetakVreme, t.pocetakVreme)
+                && mesto != null && t.mesto != null
+                && mesto.equalsIgnoreCase(t.mesto);
     }
 
     @Override

@@ -1,4 +1,4 @@
-public class Provere extends RasporedAPisiCitaj {
+public class Provere extends RasporedAImpl {
 
     public boolean proveraNeradniDan(String dan){
 

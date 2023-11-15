@@ -6,12 +6,12 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.*;
 import java.util.*;
 
-public class RasporedAPisiCitaj extends RasporedA  {
+public class RasporedAImpl extends RasporedA  {
 
     private String pocetakDatum;
     private String krajDatum;
 
-    public RasporedAPisiCitaj () {
+    public RasporedAImpl() {
         this.raspored = new Raspored();
     }
 
@@ -139,6 +139,138 @@ public class RasporedAPisiCitaj extends RasporedA  {
         String[] niz = s.split(" ");
         raspored.setPocetakRadnogVremena(niz[0]);
         raspored.setKrajRadnogVremena(niz[1]);
+    }
+
+    public void interakcija(){
+        System.out.println("Izabite sta sledece zelite da uradite, tako sto napisete broj koji se nalazi ispred: \n");
+        System.out.println("1. Dodati termin\n");
+        System.out.println("2. Izbrisati termin\n");
+        System.out.println("3. Izmeniti termin\n");
+        System.out.println("4. Pretraziti termine\n");
+        Scanner sc = new Scanner(System.in);
+        String linija = sc.nextLine();
+
+        if(linija.equals("1")){
+            dodajTermin();
+        }
+    }
+
+    @Override
+    public void dodajTermin(){
+        DodatneFunkcionalnosti df = new DodatneFunkcionalnosti();
+        Scanner sc = new Scanner(System.in);
+        String linija = sc.nextLine();
+        System.out.println("Unesite podatke u sledeceom formatu: Mesto,Dan,Datum,PocetakVreme,KrajVreme");
+        //Raf04,PON,02/10/2022,09:15,11:00
+        //"Raf04","PON","02/10/2022","09:15","11:00","Poslovne aplikacije","Mijatovic Igor","DA"
+        linija = sc.nextLine();
+        String[] split = linija.split(",", 6);
+        for (String s : split) {
+            System.out.println(s);
+        }
+
+        //df.napraviDodtne(split[5]);
+        df.dodajNoviTermin(getRaspored(), split[0], split[1], split[2], "", split[3], split[4]);
+    }
+
+    @Override
+    public void pretrazi() {
+
+    }
+
+    @Override
+    public void pretrazi1(String mesto) {
+
+    }
+
+    @Override
+    public void pretrazi12(String mesto, String datum) {
+
+    }
+
+    @Override
+    public void pretrazi15(String mesto, String dan) {
+
+    }
+
+    @Override
+    public void pretrazi123(String mesto, String datum, String pocetakVreme) {
+
+    }
+
+    @Override
+    public void pretrazi125(String mesto, String datum, String dan) {
+
+    }
+
+    @Override
+    public void pretrazi135(String mesto, String pocetakVreme, String dan) {
+
+    }
+
+    @Override
+    public void pretrazi1234(String mesto, String datum, String pocetakVreme, String krajVreme) {
+
+    }
+
+    @Override
+    public void pretrazi12345(String mesto, String datum, String pocetakVreme, String krajVreme, String dan) {
+
+    }
+
+    @Override
+    public void pretrazi2(String datum) {
+
+    }
+
+    @Override
+    public void pretrazi23(String datum, String pocetakVreme) {
+
+    }
+
+    @Override
+    public void pretrazi25(String datum, String dan) {
+
+    }
+
+    @Override
+    public void pretrazi234(String datum, String pocetakVreme, String krajVreme) {
+
+    }
+
+    @Override
+    public void pretrazi235(String datum, String pocetakVreme, String dan) {
+
+    }
+
+    @Override
+    public void pretrazi2345(String datum, String pocetakVreme, String krajVreme, String dan) {
+
+    }
+
+    @Override
+    public void pretrazi3(String pocetakVreme) {
+
+    }
+
+    @Override
+    public void pretrazi34(String pocetakVreme, String krajVreme) {
+
+    }
+
+    @Override
+    public void pretrazi345(String pocetakVreme, String krajVreme, String dan) {
+
+    }
+
+    @Override
+    public void pretrazi4(String krajVreme) {
+
+    }
+
+    @Override
+    public void pretrazi5(String dan) {
+
     }
 
     public String getPocetakDatum() {

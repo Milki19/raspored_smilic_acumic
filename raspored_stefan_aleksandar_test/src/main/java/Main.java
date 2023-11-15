@@ -7,7 +7,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Unesite putanju do fajla: ");
         String linija = scanner.nextLine();
-        RasporedAPisiCitaj rasporedPisiCitaj = new RasporedAPisiCitaj();
+        RasporedAImpl rasporedPisiCitaj = new RasporedAImpl();
 
         if(linija.contains(".csv")){
             String prviDeo = linija;
@@ -45,6 +45,7 @@ public class Main {
             try{
                 rasporedPisiCitaj.ucitajPodatke(linija);
                 System.out.println(rasporedPisiCitaj.raspored.getSviTermini());
+                rasporedPisiCitaj.interakcija();
                 System.out.println("Unesite naziv izlaznog fajla:");
                 linija = scanner.nextLine();
                 rasporedPisiCitaj.exportujPodatke(linija);
@@ -52,6 +53,8 @@ public class Main {
                 e.printStackTrace();
                 System.out.println("Greska pri citanju fajlova.");
             }
+
+
         }
 
     }
