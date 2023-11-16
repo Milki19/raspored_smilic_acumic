@@ -7,7 +7,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Unesite putanju do fajla: ");
         String linija = scanner.nextLine();
-        RasporedAImpl rasporedPisiCitaj = new RasporedAImpl();
+        RasporedAImpl rasporedAImpl = new RasporedAImpl();
+        Utils utils = new Utils();
 
 
         if(linija.contains(".csv")){
@@ -18,48 +19,58 @@ public class Main {
             String path = prviDeo + "," + drugiDeo;
 
             try{
-                rasporedPisiCitaj.ucitajPodatke(path);
-                System.out.println(rasporedPisiCitaj.raspored.getSviTermini());
+                rasporedAImpl.ucitajPodatke(path);
+                System.out.println(rasporedAImpl.raspored.getSviTermini());
             }catch (IOException e){
                 System.out.println("Greska pri citanju fajlova");
                 return;
             }
             System.out.println("Unesite prvi i poslednji dan rasporeda u zadatom formatu, razdvajajuci ih razmakom: dd/mm/yyyy");
             linija = scanner.nextLine();
-            rasporedPisiCitaj.ucitajPocetakKraj(linija);
+            rasporedAImpl.ucitajPocetakKraj(linija);
             System.out.println("Unesite pocetak i kraj radnog vremena u zadatom formatu, razdvajajuci ih razmakom: hh:mm");
             linija = scanner.nextLine();
-            rasporedPisiCitaj.ucitajRadnoVreme(linija);
+            rasporedAImpl.ucitajRadnoVreme(linija);
             System.out.println("Unesite neradne dane u zadatom formatu, razdvajajuci ih razmakom: dd/mm/yyyy");
             linija = scanner.nextLine();
-            rasporedPisiCitaj.ucitajNeradneDane(linija);
-            rasporedPisiCitaj.ispisiNeradneDane();
+            rasporedAImpl.ucitajNeradneDane(linija);
+            rasporedAImpl.ispisiNeradneDane();
 
 
 
             System.out.println("Unesite naziv izlaznog fajla:");
             linija = scanner.nextLine();
             try {
-                rasporedPisiCitaj.exportujPodatke(linija);
+                rasporedAImpl.exportujPodatke(linija);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             try{
-                rasporedPisiCitaj.ucitajPodatke(linija);
-                System.out.println(rasporedPisiCitaj.raspored.getSviTermini());
-                rasporedPisiCitaj.generisiSlobodneTermine("09:00", "21:00", "02/10/2023", "20/01/2024");
-                rasporedPisiCitaj.interakcija();
+                rasporedAImpl.ucitajPodatke(linija); // Ucitavamo podatke
+                rasporedAImpl.raspored.getSviTermini().sort(Termin.getComparator()); //Sortiranje
+
+                rasporedAImpl.generisiSlobodneTermine(rasporedAImpl.raspored.getPocetakRadnogVremena(),
+                        rasporedAImpl.raspored.getKrajRadnogVremena(), rasporedAImpl.raspored.pocetakRasporeda,
+                        rasporedAImpl.raspored.getKrajRasporeda()); // Generisanje slobodnih termina
+                System.err.println(rasporedAImpl.getSlobodniTermini().size());
+
+                for (Termin t : rasporedAImpl.getSlobodniTermini()) {
+                    System.out.println(t);
+                }
+
+                
+                utils.interakcijaSaKorisnikom(rasporedAImpl); // Ulazimo u meni za interakciju
+
                 System.out.println("Unesite naziv izlaznog fajla:");
                 linija = scanner.nextLine();
-                rasporedPisiCitaj.exportujPodatke(linija);
+                rasporedAImpl.exportujPodatke(linija);
             }catch (IOException e){
                 e.printStackTrace();
-                System.out.println("Greska pri citanju fajlova.");
             }
-
 
         }
 
     }
+
 }

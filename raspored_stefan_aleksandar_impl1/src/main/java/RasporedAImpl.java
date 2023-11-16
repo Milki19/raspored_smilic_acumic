@@ -20,14 +20,42 @@ public class RasporedAImpl extends RasporedA{
     private String krajDatum;
 
     private List<String> dani;
+    private List<String> datumi;
     private List<String> mesta;
     private List<Termin> slobodniTermini;
+    private List<Termin> pretrazeno;
+
+    public List<String> getDani() {
+        return dani;
+    }
+
+    public void setDani(List<String> dani) {
+        this.dani = dani;
+    }
+
+    public List<String> getMesta() {
+        return mesta;
+    }
+
+    public void setMesta(List<String> mesta) {
+        this.mesta = mesta;
+    }
+
+    public List<Termin> getSlobodniTermini() {
+        return slobodniTermini;
+    }
+
+    public void setSlobodniTermini(List<Termin> slobodniTermini) {
+        this.slobodniTermini = slobodniTermini;
+    }
 
     public RasporedAImpl(){
         this.raspored = new Raspored();
         this.dani = new ArrayList<>();
         this.mesta = new ArrayList<>();
         this.slobodniTermini = new ArrayList<>();
+        this.pretrazeno = new ArrayList<>();
+        this.datumi = new ArrayList<>();
         //generisiSlobodneTermine("09:00", "21:00");
     }
 
@@ -35,49 +63,115 @@ public class RasporedAImpl extends RasporedA{
         LocalTime pocetak = LocalTime.parse(pocetakRadnogVremena);
         LocalTime kraj = LocalTime.parse(krajRadnogVremena);
         Duration trajanjeIntervala = Duration.ofHours(1); // Podešavanje trajanja intervala (u ovom slučaju 1 sat)
-        dodajDaneiMesto();
+        dodajDaneiMestoDatum();
 
         for (String d : dani) {
-            for (String m : mesta) {
-                for (Termin t : raspored.getSviTermini()) {
-                    if (d.equals(t.getDan()) && m.equals(t.getMesto())) {
+            for (String dat : datumi) {
+                for (String m : mesta) {
+                    for (Termin t : raspored.getSviTermini()) {
                         LocalTime pocetniSledeci = pocetak;
                         LocalTime tPV = LocalTime.parse(t.getPocetakVreme());
                         LocalTime tKV = LocalTime.parse(t.getKrajVreme());
-                        if (pocetniSledeci.isBefore(tPV)) {
-                            //String mesto, String dan, String datum, String pocetakVreme, String krajVreme
-                            Termin slobodanTermin = new Termin(m, d, pocetakDatum, pocetakRadnogVremena, krajRadnogVremena);
-                            System.out.println(slobodanTermin);
-                            slobodniTermini.add(slobodanTermin);
-                            pocetniSledeci = tKV;
-                            continue;
+                        if (d.equals(t.getDan()) && m.equals(t.getMesto()) && dat.equals(t.getDatum())) {
+                            if (pocetniSledeci.isBefore(tPV) && !(kraj.equals(tKV))) {
+                                //String mesto, String dan, String datum, String pocetakVreme, String krajVreme
+                                Termin slobodanTermin = new Termin(m, d, t.getDatum(), pocetniSledeci.toString(), tPV.toString());
+                                if (!slobodniTermini.contains(slobodanTermin)) {
+                                    slobodniTermini.add(slobodanTermin);
+
+                                }
+                                pocetniSledeci = tKV;
+                            }
+                            if (!(pocetniSledeci.isBefore(tKV) && pocetniSledeci.isAfter(tPV))) {
+                                Termin slobodanTermin = new Termin(m, d, t.getDatum(), pocetniSledeci.toString(), krajRadnogVremena);
+                                if (!slobodniTermini.contains(slobodanTermin)) {
+                                    slobodniTermini.add(slobodanTermin);
+                                }
+                            }
                         }
-                        if (!(pocetniSledeci.isBefore(tKV) && pocetniSledeci.isAfter(tPV))) {
-                            Termin slobodanTermin = new Termin(m, d, pocetakDatum, pocetakRadnogVremena, krajRadnogVremena);
-                            slobodniTermini.add(slobodanTermin);
-                            System.out.println(slobodanTermin);
-                            pocetniSledeci = tKV;
-                            continue;
-                        }
+                        pocetniSledeci = tKV;
 
                     }
-
-
-
                 }
             }
-
         }
 
+        slobodniTermini.sort(Termin.getComparator());
     }
 
-    private void dodajDaneiMesto() {
+//    public void generisiSlobodneTermine(String pocetakRadnogVremena, String krajRadnogVremena, String pocetakDatum, String krajDatum) {
+//        LocalTime pocetak = LocalTime.parse(pocetakRadnogVremena);
+//        LocalTime kraj = LocalTime.parse(krajRadnogVremena);
+//        Duration trajanjeIntervala = Duration.ofHours(1);
+//        dodajDaneiMesto();
+//
+//        for (String d : dani) {
+//            for (String m : mesta) {
+//                boolean slobodan = true;
+//                for (Termin t : raspored.getSviTermini()) {
+//                    if (d.equals(t.getDan()) && m.equals(t.getMesto())) {
+//                        LocalTime tPV = LocalTime.parse(t.getPocetakVreme());
+//                        LocalTime tKV = LocalTime.parse(t.getKrajVreme());
+//
+//                        Termin slobodanTermin;
+//                        if (pocetak.isBefore(tPV)) {
+//                            slobodanTermin = new Termin(m, d, t.getDatum(), pocetak.toString(), tPV.toString());
+//                            if (!imaPodudaranje(slobodanTermin)) {
+//                                if (slobodniTermini.contains(slobodanTermin)) {
+//                                    slobodniTermini.add(slobodanTermin);
+//                                }
+//                            }
+//                            pocetak = tKV;
+//                        }
+//                        if (!pocetak.isBefore(tKV) || tPV.equals(tKV)) {
+//                            slobodanTermin = new Termin(m, d, t.getDatum(), pocetak.toString(), krajRadnogVremena);
+//                            if (!imaPodudaranje(slobodanTermin)) {
+//                                if (slobodniTermini.contains(slobodanTermin)) {
+//                                    slobodniTermini.add(slobodanTermin);
+//                                }
+//                            }
+//                            pocetak = tKV;
+//                        }
+//                        if (imaPodudaranje(t)) {
+//                            slobodan = false;
+//                        }
+//                    }
+//                }
+//                if (slobodan) {
+//                    Termin slobodanTermin = new Termin(m, d, pocetakDatum, pocetakRadnogVremena, krajRadnogVremena);
+//                    if (!imaPodudaranje(slobodanTermin)) {
+//                        if (slobodniTermini.contains(slobodanTermin)) {
+//                            slobodniTermini.add(slobodanTermin);
+//                        }
+//
+//                    }
+//                }
+//            }
+//        }
+//
+//        slobodniTermini.sort(Termin.getComparator());
+//    }
+
+    public boolean imaPodudaranje(Termin noviTermin) {
+        for (Termin t : slobodniTermini) {
+            if (t.podudara(noviTermin, t)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    private void dodajDaneiMestoDatum() {
         for (Termin t : raspored.getSviTermini()) {
             if (!dani.contains(t.getDan())) {
                 dani.add(t.getDan());
             }
             if (!mesta.contains(t.getMesto())){
                 mesta.add(t.getMesto());
+            }
+            if (!datumi.contains(t.getDatum())) {
+                datumi.add(t.getDatum());
             }
         }
     }
@@ -108,36 +202,7 @@ public class RasporedAImpl extends RasporedA{
         }
         return false;
     }
-
-    @Override
-    public void interakcija(){
-        System.out.println("\nIzabite sta sledece zelite da uradite, tako sto napisete broj koji se nalazi ispred:");
-        System.out.println("1. Dodati termin");
-        System.out.println("2. Izbrisati termin");
-        System.out.println("3. Izmeniti termin");
-        System.out.println("4. Pretraziti termine");
-        System.out.println("5. Pogledati slobodne termine");
-        System.out.println("6. Izadji");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-
-        if(linija.equals("1")){
-            dodajTermin();
-        }else if(linija.equals("2")){
-
-        }else if(linija.equals("3")){
-
-        }else if(linija.equals("4")){
-            pretrazi();
-        }else if(linija.equals("5")){
-            proveri();
-        }else if(linija.equals("6")){
-
-        }else{
-            System.out.println("Niste izabrali validnu opciju:\n");
-            interakcija();
-        }
-    }
+    
 
     @Override
     public void proveri() {
@@ -221,657 +286,246 @@ public class RasporedAImpl extends RasporedA{
         df.dodajNoviTermin(getRaspored(), split[0], split[1], split[2], "", split[3], split[4], split[5]);
     }
 
-
-
     @Override
-    public void pretrazi(){
-        System.out.println("\nIzaberite opcije kako zelite da pretrazite razvodejene razmakom:");
-        System.out.println("1. Mesto");
-        System.out.println("2. Datum");
-        System.out.println("3. Pocetno vreme");
-        System.out.println("4. Krajnje vreme");
-        System.out.println("5. Dan\n");
-
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-
-        // 1 3 5
-
-        String[] niz = linija.split(" ");
-
-        int flag1 = 0;
-        int flag2 = 0;
-        int flag3 = 0;
-        int flag4 = 0;
-        int flag5 = 0;
-
-        for(int i = 0; i < niz.length; i++){
-            if(niz[i].equals("1")){
-                flag1 = 1;
-            }
-            if(niz[i].equals("2")){
-                flag2 = 1;
-            }
-            if(niz[i].equals("3")){
-                flag3 = 1;
-            }
-            if(niz[i].equals("4")){
-                flag4 = 1;
-            }
-            if(niz[i].equals("5")){
-                flag5 = 1;
+    public List<Termin> pretraziDodatak(String dodatak) {
+        for(Termin t : getRaspored().sviTermini){
+            for(String v : t.getDodaci().values()){
+                if(v.equals(dodatak)){
+                    pretrazeno.add(t);
+                }
             }
         }
-
-        if(flag1 == 1 && flag2 == 0 && flag3 == 0 && flag4 == 0 && flag5 == 0){
-            System.out.println("Unesite mesto koje zelite da pretrazite: ");
-            linija = sc.nextLine();
-            pretrazi1(linija);
-        } else if(flag1 == 1 && flag2 == 1 && flag3 == 0 && flag4 == 0 && flag5 == 0){
-            System.out.println("Unesite mesto i datum koje zelite da pretrazite u formatu: mesto dd/mm/yyyy");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi12(split[0], split[1]);
-        } else if(flag1 == 1 && flag2 == 1 && flag3 == 1 && flag4 == 0 && flag5 == 0){
-            System.out.println("Unesite mesto, datum i pocetno vreme koje zelite da pretrazite u formatu: mesto dd/mm/yyyy hh:mm");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi123(split[0], split[1], split[2]);
-        } else if(flag1 == 1 && flag2 == 1 && flag3 == 0 && flag4 == 0 && flag5 == 1){
-            System.out.println("Unesite mesto, datum i dan koji zelite da pretrazite u formatu: mesto dd/mm/yyyy DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi125(split[0], split[1], split[2]);
-        } else if(flag1 == 1 && flag2 == 0 && flag3 == 1 && flag4 == 0 && flag5 == 1){
-            System.out.println("Unesite mesto, pocetno vreme i dan koji zelite da pretrazite u formatu: mesto hh:mm DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi135(split[0], split[1], split[2]);
-        } else if(flag1 == 1 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 0){
-            System.out.println("Unesite mesto, datum, pocetno vreme i krajnje vreme koje zelite da pretrazite u formatu: mesto dd/mm/yyyy hh:mm hh:mm");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi1234(split[0], split[1], split[2], split[3]);
-        } else if(flag1 == 1 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 1){
-            System.out.println("Unesite mesto, datum, pocetno vreme, krajnje vreme i dan koji zelite da pretrazite u formatu: mesto dd/mm/yyyy hh:mm hh:mm DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi12345(split[0], split[1], split[2], split[3], split[4]);
-        } else if(flag1 == 1 && flag2 == 0 && flag3 == 0 && flag4 == 0 && flag5 == 1){
-            System.out.println("Unesite mesto i dan koji zelite da pretrazite u formatu: mesto DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi15(split[0], split[1]);
-        } else if(flag1 == 0 && flag2 == 1 && flag3 == 0 && flag4 == 0 && flag5 == 0){
-            System.out.println("Unesite datum koji zelite da pretrazite u formatu: dd/mm/yyyy");
-            linija = sc.nextLine();
-            pretrazi2(linija);
-        } else if(flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 0 && flag5 == 0){
-            System.out.println("Unesite datum i pocetno vreme koji zelite da pretrazite u formatu: dd/mm/yyyy hh:mm");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi23(split[0], split[1]);
-        } else if(flag1 == 0 && flag2 == 1 && flag3 == 0 && flag4 == 0 && flag5 == 1){
-            System.out.println("Unesite datum i dan koji zelite da pretrazite u formatu: dd/mm/yyyy DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi25(split[0], split[1]);
-        } else if(flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 0){
-            System.out.println("Unesite datum, pocetno vreme i krajnje vreme koje zelite da pretrazite u formatu: dd/mm/yyyy hh:mm hh:mm");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi234(split[0], split[1], split[2]);
-        } else if(flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 0 && flag5 == 1){
-            System.out.println("Unesite datum, pocetno vreme i dan koji zelite da pretrazite u formatu: dd/mm/yyyy hh:mm DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi235(split[0], split[1], split[2]);
-        } else if(flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 1){
-            System.out.println("Unesite datum, pocetno vreme, krajnje vreme i dan koji zelite da pretrazite u formatu: dd/mm/yyyy hh:mm hh:mm DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi2345(split[0], split[1], split[2], split[3]);
-        } else if(flag1 == 0 && flag2 == 0 && flag3 == 1 && flag4 == 0 && flag5 == 0){
-            System.out.println("Unesite pocetno vreme koje zelite da pretrazite u formatu: hh:mm");
-            linija = sc.nextLine();
-            pretrazi3(linija);
-        } else if(flag1 == 0 && flag2 == 0 && flag3 == 1 && flag4 == 1 && flag5 == 0){
-            System.out.println("Unesite pocetno vreme i krajnje vreme koje zelite da pretrazite u formatu: hh:mm hh:mm");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi34(split[0], split[1]);
-        } else if(flag1 == 0 && flag2 == 0 && flag3 == 1 && flag4 == 1 && flag5 == 1){
-            System.out.println("Unesite pocetno vreme, krajnje vreme i dan koje zelite da pretrazite u formatu: hh:mm hh:mm DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi345(split[0], split[1], split[2]);
-        } else if(flag1 == 0 && flag2 == 0 && flag3 == 0 && flag4 == 1 && flag5 == 0){
-            System.out.println("Unesite krajnje vreme koje zelite da pretrazite u formatu: hh:mm");
-            linija = sc.nextLine();
-            pretrazi4(linija);
-        } else if(flag1 == 0 && flag2 == 0 && flag3 == 0 && flag4 == 0 && flag5 == 1){
-            System.out.println("Unesite krajnje vreme koje zelite da pretrazite u formatu: hh:mm");
-            linija = sc.nextLine();
-            pretrazi5(linija);
-        } else{
-            System.out.println("Izabrana kombinacija za pretrazivanje nije trenutno dostupna");
-            pretrazi();
-        }
-
-
+                 
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi1(String mesto) {
-        boolean ima = false;
+    public List<Termin> pretraziMesto(String mesto) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getMesto().equals(mesto)){
-                System.out.println(t);
-                ima = true;
+                pretrazeno.add(t);
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite mesto koje zelite da pretrazite: ");
-            linija = sc.nextLine();
-            pretrazi1(linija);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi12(String mesto, String datum) {
-        boolean ima = false;
+    public List<Termin> pretraziMestoDatum(String mesto, String datum) {
+        
         for (Termin t : getRaspored().sviTermini){
             if(t.getMesto().equals(mesto) && t.getDatum().equals(datum)){
-                System.out.println(t);
+                pretrazeno.add(t);
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite mesto i datum koje zelite da pretrazite u formatu: mesto dd/mm/yyyy");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi12(split[0], split[1]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi15(String mesto, String dan) {
-        boolean ima = false;
+    public List<Termin> pretraziMestoDan(String mesto, String dan) {
+        
         for (Termin t : getRaspored().sviTermini){
             if(t.getMesto().equals(mesto) && t.getDan().equals(dan)){
-                System.out.println(t);
+                pretrazeno.add(t);
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite mesto i datum koje zelite da pretrazite u formatu: mesto DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi15(split[0], split[1]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi123(String mesto, String datum, String pocetakVreme) {
-        boolean ima = false;
+    public List<Termin> pretraziMestoDatumPocetak(String mesto, String datum, String pocetakVreme) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getMesto().equals(mesto) && t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme)){
-                System.out.println(t);
+                pretrazeno.add(t);
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite mesto, datum i pocetno vreme koje zelite da pretrazite u formatu: mesto dd/mm/yyyy hh:mm");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi123(split[0], split[1], split[2]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+        
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi125(String mesto, String datum, String dan) {
-        boolean ima = false;
+    public List<Termin> pretraziMestoDatumDan(String mesto, String datum, String dan) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getMesto().equals(mesto) && t.getDatum().equals(datum) && t.getDan().equals(dan)){
-                System.out.println(t);
+                pretrazeno.add(t);
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite mesto, datum i dan koje zelite da pretrazite u formatu: mesto dd/mm/yyyy DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi125(split[0], split[1], split[2]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi135(String mesto, String pocetakVreme, String dan) {
-        boolean ima = false;
+    public List<Termin> pretraziMestoPocetakDan(String mesto, String pocetakVreme, String dan) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getMesto().equals(mesto) && t.getPocetakVreme().equals(pocetakVreme) && t.getDan().equals(dan)){
-                System.out.println(t);
+                pretrazeno.add(t);
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite mesto, pocetno vreme i dan koji zelite da pretrazite u formatu: mesto hh:mm DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi135(split[0], split[1], split[2]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+           
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi1234(String mesto, String datum, String pocetakVreme, String krajVreme) {
-        boolean ima = false;
+    public List<Termin> pretraziMestoDatumPocetakKraj(String mesto, String datum, String pocetakVreme, String krajVreme) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getMesto().equals(mesto) && t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme)){
-                System.out.println(t);
+                pretrazeno.add(t);
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite mesto, datum, pocetno vreme i krajnje vreme koje zelite da pretrazite u formatu: mesto dd/mm/yyyy hh:mm hh:mm");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi1234(split[0], split[1], split[2], split[3]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+           
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi12345(String mesto, String datum, String pocetakVreme, String krajVreme, String dan) {
-        boolean ima = false;
+    public List<Termin> pretraziMestoDatumPocetakKrajDan(String mesto, String datum, String pocetakVreme, String krajVreme, String dan) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getMesto().equals(mesto) && t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme) && t.getDan().equals(dan)){
-                System.out.println(t);
+                pretrazeno.add(t);
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite mesto, datum, pocetno vreme, krajnje vreme i dan koji zelite da pretrazite u formatu: mesto dd/mm/yyyy hh:mm hh:mm DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi12345(split[0], split[1], split[2], split[3], split[4]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+              
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi2(String datum) {
-        boolean ima = false;
+    public List<Termin> pretraziDatum(String datum) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getDatum().equals(datum)){
-                System.out.println(t);
-                ima = true;
+                pretrazeno.add(t);
+                
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite datum koji zelite da pretrazite u formatu: dd/mm/yyyy");
-            linija = sc.nextLine();
-            pretrazi2(linija);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+        
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi23(String datum, String pocetakVreme) {
-        boolean ima = false;
+    public List<Termin> pretraziDatumPocetak(String datum, String pocetakVreme) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme)){
-                System.out.println(t);
-                ima = true;
+                pretrazeno.add(t);
+                
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite datum i pocetno vreme koji zelite da pretrazite u formatu: dd/mm/yyyy hh:mm");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi23(split[0], split[1]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+              
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi25(String datum, String dan) {
-        boolean ima = false;
+    public List<Termin> pretraziDatumDan(String datum, String dan) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getDatum().equals(datum) && t.getDan().equals(dan)){
-                System.out.println(t);
-                ima = true;
+                pretrazeno.add(t);
+                
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite datum i dan koji zelite da pretrazite u formatu: dd/mm/yyyy DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi25(split[0], split[1]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+             
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi234(String datum, String pocetakVreme, String krajVreme) {
-        boolean ima = false;
+    public List<Termin> pretraziDatumPocetakKraj(String datum, String pocetakVreme, String krajVreme) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme)){
-                System.out.println(t);
-                ima = true;
+                pretrazeno.add(t);
+                
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite datum, pocetno vreme i krajnje vreme koje zelite da pretrazite u formatu: dd/mm/yyyy hh:mm hh:mm");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi234(split[0], split[1], split[2]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+        
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi235(String datum, String pocetakVreme, String dan) {
-        boolean ima = false;
+    public List<Termin> pretraziDatumPocetakDan(String datum, String pocetakVreme, String dan) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getDan().equals(dan)){
-                System.out.println(t);
-                ima = true;
+                pretrazeno.add(t);
+                
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite datum, pocetno vreme i dan koje zelite da pretrazite u formatu: dd/mm/yyyy hh:mm DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi235(split[0], split[1], split[2]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+             
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi2345(String datum, String pocetakVreme, String krajVreme, String dan) {
-        boolean ima = false;
+    public List<Termin> pretraziDatumPocetakKrajDan(String datum, String pocetakVreme, String krajVreme, String dan) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme) && t.getDan().equals(dan)){
-                System.out.println(t);
-                ima = true;
+                pretrazeno.add(t);
+                
             }
-        }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite datum, pocetno vreme, krajnje vreme i dan koji zelite da pretrazite u formatu: dd/mm/yyyy hh:mm hh:mm DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi2345(split[0], split[1], split[2], split[3]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+        }   
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi3(String pocetakVreme) {
-        boolean ima = false;
+    public List<Termin> pretraziPocetak(String pocetakVreme) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getPocetakVreme().equals(pocetakVreme)){
-                System.out.println(t);
-                ima = true;
+                pretrazeno.add(t);
+                
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite pocetno vreme koje zelite da pretrazite u formatu: hh:mm");
-            linija = sc.nextLine();
-            pretrazi3(linija);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi34(String pocetakVreme, String krajVreme) {
-        boolean ima = false;
+    public List<Termin> pretraziPocetakKraj(String pocetakVreme, String krajVreme) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme)){
-                System.out.println(t);
-                ima = true;
+                pretrazeno.add(t);
+                
             }
-        }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite pocetno vreme i krajnje vreme koje zelite da pretrazite u formatu: hh:mm hh:mm");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi34(split[0], split[1]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+        }    
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi345(String pocetakVreme, String krajVreme, String dan) {
-        boolean ima = false;
+    public List<Termin> pretraziPocetakKrajDan(String pocetakVreme, String krajVreme, String dan) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme) && t.getDan().equals(dan)){
-                System.out.println(t);
-                ima = true;
+                pretrazeno.add(t);
+                
             }
-        }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite pocetno vreme, krajnje vreme i dan koji zelite da pretrazite u formatu: hh:mm hh:mm DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            pretrazi345(split[0], split[1], split[2]);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+        }  
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi4(String krajVreme) {
-        boolean ima = false;
+    public List<Termin> pretraziKraj(String krajVreme) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getKrajVreme().equals(krajVreme)){
-                System.out.println(t);
-                ima = true;
+                pretrazeno.add(t);
+                
             }
-        }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite krajnje vreme koje zelite da pretrazite u formatu: hh:mm");
-            linija = sc.nextLine();
-            pretrazi4(linija);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+        } 
+        return pretrazeno;
     }
 
     @Override
-    public void pretrazi5(String dan) {
-        boolean ima = false;
+    public List<Termin> pretraziDan(String dan) {
+        
         for(Termin t : getRaspored().sviTermini){
             if(t.getDan().equals(dan)){
-                System.out.println(t);
-                ima = true;
+                pretrazeno.add(t);
+                
             }
         }
-        if(!ima) System.out.println("Trazeni termin ne postoji u zadatom rasporedu.");
-
-
-        System.out.println("\nDa li zelite da: ");
-        System.out.println("1. Nastavite ovu pretragu");
-        System.out.println("2. Pokrenete drugu pretragu");
-        System.out.println("3. Vratite se na pocetak");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        if(linija.equals("1")){
-            System.out.println("Unesite dan koje zelite da pretrazite u formatu: DAN");
-            linija = sc.nextLine();
-            pretrazi5(linija);
-        }else if(linija.equals("2")){
-            pretrazi();
-        }else interakcija();
+        return pretrazeno;
     }
     private void ispisiPDF(String path) throws IOException{
 
@@ -963,7 +617,11 @@ public class RasporedAImpl extends RasporedA{
     public void ucitajJackson(String path) throws IOException{
         ObjectMapper mapper = new ObjectMapper();
         raspored = mapper.readValue(new File(path), Raspored.class);
-        dodajKrajDatum();
+//        Collections.sort(raspored.getSviTermini(), Comparator
+//                .comparing(Termin::getDan)
+//                .thenComparing(Termin::getDatum)
+//                .thenComparing(Termin::getPocetakVreme));
+//        dodajKrajDatum();
     }
 
     public void dodajKrajDatum(){

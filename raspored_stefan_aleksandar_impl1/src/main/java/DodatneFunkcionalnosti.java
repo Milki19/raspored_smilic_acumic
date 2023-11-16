@@ -37,7 +37,7 @@ public class DodatneFunkcionalnosti {
 //            LocalDate oKDatum = LocalDate.parse(postojeciTermin.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
             if ((tDatum.isBefore(oKDatum) || tDatum.equals(oKDatum)) && (kDatum.isAfter(oPDatum) || kDatum.equals(oPDatum))) { // izbacio !
-                System.out.println(tDatum.isBefore(oKDatum) || tDatum.equals(oKDatum));
+//                System.out.println(tDatum.isBefore(oKDatum) || tDatum.equals(oKDatum));
 //                System.out.println("tDatum = " + tDatum.toString() + oKDatum.toString() + "tDatum.isBefore(oKDatum)");
                 System.out.println("Datum if");
                 if (postojeciTermin.getMesto().equalsIgnoreCase(mesto)) {
@@ -67,7 +67,7 @@ public class DodatneFunkcionalnosti {
             System.out.println(noviTermin);
             raspored.getSviTermini().add(noviTermin);
         }
-            System.out.println("Novi termin uspešno dodat u raspored.");
+        System.out.println("Novi termin uspešno dodat u raspored.");
     }
 
 

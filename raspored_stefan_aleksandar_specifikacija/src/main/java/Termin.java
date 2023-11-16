@@ -2,11 +2,12 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class Termin {
+public class Termin{
 
     private String mesto;
     private String datum;
@@ -14,6 +15,7 @@ public class Termin {
     private String pocetakVreme;
     private String krajVreme;
     private Map<String, String> dodaci;
+    private String tipDodataka;
 
     private String dan;
     // u dodatke moze da spada i predmet koji se predaje
@@ -127,20 +129,32 @@ public class Termin {
         LocalDate tDatum = LocalDate.parse(termin.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         LocalDate oDatum = LocalDate.parse(o.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-        System.out.println("Termin.datum = " + termin.getDatum() + "\n this.datum = " + o.getDatum());
+//        System.out.println("Termin.datum = " + termin.getDatum() + "\n this.datum = " + o.getDatum());
 
         //Ovo moze ako je drugacije mesto
-        if (tDatum.isEqual(oDatum) && ((tPV.isBefore(oKV) && tKV.isAfter(oPV)) || (oPV.isBefore(tKV) && oKV.isAfter(tPV)))) {
+//        if (tDatum.isEqual(oDatum) && ((tPV.isBefore(oKV) && tKV.isAfter(oPV)) || (oPV.isBefore(tKV) && oKV.isAfter(tPV)))) {
+//            return true;
+//        }
+//
+//        if (termin.getMesto().equalsIgnoreCase(o.getMesto())) {
+//            return true;
+//        }
+//
+//        if (termin.getDatum().equals(o.getDatum())) {
+//            return true;
+//        }
+
+        if (termin.getMesto().equalsIgnoreCase(o.getMesto())
+        && termin.getDatum().equals(o.getDatum())
+        && termin.getDan().equalsIgnoreCase(o.getDan())
+        && ((termin.getPocetakVreme().equalsIgnoreCase(o.getPocetakVreme())
+                && termin.getKrajVreme().equalsIgnoreCase(o.getKrajVreme()))
+        || (oPV.isAfter(tPV) && oPV.isBefore(tKV))
+        || (oKV.isBefore(tKV)) && oKV.isAfter(tPV))) {
             return true;
         }
 
-        if (termin.getMesto().equalsIgnoreCase(o.getMesto())) {
-            return true;
-        }
 
-        if (termin.getDatum().equals(o.getDatum())) {
-            return true;
-        }
         return false;
     }
 
@@ -159,4 +173,46 @@ public class Termin {
     public String toString() {
         return dan + ", " + datum + " " + pocetakVreme + "-" + krajVreme + "h, " + mesto;
     }
+
+
+    public static Comparator<Termin> getComparator() {
+        return Comparator
+                .comparing((Termin termin) -> {
+                    // Prvo uporedite dane (PON ide prvi)
+                    switch (termin.getDan()) {
+                        case "PON":
+                            return 1;
+                        case "UTO":
+                            return 2;
+                        case "SRE":
+                            return 3;
+                        case "CET":
+                            return 4;
+                        case "PET":
+                            return 5;
+                        default:
+                            return 6;
+                    }
+                })
+                .thenComparing(termin -> {
+                    // Zatim pretvorite string datuma u LocalDate
+                    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    LocalDate datum = LocalDate.parse(termin.getDatum(), dateFormatter);
+                    return datum;
+                })
+                .thenComparing(termin -> {
+                    // Na kraju, pretvorite string vremena u LocalTime
+                    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+                    LocalTime vreme = LocalTime.parse(termin.getPocetakVreme(), timeFormatter);
+                    return vreme;
+                })
+                .thenComparing(termin -> {
+                    // Na kraju, dodajte sortiranje za krajVreme
+                    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+                    LocalTime krajVreme = LocalTime.parse(termin.getKrajVreme(), timeFormatter);
+                    return krajVreme;
+                });
+    }
+
+
 }
