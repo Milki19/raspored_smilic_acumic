@@ -9,6 +9,7 @@ public class Main {
         String linija = scanner.nextLine();
         RasporedAImpl rasporedPisiCitaj = new RasporedAImpl();
 
+
         if(linija.contains(".csv")){
             String prviDeo = linija;
             System.out.println("Unesite putanju do konfiguracionog fajla: ");
@@ -34,6 +35,8 @@ public class Main {
             rasporedPisiCitaj.ucitajNeradneDane(linija);
             rasporedPisiCitaj.ispisiNeradneDane();
 
+
+
             System.out.println("Unesite naziv izlaznog fajla:");
             linija = scanner.nextLine();
             try {
@@ -45,6 +48,7 @@ public class Main {
             try{
                 rasporedPisiCitaj.ucitajPodatke(linija);
                 System.out.println(rasporedPisiCitaj.raspored.getSviTermini());
+                rasporedPisiCitaj.generisiSlobodneTermine("09:00", "21:00", "02/10/2023", "20/01/2024");
                 rasporedPisiCitaj.interakcija();
                 System.out.println("Unesite naziv izlaznog fajla:");
                 linija = scanner.nextLine();

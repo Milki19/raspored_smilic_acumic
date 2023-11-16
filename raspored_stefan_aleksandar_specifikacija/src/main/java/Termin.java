@@ -14,12 +14,11 @@ public class Termin {
     private String pocetakVreme;
     private String krajVreme;
     private Map<String, String> dodaci;
-    private List<Termin> slobodniTermini;
+
     private String dan;
     // u dodatke moze da spada i predmet koji se predaje
     public Termin(){
         this.dodaci = new HashMap<>();
-        this.slobodniTermini = new ArrayList<>();
     }
 
     public Termin(String mesto, String dan, String datum, String pocetakVreme, String krajVreme){
@@ -33,6 +32,15 @@ public class Termin {
     }
 
     public Termin(String mesto, String dan, String datum, String krajDatum, String pocetakVreme, String krajVreme){
+        this.mesto = mesto;
+        this.datum = datum;
+        this.krajDatum = krajDatum;
+        this.pocetakVreme = pocetakVreme;
+        this.krajVreme = krajVreme;
+        this.dodaci = new HashMap<>();
+        this.dan = dan;
+    }
+    public Termin(String mesto, String dan, String datum, String krajDatum, String pocetakVreme, String krajVreme, Map<String, String> dodaci){
         this.mesto = mesto;
         this.datum = datum;
         this.krajDatum = krajDatum;

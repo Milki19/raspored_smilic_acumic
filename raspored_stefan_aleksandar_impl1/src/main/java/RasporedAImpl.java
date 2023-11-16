@@ -10,6 +10,8 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import java.io.*;
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.*;
 
 public class RasporedAImpl extends RasporedA{
@@ -17,9 +19,69 @@ public class RasporedAImpl extends RasporedA{
     private String pocetakDatum;
     private String krajDatum;
 
+    private List<String> dani;
+    private List<String> mesta;
+    private List<Termin> slobodniTermini;
+
     public RasporedAImpl(){
         this.raspored = new Raspored();
+        this.dani = new ArrayList<>();
+        this.mesta = new ArrayList<>();
+        this.slobodniTermini = new ArrayList<>();
+        //generisiSlobodneTermine("09:00", "21:00");
     }
+
+    public void generisiSlobodneTermine(String pocetakRadnogVremena, String krajRadnogVremena, String pocetakDatum, String krajDatum) {
+        LocalTime pocetak = LocalTime.parse(pocetakRadnogVremena);
+        LocalTime kraj = LocalTime.parse(krajRadnogVremena);
+        Duration trajanjeIntervala = Duration.ofHours(1); // Podešavanje trajanja intervala (u ovom slučaju 1 sat)
+        dodajDaneiMesto();
+
+        for (String d : dani) {
+            for (String m : mesta) {
+                for (Termin t : raspored.getSviTermini()) {
+                    if (d.equals(t.getDan()) && m.equals(t.getMesto())) {
+                        LocalTime pocetniSledeci = pocetak;
+                        LocalTime tPV = LocalTime.parse(t.getPocetakVreme());
+                        LocalTime tKV = LocalTime.parse(t.getKrajVreme());
+                        if (pocetniSledeci.isBefore(tPV)) {
+                            //String mesto, String dan, String datum, String pocetakVreme, String krajVreme
+                            Termin slobodanTermin = new Termin(m, d, pocetakDatum, pocetakRadnogVremena, krajRadnogVremena);
+                            System.out.println(slobodanTermin);
+                            slobodniTermini.add(slobodanTermin);
+                            pocetniSledeci = tKV;
+                            continue;
+                        }
+                        if (!(pocetniSledeci.isBefore(tKV) && pocetniSledeci.isAfter(tPV))) {
+                            Termin slobodanTermin = new Termin(m, d, pocetakDatum, pocetakRadnogVremena, krajRadnogVremena);
+                            slobodniTermini.add(slobodanTermin);
+                            System.out.println(slobodanTermin);
+                            pocetniSledeci = tKV;
+                            continue;
+                        }
+
+                    }
+
+
+
+                }
+            }
+
+        }
+
+    }
+
+    private void dodajDaneiMesto() {
+        for (Termin t : raspored.getSviTermini()) {
+            if (!dani.contains(t.getDan())) {
+                dani.add(t.getDan());
+            }
+            if (!mesta.contains(t.getMesto())){
+                mesta.add(t.getMesto());
+            }
+        }
+    }
+
     @Override
     public boolean ucitajPodatke(String path) throws IOException {
 
@@ -146,9 +208,9 @@ public class RasporedAImpl extends RasporedA{
         DodatneFunkcionalnosti df = new DodatneFunkcionalnosti();
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Unesite obavezne podatke za (mesto, dan, datum, pocetno vreme, krajnje vreme) u sledeceom formatu: mesto DAN dd/mm/yyyy hh:mm hh:mm");
+        System.out.println("Unesite obavezne podatke za (mesto, dan, pocetni datum, pocetno vreme, krajnje vreme) u sledeceom formatu: mesto DAN dd/mm/yyyy hh:mm hh:mm");
         //Raf04,PON,02/10/2022,09:15,11:00
-        //Raf04,PON,22/10/2022,09:15,11:00
+        //Raf04 PON 22/10/2022 09:15 11:00 Poslovne aplikacije Igro Mijatovic DA
         //"Raf04","PON","02/10/2022","09:15","11:00","Poslovne aplikacije","Mijatovic Igor","DA"
         String linija = sc.nextLine();
         String[] split = linija.split(" ", 6);
@@ -156,8 +218,7 @@ public class RasporedAImpl extends RasporedA{
             System.out.println(s);
         }
 
-        //df.napraviDodtne(split[5]);
-        df.dodajNoviTermin(getRaspored(), split[0], split[1], split[2], "", split[3], split[4]);
+        df.dodajNoviTermin(getRaspored(), split[0], split[1], split[2], "", split[3], split[4], split[5]);
     }
 
 
