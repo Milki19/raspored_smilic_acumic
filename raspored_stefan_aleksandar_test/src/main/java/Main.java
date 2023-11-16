@@ -36,7 +36,19 @@ public class Main {
             rasporedAImpl.ucitajNeradneDane(linija);
             rasporedAImpl.ispisiNeradneDane();
 
+            rasporedAImpl.raspored.getSviTermini().sort(Termin.getComparator()); //Sortiranje
 
+            rasporedAImpl.generisiSlobodneTermine(rasporedAImpl.raspored.getPocetakRadnogVremena(),
+                    rasporedAImpl.raspored.getKrajRadnogVremena(), rasporedAImpl.raspored.pocetakRasporeda,
+                    rasporedAImpl.raspored.getKrajRasporeda()); // Generisanje slobodnih termina
+            System.err.println(rasporedAImpl.getSlobodniTermini().size());
+
+            for (Termin t : rasporedAImpl.getSlobodniTermini()) {
+                System.out.println(t);
+            }
+
+
+            utils.interakcijaSaKorisnikom(rasporedAImpl); // Ulazimo u meni za interakciju
 
             System.out.println("Unesite naziv izlaznog fajla:");
             linija = scanner.nextLine();
@@ -59,7 +71,7 @@ public class Main {
                     System.out.println(t);
                 }
 
-                
+
                 utils.interakcijaSaKorisnikom(rasporedAImpl); // Ulazimo u meni za interakciju
 
                 System.out.println("Unesite naziv izlaznog fajla:");

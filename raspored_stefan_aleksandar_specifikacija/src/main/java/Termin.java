@@ -198,6 +198,7 @@ public class Termin{
                     // Zatim pretvorite string datuma u LocalDate
                     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     LocalDate datum = LocalDate.parse(termin.getDatum(), dateFormatter);
+                    System.out.println(termin);
                     return datum;
                 })
                 .thenComparing(termin -> {

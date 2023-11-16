@@ -62,7 +62,6 @@ public class RasporedAImpl extends RasporedA{
     public void generisiSlobodneTermine(String pocetakRadnogVremena, String krajRadnogVremena, String pocetakDatum, String krajDatum) {
         LocalTime pocetak = LocalTime.parse(pocetakRadnogVremena);
         LocalTime kraj = LocalTime.parse(krajRadnogVremena);
-        Duration trajanjeIntervala = Duration.ofHours(1); // Podešavanje trajanja intervala (u ovom slučaju 1 sat)
         dodajDaneiMestoDatum();
 
         for (String d : dani) {
@@ -95,6 +94,30 @@ public class RasporedAImpl extends RasporedA{
                 }
             }
         }
+
+        slobodniTermini.removeIf(s -> s.getPocetakVreme().equals(pocetakRadnogVremena) && s.getKrajVreme().equals(krajRadnogVremena));
+
+        List<Termin> temp = new ArrayList<>();
+
+        for(String dat : datumi){
+            for(String mesto : mesta){
+                for(Termin t : slobodniTermini){
+                    if(t.getDatum().equals(dat)){
+                        if(!t.getMesto().equals(mesto)){
+                            //String mesto, String dan, String datum, String pocetakVreme, String krajVreme
+                            Termin termin = new Termin(mesto, t.getDan(), dat, pocetakRadnogVremena, krajRadnogVremena);
+                            if(!slobodniTermini.contains(termin)) {
+                                if(!temp.contains(termin)) {
+                                    temp.add(termin);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        slobodniTermini.addAll(temp);
 
         slobodniTermini.sort(Termin.getComparator());
     }
