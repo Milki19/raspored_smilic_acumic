@@ -31,8 +31,8 @@ public abstract class RasporedA {
     public abstract List<Termin> pretraziPocetakKrajDan(String pocetakVreme, String krajVreme, String dan);
     public abstract List<Termin> pretraziKraj(String krajVreme);
     public abstract List<Termin> pretraziDan(String dan);
-
-    public abstract void proveri();
-    public abstract void proveri23456(String pocetakDatum, String krajDatum, String pocetakVreme, String krajVrene, String dan);
+    //Slobodni termini
+    public abstract void generisiSlobodneTermine(String pocetakRadnogVremena, String krajRadnogVremena, String pocetakDatum, String krajDatum);
+    public abstract List<Termin> slobodniPocetakDatumKrajDatumPocetakVremeKrajVremeDan (String pocetakDatum, String krajDatum, String pocetakVreme, String krajVrene, String dan);
 
 }

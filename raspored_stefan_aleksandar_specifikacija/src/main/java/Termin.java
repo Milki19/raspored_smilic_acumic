@@ -18,7 +18,7 @@ public class Termin{
     private String tipDodataka;
 
     private String dan;
-    // u dodatke moze da spada i predmet koji se predaje
+
     public Termin(){
         this.dodaci = new HashMap<>();
     }
@@ -129,20 +129,6 @@ public class Termin{
         LocalDate tDatum = LocalDate.parse(termin.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         LocalDate oDatum = LocalDate.parse(o.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-//        System.out.println("Termin.datum = " + termin.getDatum() + "\n this.datum = " + o.getDatum());
-
-        //Ovo moze ako je drugacije mesto
-//        if (tDatum.isEqual(oDatum) && ((tPV.isBefore(oKV) && tKV.isAfter(oPV)) || (oPV.isBefore(tKV) && oKV.isAfter(tPV)))) {
-//            return true;
-//        }
-//
-//        if (termin.getMesto().equalsIgnoreCase(o.getMesto())) {
-//            return true;
-//        }
-//
-//        if (termin.getDatum().equals(o.getDatum())) {
-//            return true;
-//        }
 
         if (termin.getMesto().equalsIgnoreCase(o.getMesto())
         && termin.getDatum().equals(o.getDatum())
@@ -198,7 +184,6 @@ public class Termin{
                     // Zatim pretvorite string datuma u LocalDate
                     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     LocalDate datum = LocalDate.parse(termin.getDatum(), dateFormatter);
-                    System.out.println(termin);
                     return datum;
                 })
                 .thenComparing(termin -> {

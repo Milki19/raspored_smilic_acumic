@@ -7,6 +7,7 @@ public class Raspored {
 
 
     protected List<Termin> sviTermini;
+    private List<Termin> slobodniTermini;
     protected List<String> neradniDani;
     protected String pocetakRasporeda;
     protected String krajRasporeda;
@@ -16,6 +17,15 @@ public class Raspored {
     public Raspored(){
         sviTermini = new ArrayList<>();
         neradniDani = new ArrayList<>();
+        slobodniTermini = new ArrayList<>();
+    }
+
+    public List<Termin> getSlobodniTermini() {
+        return slobodniTermini;
+    }
+
+    public void setSlobodniTermini(List<Termin> slobodniTermini) {
+        this.slobodniTermini = slobodniTermini;
     }
 
     public List<Termin> getSviTermini() {

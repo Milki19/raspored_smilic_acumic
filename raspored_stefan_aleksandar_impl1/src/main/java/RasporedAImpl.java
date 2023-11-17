@@ -22,7 +22,6 @@ public class RasporedAImpl extends RasporedA{
     private List<String> dani;
     private List<String> datumi;
     private List<String> mesta;
-    private List<Termin> slobodniTermini;
     private List<Termin> pretrazeno;
 
     public List<String> getDani() {
@@ -41,28 +40,21 @@ public class RasporedAImpl extends RasporedA{
         this.mesta = mesta;
     }
 
-    public List<Termin> getSlobodniTermini() {
-        return slobodniTermini;
-    }
-
-    public void setSlobodniTermini(List<Termin> slobodniTermini) {
-        this.slobodniTermini = slobodniTermini;
-    }
-
     public RasporedAImpl(){
         this.raspored = new Raspored();
         this.dani = new ArrayList<>();
         this.mesta = new ArrayList<>();
-        this.slobodniTermini = new ArrayList<>();
         this.pretrazeno = new ArrayList<>();
         this.datumi = new ArrayList<>();
-        //generisiSlobodneTermine("09:00", "21:00");
     }
 
+    @Override
     public void generisiSlobodneTermine(String pocetakRadnogVremena, String krajRadnogVremena, String pocetakDatum, String krajDatum) {
         LocalTime pocetak = LocalTime.parse(pocetakRadnogVremena);
         LocalTime kraj = LocalTime.parse(krajRadnogVremena);
+        List<Termin> slobodniTermini = raspored.getSlobodniTermini();
         dodajDaneiMestoDatum();
+
 
         for (String d : dani) {
             for (String dat : datumi) {
@@ -122,61 +114,8 @@ public class RasporedAImpl extends RasporedA{
         slobodniTermini.sort(Termin.getComparator());
     }
 
-//    public void generisiSlobodneTermine(String pocetakRadnogVremena, String krajRadnogVremena, String pocetakDatum, String krajDatum) {
-//        LocalTime pocetak = LocalTime.parse(pocetakRadnogVremena);
-//        LocalTime kraj = LocalTime.parse(krajRadnogVremena);
-//        Duration trajanjeIntervala = Duration.ofHours(1);
-//        dodajDaneiMesto();
-//
-//        for (String d : dani) {
-//            for (String m : mesta) {
-//                boolean slobodan = true;
-//                for (Termin t : raspored.getSviTermini()) {
-//                    if (d.equals(t.getDan()) && m.equals(t.getMesto())) {
-//                        LocalTime tPV = LocalTime.parse(t.getPocetakVreme());
-//                        LocalTime tKV = LocalTime.parse(t.getKrajVreme());
-//
-//                        Termin slobodanTermin;
-//                        if (pocetak.isBefore(tPV)) {
-//                            slobodanTermin = new Termin(m, d, t.getDatum(), pocetak.toString(), tPV.toString());
-//                            if (!imaPodudaranje(slobodanTermin)) {
-//                                if (slobodniTermini.contains(slobodanTermin)) {
-//                                    slobodniTermini.add(slobodanTermin);
-//                                }
-//                            }
-//                            pocetak = tKV;
-//                        }
-//                        if (!pocetak.isBefore(tKV) || tPV.equals(tKV)) {
-//                            slobodanTermin = new Termin(m, d, t.getDatum(), pocetak.toString(), krajRadnogVremena);
-//                            if (!imaPodudaranje(slobodanTermin)) {
-//                                if (slobodniTermini.contains(slobodanTermin)) {
-//                                    slobodniTermini.add(slobodanTermin);
-//                                }
-//                            }
-//                            pocetak = tKV;
-//                        }
-//                        if (imaPodudaranje(t)) {
-//                            slobodan = false;
-//                        }
-//                    }
-//                }
-//                if (slobodan) {
-//                    Termin slobodanTermin = new Termin(m, d, pocetakDatum, pocetakRadnogVremena, krajRadnogVremena);
-//                    if (!imaPodudaranje(slobodanTermin)) {
-//                        if (slobodniTermini.contains(slobodanTermin)) {
-//                            slobodniTermini.add(slobodanTermin);
-//                        }
-//
-//                    }
-//                }
-//            }
-//        }
-//
-//        slobodniTermini.sort(Termin.getComparator());
-//    }
-
     public boolean imaPodudaranje(Termin noviTermin) {
-        for (Termin t : slobodniTermini) {
+        for (Termin t : raspored.getSlobodniTermini()) {
             if (t.podudara(noviTermin, t)) {
                 return true;
             }
@@ -221,73 +160,20 @@ public class RasporedAImpl extends RasporedA{
         }else if(path.contains(".pdf")){
             ispisiPDF(path);
         }else{
-            System.out.println("Nije moguce exportovati u zadatom formatu.");
+            //Sta ako nista ne unese?
+            ispisiJSON(path);
         }
         return false;
     }
-    
 
     @Override
-    public void proveri() {
-        System.out.println("\nIzaberite po cemu zelite da pretrazite slobodne termine razvodejene razmakom:");
-        System.out.println("1. Mesto");
-        System.out.println("2. Pocetni datum");
-        System.out.println("3. Krajnji datum");
-        System.out.println("4. Pocetno vreme");
-        System.out.println("5. Krajnje vreme");
-        System.out.println("6. Dan\n");
-
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-
-        // 1 3 5
-
-        String[] niz = linija.split(" ");
-
-        int flag1 = 0;
-        int flag2 = 0;
-        int flag3 = 0;
-        int flag4 = 0;
-        int flag5 = 0;
-        int flag6 = 0;
-
-        for(int i = 0; i < niz.length; i++){
-            if(niz[i].equals("1")){
-                flag1 = 1;
-            }
-            if(niz[i].equals("2")){
-                flag2 = 1;
-            }
-            if(niz[i].equals("3")){
-                flag3 = 1;
-            }
-            if(niz[i].equals("4")){
-                flag4 = 1;
-            }
-            if(niz[i].equals("5")){
-                flag5 = 1;
-            }
-            if(niz[i].equals("6")){
-                flag6 = 1;
-            }
-        }
-
-        if(flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 1 && flag6 == 1){
-            System.out.println("Unesite pocetni datum, krajnji datum, pocetno vreme, krajnje vreme i dan za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy dd/mm/yyyy hh:mm hh:mm DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            proveri23456(split[0], split[1], split[2], split[3], split[4]);
-        }
-
-    }
-
-    @Override
-    public void proveri23456(String pocetakDatum, String krajDatum, String pocetakVreme, String krajVrene, String dan) {
+    public List<Termin> slobodniPocetakDatumKrajDatumPocetakVremeKrajVremeDan(String pocetakDatum, String krajDatum, String pocetakVreme, String krajVrene, String dan) {
         for(Termin t : getRaspored().sviTermini){
             if(t.getDan().equals(dan)){
 
             }
         }
+        return null;
     }
 
 
@@ -306,7 +192,7 @@ public class RasporedAImpl extends RasporedA{
             System.out.println(s);
         }
 
-        df.dodajNoviTermin(getRaspored(), split[0], split[1], split[2], "", split[3], split[4], split[5]);
+        df.dodajNoviTermin(getRaspored(), split[0], split[1], split[2], "", split[3], split[4], "");
     }
 
     @Override
@@ -550,6 +436,7 @@ public class RasporedAImpl extends RasporedA{
         }
         return pretrazeno;
     }
+
     private void ispisiPDF(String path) throws IOException{
 
         PDDocument document = new PDDocument();

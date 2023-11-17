@@ -41,9 +41,9 @@ public class Main {
             rasporedAImpl.generisiSlobodneTermine(rasporedAImpl.raspored.getPocetakRadnogVremena(),
                     rasporedAImpl.raspored.getKrajRadnogVremena(), rasporedAImpl.raspored.pocetakRasporeda,
                     rasporedAImpl.raspored.getKrajRasporeda()); // Generisanje slobodnih termina
-            System.err.println(rasporedAImpl.getSlobodniTermini().size());
+            System.err.println(rasporedAImpl.getRaspored().getSlobodniTermini().size());
 
-            for (Termin t : rasporedAImpl.getSlobodniTermini()) {
+            for (Termin t : rasporedAImpl.getRaspored().getSlobodniTermini()) {
                 System.out.println(t);
             }
 
@@ -65,9 +65,9 @@ public class Main {
                 rasporedAImpl.generisiSlobodneTermine(rasporedAImpl.raspored.getPocetakRadnogVremena(),
                         rasporedAImpl.raspored.getKrajRadnogVremena(), rasporedAImpl.raspored.pocetakRasporeda,
                         rasporedAImpl.raspored.getKrajRasporeda()); // Generisanje slobodnih termina
-                System.err.println(rasporedAImpl.getSlobodniTermini().size());
+                System.err.println(rasporedAImpl.getRaspored().getSlobodniTermini().size());
 
-                for (Termin t : rasporedAImpl.getSlobodniTermini()) {
+                for (Termin t : rasporedAImpl.getRaspored().getSlobodniTermini()) {
                     System.out.println(t);
                 }
 

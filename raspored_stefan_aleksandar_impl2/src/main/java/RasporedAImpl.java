@@ -57,6 +57,7 @@ public class RasporedAImpl extends RasporedA{
         //generisiSlobodneTermine("09:00", "21:00");
     }
 
+    @Override
     public void generisiSlobodneTermine(String pocetakRadnogVremena, String krajRadnogVremena, String pocetakDatum, String krajDatum) {
         LocalTime pocetak = LocalTime.parse(pocetakRadnogVremena);
         LocalTime kraj = LocalTime.parse(krajRadnogVremena);
@@ -96,6 +97,11 @@ public class RasporedAImpl extends RasporedA{
         }
 
         slobodniTermini.sort(Termin.getComparator());
+    }
+
+    @Override
+    public List<Termin> slobodniPocetakDatumKrajDatumPocetakVremeKrajVremeDan(String pocetakDatum, String krajDatum, String pocetakVreme, String krajVrene, String dan) {
+        return null;
     }
 
 //    public void generisiSlobodneTermine(String pocetakRadnogVremena, String krajRadnogVremena, String pocetakDatum, String krajDatum) {
@@ -198,71 +204,6 @@ public class RasporedAImpl extends RasporedA{
         }
         return false;
     }
-
-
-    @Override
-    public void proveri() {
-        System.out.println("\nIzaberite po cemu zelite da pretrazite slobodne termine razvodejene razmakom:");
-        System.out.println("1. Mesto");
-        System.out.println("2. Pocetni datum");
-        System.out.println("3. Krajnji datum");
-        System.out.println("4. Pocetno vreme");
-        System.out.println("5. Krajnje vreme");
-        System.out.println("6. Dan\n");
-
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-
-        // 1 3 5
-
-        String[] niz = linija.split(" ");
-
-        int flag1 = 0;
-        int flag2 = 0;
-        int flag3 = 0;
-        int flag4 = 0;
-        int flag5 = 0;
-        int flag6 = 0;
-
-        for(int i = 0; i < niz.length; i++){
-            if(niz[i].equals("1")){
-                flag1 = 1;
-            }
-            if(niz[i].equals("2")){
-                flag2 = 1;
-            }
-            if(niz[i].equals("3")){
-                flag3 = 1;
-            }
-            if(niz[i].equals("4")){
-                flag4 = 1;
-            }
-            if(niz[i].equals("5")){
-                flag5 = 1;
-            }
-            if(niz[i].equals("6")){
-                flag6 = 1;
-            }
-        }
-
-        if(flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 1 && flag6 == 1){
-            System.out.println("Unesite pocetni datum, krajnji datum, pocetno vreme, krajnje vreme i dan za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy dd/mm/yyyy hh:mm hh:mm DAN");
-            linija = sc.nextLine();
-            String[] split = linija.split(" ");
-            proveri23456(split[0], split[1], split[2], split[3], split[4]);
-        }
-
-    }
-
-    @Override
-    public void proveri23456(String pocetakDatum, String krajDatum, String pocetakVreme, String krajVrene, String dan) {
-        for(Termin t : getRaspored().sviTermini){
-            if(t.getDan().equals(dan)){
-
-            }
-        }
-    }
-
 
     @Override
     public void dodajTermin(){
