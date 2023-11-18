@@ -100,7 +100,112 @@ public class RasporedAImpl extends RasporedA{
     }
 
     @Override
-    public List<Termin> slobodniPocetakDatumKrajDatumPocetakVremeKrajVremeDan(String pocetakDatum, String krajDatum, String pocetakVreme, String krajVrene, String dan) {
+    public List<Termin> slobodniDatumiPocetakVremeKrajVremeDan(String pocetakDatum, String krajDatum, String pocetakVreme, String krajVrene, String dan) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniDatum(String datum) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniDatumi(String pDatum, String kDatum) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniDodatak(String dodatak) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniMesto(String mesto) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniMestoDatumi(String mesto, String datum, String krajDatum) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniMestoDan(String mesto, String dan) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniMestoDatumiPocetak(String mesto, String datum, String krajDatum, String pocetakVreme) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniMestoDatumiDan(String mesto, String datum, String krajDatum, String dan) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniMestoPocetakDan(String mesto, String pocetakVreme, String dan) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniMestoDatumiPocetakKraj(String mesto, String datum, String krajDatum, String pocetakVreme, String krajVreme) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniMestoDatumiPocetakKrajDan(String mesto, String datum, String krajDatum, String pocetakVreme, String krajVreme, String dan) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniDatumiPocetak(String datum, String krajDatum, String pocetakVreme) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniDatumiDan(String datum, String krajDatum, String dan) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniDatumiPocetakKraj(String datum, String krajDatum, String pocetakVreme, String krajVreme) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniDatumiPocetakDan(String datum, String krajDatum, String pocetakVreme, String dan) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniDatumiPocetakKrajDan(String datum, String krajDatum, String pocetakVreme, String krajVreme, String dan) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniPocetak(String pocetakVreme) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniPocetakKraj(String pocetakVreme, String krajVreme) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniPocetakKrajDan(String pocetakVreme, String krajVreme, String dan) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniKraj(String krajVreme) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniDan(String dan) {
         return null;
     }
 
@@ -179,33 +284,6 @@ public class RasporedAImpl extends RasporedA{
     }
 
     @Override
-    public boolean ucitajPodatke(String path) throws IOException {
-
-        if(path.contains(",")){
-            String[] niz = path.split(",");
-            ucitajCSV(niz[0], niz[1]);
-        }else{
-            ucitajJackson(path);
-        }
-
-        return true;
-    }
-
-    @Override
-    public boolean exportujPodatke(String path) throws IOException {
-        if(path.contains(".csv")){
-            ispisiCSV(path);
-        }else if(path.contains(".json")){
-            ispisiJSON(path);
-        }else if(path.contains(".pdf")){
-            ispisiPDF(path);
-        }else{
-            System.out.println("Nije moguce exportovati u zadatom formatu.");
-        }
-        return false;
-    }
-
-    @Override
     public void dodajTermin(Raspored raspored, String mesto, String dan, String datum, String pocetakVreme, String krajVreme, String dodaci){
         DodatneFunkcionalnosti df = new DodatneFunkcionalnosti();
         Scanner sc = new Scanner(System.in);
@@ -221,6 +299,16 @@ public class RasporedAImpl extends RasporedA{
         }
 
 //        df.dodajNoviTermin(getRaspored(), split[0], split[1], split[2], "", split[3], split[4], split[5]);
+    }
+
+    @Override
+    public void izmeniTermin(Raspored raspored, Termin kojiHocemoDaMenjamo, Termin saCimeMenjamo) {
+
+    }
+
+    @Override
+    public void obrisiTermin(Raspored raspored, String mesto, String dan, String datum, String pocetakVreme, String krajVreme, String dodaci) {
+
     }
 
     @Override               // POSEBNOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -464,7 +552,9 @@ public class RasporedAImpl extends RasporedA{
         }
         return pretrazeno;
     }
-    private void ispisiPDF(String path) throws IOException{
+
+    @Override
+    public void exportPDF(String path) throws IOException{
 
         PDDocument document = new PDDocument();
         PDPage page = new PDPage();
@@ -516,8 +606,8 @@ public class RasporedAImpl extends RasporedA{
     }
 
 
-
-    private void ispisiJSON(String path) throws IOException{
+    @Override
+    public void exportJSON(String path) throws IOException{
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         String json = ow.writeValueAsString(raspored);
         System.out.println("Unesite destinaciju na kojoj zelite da bude fajl: ");
@@ -530,7 +620,8 @@ public class RasporedAImpl extends RasporedA{
         fw.close();
     }
 
-    private void ispisiCSV(String path) throws IOException {
+    @Override
+    public void exportCSV(String path) throws IOException {
         System.out.println("Unesite destinaciju na kojoj zelite da bude fajl: ");
         Scanner sc = new Scanner(System.in);
         String linija = sc.nextLine();
@@ -551,7 +642,7 @@ public class RasporedAImpl extends RasporedA{
         fileWriter.close();
     }
 
-    public void ucitajJackson(String path) throws IOException{
+    public void ucitajJSON(String path) throws IOException{
         ObjectMapper mapper = new ObjectMapper();
         raspored = mapper.readValue(new File(path), Raspored.class);
 //        Collections.sort(raspored.getSviTermini(), Comparator
@@ -587,7 +678,8 @@ public class RasporedAImpl extends RasporedA{
         return mapiranje;
     }
 
-    private void ucitajCSV(String path, String configPath) throws IOException {
+    @Override
+    public void ucitajCSV(String path, String configPath) throws IOException {
         List<Konfiguracija> mapiranje = citajKonfiguraciju(configPath);
         Map<Integer, String> mapa = new HashMap<>();
 

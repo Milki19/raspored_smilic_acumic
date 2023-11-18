@@ -19,7 +19,7 @@ public class Main {
             String path = prviDeo + "," + drugiDeo;
 
             try{
-                rasporedAImpl.ucitajPodatke(path);
+                rasporedAImpl.ucitajCSV(prviDeo, drugiDeo);
                 System.out.println(rasporedAImpl.raspored.getSviTermini());
             }catch (IOException e){
                 System.out.println("Greska pri citanju fajlova");
@@ -53,13 +53,21 @@ public class Main {
             System.out.println("Unesite naziv izlaznog fajla:");
             linija = scanner.nextLine();
             try {
-                rasporedAImpl.exportujPodatke(linija);
+                if(linija.contains(".csv")){
+                    rasporedAImpl.exportCSV(linija);
+                }else if(linija.contains(".json")){
+                    rasporedAImpl.exportJSON(linija);
+                }else if(linija.contains(".pdf")){
+                    rasporedAImpl.exportPDF(linija);
+                }else{
+                    rasporedAImpl.exportPDF(linija);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             try{
-                rasporedAImpl.ucitajPodatke(linija); // Ucitavamo podatke
+                rasporedAImpl.ucitajJSON(linija); // Ucitavamo podatke
                 rasporedAImpl.raspored.getSviTermini().sort(Termin.getComparator()); //Sortiranje
 
                 rasporedAImpl.generisiSlobodneTermine(rasporedAImpl.raspored.getPocetakRadnogVremena(),
@@ -76,7 +84,15 @@ public class Main {
 
                 System.out.println("Unesite naziv izlaznog fajla:");
                 linija = scanner.nextLine();
-                rasporedAImpl.exportujPodatke(linija);
+                if(linija.contains(".csv")){
+                    rasporedAImpl.exportCSV(linija);
+                }else if(linija.contains(".json")){
+                    rasporedAImpl.exportJSON(linija);
+                }else if(linija.contains(".pdf")){
+                    rasporedAImpl.exportPDF(linija);
+                }else{
+                    rasporedAImpl.exportPDF(linija);
+                }
             }catch (IOException e){
                 e.printStackTrace();
             }

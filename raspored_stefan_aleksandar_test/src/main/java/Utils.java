@@ -57,6 +57,28 @@ public class Utils {
 
         }else if(linija.equals("3")){
 
+            linija = sc.nextLine();
+            String[] split = linija.split(",");
+
+            String stariTermin = split[0];
+            String noviTermin = split[1];
+
+            String[] strTer = stariTermin.split(" ");
+            String[] novTer = noviTermin.split(" ");
+
+            // RAF20 02/10/2023 13:15 16:00
+            // RAF20 PON 02/10/2023 02/10/2023 14:15 16:00
+
+            for(Termin t : rasporedA.raspored.getSviTermini()){
+                if(t.getMesto().equals (strTer[0]) && t.getDatum().equals(strTer[1]) && t.getPocetakVreme().equals(strTer[2]) && t.getKrajVreme().equals(strTer[3])){
+                    rasporedA.izmeniTermin(rasporedA.getRaspored(), t, new Termin(novTer[0], novTer[1], novTer[2], novTer[3], novTer[4], novTer[5]));
+                    return;
+                }else{
+                    System.out.println("Ne postoji trenutni termin.");
+                }
+            }
+
+
         }else if(linija.equals("4")){
             pretrazeneStvari = pretraga(rasporedA);
             System.out.println(pretrazeneStvari);
@@ -222,7 +244,8 @@ public class Utils {
         System.out.println("3. Krajnji datum");
         System.out.println("4. Pocetno vreme");
         System.out.println("5. Krajnje vreme");
-        System.out.println("6. Dan\n");
+        System.out.println("6. Dan");
+        System.out.println("7. Dodatno\n");
 
         Scanner sc = new Scanner(System.in);
         String linija = sc.nextLine();
@@ -237,6 +260,7 @@ public class Utils {
         int flag4 = 0;
         int flag5 = 0;
         int flag6 = 0;
+        int flag7 = 0;
 
         for(int i = 0; i < niz.length; i++){
             if(niz[i].equals("1")){
@@ -257,13 +281,33 @@ public class Utils {
             if(niz[i].equals("6")){
                 flag6 = 1;
             }
+            if(niz[i].equals("7")){
+                flag7 = 1;
+            }
         }
 
-        if(flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 1 && flag6 == 1){
-            System.out.println("Unesite pocetni datum, krajnji datum, pocetno vreme, krajnje vreme i dan za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy dd/mm/yyyy hh:mm hh:mm DAN");
+        if((flag1 == 0 && flag2 == 1 && flag3 == 0 && flag4 == 0 && flag5 == 0 && flag6 == 0 && flag7 == 0) ||
+                    (flag1 == 0 && flag2 == 0 && flag3 == 1 && flag4 == 0 && flag5 == 0 && flag6 == 0)){
+            System.out.println("Unesite datum koji zelite u formatu: dd/mm/yyyy");
+            linija = sc.nextLine();
+            return rasporedA.slobodniDatum(linija);
+        } else if((flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 1 && flag6 == 1 && flag7 == 0) || (flag1 == 0 && flag2 == 1 && flag3 == 0 && flag4 == 1 && flag5 == 1 && flag6 == 1 && flag7 == 0)){
+            if(flag3 == 1){
+                System.out.println("Unesite pocetni datum, krajnji datum, pocetno vreme, krajnje vreme i dan za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy dd/mm/yyyy hh:mm hh:mm DAN");
+                linija = sc.nextLine();
+                String[] split = linija.split(" ");
+                return rasporedA.slobodniDatumiPocetakVremeKrajVremeDan(split[0], split[1], split[2], split[3], split[4]);
+            }
+
+            System.out.println("Unesite pocetni datum, pocetno vreme, krajnje vreme i dan za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy dd/mm/yyyy hh:mm hh:mm DAN");
             linija = sc.nextLine();
             String[] split = linija.split(" ");
-            return rasporedA.slobodniPocetakDatumKrajDatumPocetakVremeKrajVremeDan(split[0], split[1], split[2], split[3], split[4]);
+            return rasporedA.slobodniDatumiPocetakVremeKrajVremeDan(split[0], "", split[1], split[2], split[3]);
+        } else if (flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 0 && flag5 == 0 && flag6 == 0 && flag7 == 0){
+            System.out.println("Unesite pocenti datum i krajnji datum koji zelite u formatu: dd/mm/yyyy dd/mm/yyyy");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniDatumi(split[0], split[1]);
         }
 
 

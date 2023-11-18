@@ -37,6 +37,9 @@ public class DodatneFunkcionalnosti {
             LocalTime oPVreme = LocalTime.parse(postojeciTermin.getPocetakVreme());
             LocalTime oKVreme = LocalTime.parse(postojeciTermin.getKrajVreme());
             LocalDate oKDatum = LocalDate.parse(postojeciTermin.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            if (raspored.getNeradniDani().contains(postojeciTermin.getDatum())) {
+                continue;
+            }
 
             if ((tDatum.isBefore(oKDatum) || tDatum.equals(oKDatum)) && (kDatum.isAfter(oPDatum) || kDatum.equals(oPDatum))) { // izbacio !
 //                System.out.println(tDatum.isBefore(oKDatum) || tDatum.equals(oKDatum));
@@ -164,7 +167,6 @@ public class DodatneFunkcionalnosti {
         }
 
     }
-
 
 
     public Map<String, String> getDodaci() {
