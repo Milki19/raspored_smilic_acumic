@@ -9,7 +9,9 @@ public abstract class RasporedA {
 
     public abstract boolean exportujPodatke(String path) throws IOException;
 
-    public abstract void dodajTermin();
+    public abstract void dodajTermin(Raspored raspored, String mesto, String dan, String datum, String pocetakVreme, String krajVreme, String dodaci);
+
+
     
     public abstract List<Termin> pretraziDodatak(String dodatak);
     public abstract List<Termin> pretraziMesto(String mesto);

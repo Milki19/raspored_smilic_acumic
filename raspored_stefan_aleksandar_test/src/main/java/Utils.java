@@ -23,8 +23,37 @@ public class Utils {
         String linija = sc.nextLine();
 
         if(linija.equals("1")){
-            rasporedA.dodajTermin();
+            System.out.println("Unesite obavezne podatke za (mesto, dan, pocetni datum, pocetno vreme, krajnje vreme) u sledeceom formatu: mesto DAN dd/mm/yyyy hh:mm hh:mm");
+            //Raf04,PON,02/10/2022,09:15,11:00
+            //Raf04 PON 22/10/2022 09:15 11:00 Poslovne aplikacije Igro Mijatovic DA
+            //"Raf04","PON","02/10/2022","09:15","11:00","Poslovne aplikacije","Mijatovic Igor","DA"
+            linija = sc.nextLine();
+            String[] split = linija.split(" ", 6);
+            for (String s : split) {
+                System.out.println(s);
+            }
+            if (split.length == 5)
+                rasporedA.dodajTermin(rasporedA.getRaspored(), split[0], split[1], split[2], split[3], split[4], "");
+            else if (split.length >= 5)
+                rasporedA.dodajTermin(rasporedA.getRaspored(), split[0], split[1], split[2], split[3], split[4], split[5]);
         }else if(linija.equals("2")){
+            System.out.println("Podatke za termin koji zelite da obrisete za (mesto, dan, pocetni datum, pocetno vreme, krajnje vreme) u sledeceom formatu: mesto DAN dd/mm/yyyy hh:mm hh:mm");
+            //Raf04,PON,02/10/2022,09:15,11:00
+            //Raf04 PON 22/10/2022 09:15 11:00 Poslovne aplikacije Igro Mijatovic DA
+            //"Raf04","PON","02/10/2022","09:15","11:00","Poslovne aplikacije","Mijatovic Igor","DA"
+            linija = sc.nextLine();
+            String[] split = linija.split(" ", 6);
+            for (String s : split) {
+                System.out.println(s);
+            }
+
+            rasporedA.obrisiTermin(rasporedA.getRaspored(), split[0], split[1], split[2], split[3], split[4], "");
+            System.err.println("Slobodni termini size: " + rasporedA.getRaspored().getSlobodniTermini().size());
+            for (Termin t : rasporedA.getRaspored().getSlobodniTermini()) {
+                System.out.println(t);
+            }
+
+            System.err.println("Termini size: " + rasporedA.getRaspored().getSviTermini().size());
 
         }else if(linija.equals("3")){
 

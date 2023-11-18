@@ -206,7 +206,7 @@ public class RasporedAImpl extends RasporedA{
     }
 
     @Override
-    public void dodajTermin(){
+    public void dodajTermin(Raspored raspored, String mesto, String dan, String datum, String pocetakVreme, String krajVreme, String dodaci){
         DodatneFunkcionalnosti df = new DodatneFunkcionalnosti();
         Scanner sc = new Scanner(System.in);
 
