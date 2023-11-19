@@ -1025,7 +1025,7 @@ public class RasporedAImpl extends RasporedA{
     }
 
     @Override
-    public void exportPDF(String path) throws IOException{
+    public void exportPDF(String path, List<Termin> termini) throws IOException{
 
         PDDocument document = new PDDocument();
         PDPage page = new PDPage();
@@ -1040,7 +1040,7 @@ public class RasporedAImpl extends RasporedA{
         contentStream.beginText();
         contentStream.newLineAtOffset(100, y);
 
-        for (Termin t : this.raspored.getSviTermini()) {
+        for (Termin t : termini) {
             if (y < yGranica) {
                 contentStream.endText();
                 contentStream.close();
@@ -1079,9 +1079,9 @@ public class RasporedAImpl extends RasporedA{
 
 
     @Override
-    public void exportJSON(String path) throws IOException{
+    public void exportJSON(String path, List<Termin> termini) throws IOException{
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String json = ow.writeValueAsString(raspored);
+        String json = ow.writeValueAsString(termini);
         System.out.println("Unesite destinaciju na kojoj zelite da bude fajl: ");
         Scanner sc = new Scanner(System.in);
         String linija = sc.nextLine();
@@ -1093,14 +1093,14 @@ public class RasporedAImpl extends RasporedA{
     }
 
     @Override
-    public void exportCSV(String path) throws IOException {
+    public void exportCSV(String path, List<Termin> termini) throws IOException {
         System.out.println("Unesite destinaciju na kojoj zelite da bude fajl: ");
         Scanner sc = new Scanner(System.in);
         String linija = sc.nextLine();
         FileWriter fileWriter = new FileWriter(linija + path);
         CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT);
 
-        for (Termin termin : super.raspored.getSviTermini()) {
+        for (Termin termin : termini) {
             csvPrinter.printRecord(
                     termin.getDan() + ", "
                             + termin.getDatum() + " "

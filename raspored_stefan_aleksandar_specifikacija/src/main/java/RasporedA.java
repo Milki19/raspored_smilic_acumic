@@ -8,9 +8,9 @@ public abstract class RasporedA {
     public abstract void ucitajCSV(String path, String konfig) throws IOException;
     public abstract void ucitajJSON(String path) throws IOException;
 
-    public abstract void exportCSV(String path) throws IOException;
-    public abstract void exportJSON(String path) throws IOException;
-    public abstract void exportPDF(String path) throws IOException;
+    public abstract void exportCSV(String path, List<Termin> termini) throws IOException;
+    public abstract void exportJSON(String path, List<Termin> termini) throws IOException;
+    public abstract void exportPDF(String path, List<Termin> termini) throws IOException;
 
     public abstract void dodajTermin(Raspored raspored, String mesto, String dan, String datum, String pocetakVreme, String krajVreme, String dodaci);
     public abstract void izmeniTermin (Raspored raspored, Termin kojiHocemoDaMenjamo, Termin saCimeMenjamo);

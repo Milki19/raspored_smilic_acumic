@@ -54,13 +54,13 @@ public class Main {
             linija = scanner.nextLine();
             try {
                 if(linija.contains(".csv")){
-                    rasporedAImpl.exportCSV(linija);
+                    rasporedAImpl.exportCSV(linija, rasporedAImpl.raspored.sviTermini);
                 }else if(linija.contains(".json")){
-                    rasporedAImpl.exportJSON(linija);
+                    rasporedAImpl.exportJSON(linija, rasporedAImpl.raspored.sviTermini);
                 }else if(linija.contains(".pdf")){
-                    rasporedAImpl.exportPDF(linija);
+                    rasporedAImpl.exportPDF(linija, rasporedAImpl.raspored.sviTermini);
                 }else{
-                    rasporedAImpl.exportPDF(linija);
+                    rasporedAImpl.exportPDF(linija, rasporedAImpl.raspored.sviTermini);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -85,13 +85,13 @@ public class Main {
                 System.out.println("Unesite naziv izlaznog fajla:");
                 linija = scanner.nextLine();
                 if(linija.contains(".csv")){
-                    rasporedAImpl.exportCSV(linija);
+                    rasporedAImpl.exportCSV(linija, rasporedAImpl.raspored.sviTermini);
                 }else if(linija.contains(".json")){
-                    rasporedAImpl.exportJSON(linija);
+                    rasporedAImpl.exportJSON(linija, rasporedAImpl.raspored.sviTermini);
                 }else if(linija.contains(".pdf")){
-                    rasporedAImpl.exportPDF(linija);
+                    rasporedAImpl.exportPDF(linija, rasporedAImpl.raspored.sviTermini);
                 }else{
-                    rasporedAImpl.exportPDF(linija);
+                    rasporedAImpl.exportPDF(linija, rasporedAImpl.raspored.sviTermini);
                 }
             }catch (IOException e){
                 e.printStackTrace();

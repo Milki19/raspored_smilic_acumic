@@ -554,7 +554,7 @@ public class RasporedAImpl extends RasporedA{
     }
 
     @Override
-    public void exportPDF(String path) throws IOException{
+    public void exportPDF(String path, List<Termin> termini) throws IOException{
 
         PDDocument document = new PDDocument();
         PDPage page = new PDPage();
@@ -607,7 +607,7 @@ public class RasporedAImpl extends RasporedA{
 
 
     @Override
-    public void exportJSON(String path) throws IOException{
+    public void exportJSON(String path, List<Termin> termini) throws IOException{
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         String json = ow.writeValueAsString(raspored);
         System.out.println("Unesite destinaciju na kojoj zelite da bude fajl: ");
@@ -621,7 +621,7 @@ public class RasporedAImpl extends RasporedA{
     }
 
     @Override
-    public void exportCSV(String path) throws IOException {
+    public void exportCSV(String path, List<Termin> termini) throws IOException {
         System.out.println("Unesite destinaciju na kojoj zelite da bude fajl: ");
         Scanner sc = new Scanner(System.in);
         String linija = sc.nextLine();
