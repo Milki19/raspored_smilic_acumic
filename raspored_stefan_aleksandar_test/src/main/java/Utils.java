@@ -85,6 +85,7 @@ public class Utils {
             interakcijaSaKorisnikom(rasporedA);
         }else if(linija.equals("5")){
             slobodniSearch(rasporedA);
+            interakcijaSaKorisnikom(rasporedA);
         }else if(linija.equals("6")){
 
         }else{
@@ -262,54 +263,196 @@ public class Utils {
         int flag6 = 0;
         int flag7 = 0;
 
-        for(int i = 0; i < niz.length; i++){
-            if(niz[i].equals("1")){
+        for (int i = 0; i < niz.length; i++) {
+            if (niz[i].equals("1")) {
                 flag1 = 1;
             }
-            if(niz[i].equals("2")){
+            if (niz[i].equals("2")) {
                 flag2 = 1;
             }
-            if(niz[i].equals("3")){
+            if (niz[i].equals("3")) {
                 flag3 = 1;
             }
-            if(niz[i].equals("4")){
+            if (niz[i].equals("4")) {
                 flag4 = 1;
             }
-            if(niz[i].equals("5")){
+            if (niz[i].equals("5")) {
                 flag5 = 1;
             }
-            if(niz[i].equals("6")){
+            if (niz[i].equals("6")) {
                 flag6 = 1;
             }
-            if(niz[i].equals("7")){
+            if (niz[i].equals("7")) {
                 flag7 = 1;
             }
         }
 
-        if((flag1 == 0 && flag2 == 1 && flag3 == 0 && flag4 == 0 && flag5 == 0 && flag6 == 0 && flag7 == 0) ||
-                    (flag1 == 0 && flag2 == 0 && flag3 == 1 && flag4 == 0 && flag5 == 0 && flag6 == 0)){
+        if ((flag1 == 0 && flag2 == 1 && flag3 == 0 && flag4 == 0 && flag5 == 0 && flag6 == 0 && flag7 == 0) ||
+                (flag1 == 0 && flag2 == 0 && flag3 == 1 && flag4 == 0 && flag5 == 0 && flag6 == 0)) {
             System.out.println("Unesite datum koji zelite u formatu: dd/mm/yyyy");
             linija = sc.nextLine();
             return rasporedA.slobodniDatum(linija);
-        } else if((flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 1 && flag6 == 1 && flag7 == 0) || (flag1 == 0 && flag2 == 1 && flag3 == 0 && flag4 == 1 && flag5 == 1 && flag6 == 1 && flag7 == 0)){
-            if(flag3 == 1){
+        } else if ((flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 1 && flag6 == 1 && flag7 == 0) || (flag1 == 0 && flag2 == 1 && flag3 == 0 && flag4 == 1 && flag5 == 1 && flag6 == 1 && flag7 == 0)) {
+            if (flag3 == 1) {
                 System.out.println("Unesite pocetni datum, krajnji datum, pocetno vreme, krajnje vreme i dan za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy dd/mm/yyyy hh:mm hh:mm DAN");
                 linija = sc.nextLine();
                 String[] split = linija.split(" ");
                 return rasporedA.slobodniDatumiPocetakVremeKrajVremeDan(split[0], split[1], split[2], split[3], split[4]);
             }
-
-            System.out.println("Unesite pocetni datum, pocetno vreme, krajnje vreme i dan za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy dd/mm/yyyy hh:mm hh:mm DAN");
+            System.out.println("Unesite pocetni datum, pocetno vreme, krajnje vreme i dan za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy hh:mm hh:mm DAN");
             linija = sc.nextLine();
             String[] split = linija.split(" ");
             return rasporedA.slobodniDatumiPocetakVremeKrajVremeDan(split[0], "", split[1], split[2], split[3]);
-        } else if (flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 0 && flag5 == 0 && flag6 == 0 && flag7 == 0){
+        } else if (flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 0 && flag5 == 0 && flag6 == 0 && flag7 == 0) {
             System.out.println("Unesite pocenti datum i krajnji datum koji zelite u formatu: dd/mm/yyyy dd/mm/yyyy");
             linija = sc.nextLine();
             String[] split = linija.split(" ");
             return rasporedA.slobodniDatumi(split[0], split[1]);
-        }
+        } else if (flag1 == 0 && flag2 == 0 && flag3 == 0 && flag4 == 0 && flag5 == 0 && flag6 == 0 && flag7 == 1) {
+            System.out.println("Unesite dodatak za koji zelite da proverite slobodne termine: ");
+            linija = sc.nextLine();
+            return rasporedA.slobodniDodatak(linija);
+        } else if (flag1 == 1 && flag2 == 0 && flag3 == 0 && flag4 == 0 && flag5 == 0 && flag6 == 0 && flag7 == 0) {
+            System.out.println("Unesite mesto za koji zelite da proverite slobodne termine: ");
+            linija = sc.nextLine();
+            return rasporedA.slobodniMesto(linija);
+        } else if ((flag1 == 1 && flag2 == 1 && flag3 == 1 && flag4 == 0 && flag5 == 0 && flag6 == 0 && flag7 == 0) || (flag1 == 1 && flag2 == 1 && flag3 == 0 && flag4 == 0 && flag5 == 0 && flag6 == 0 && flag7 == 0)) {
+            if (flag3 == 1) {
+                System.out.println("Unesite mesto, pocetni datum, krajnji datum za koji zelite da proverite slobodne termine u formatu: mesto dd/mm/yyyy dd/mm/yyy");
+                linija = sc.nextLine();
+                String[] split = linija.split(" ");
+                return rasporedA.slobodniMestoDatumi(split[0], split[1], split[2]);
+            }
+            System.out.println("Unesite mesto i datum za koji zelite da proverite slobodne termine u formatu: mesto dd/mm/yyyy");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniMestoDatumi(split[0], split[1], "");
+        } else if (flag1 == 1 && flag2 == 0 && flag3 == 0 && flag4 == 0 && flag5 == 0 && flag6 == 1 && flag7 == 0) {
+            System.out.println("Unesite mesto i dan za koji zelite da proverite slobodne termine u formatu: mesto DAN");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniMestoDan(split[0], split[1]);
+        } else if ((flag1 == 1 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 0 && flag6 == 0 && flag7 == 0) || (flag1 == 1 && flag2 == 1 && flag3 == 0 && flag4 == 1 && flag5 == 0 && flag6 == 0 && flag7 == 0)) {
+            if (flag3 == 1) {
+                System.out.println("Unesite mesto, pocetni datum, krajnji datum i pocetno vreme za koje zelite da proverite slobodne termine u formatu: mesto dd/mm/yyyy dd/mm/yyy hh:mm");
+                linija = sc.nextLine();
+                String[] split = linija.split(" ");
+                return rasporedA.slobodniMestoDatumiPocetak(split[0], split[1], split[2], split[3]);
+            }
+            System.out.println("Unesite mesto, datum i pocetno vreme za koje zelite da proverite slobodne termine u formatu: mesto dd/mm/yyyy hh:mm");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniMestoDatumiPocetak(split[0], split[1], "", split[2]);
+        } else if ((flag1 == 1 && flag2 == 1 && flag3 == 1 && flag4 == 0 && flag5 == 0 && flag6 == 1 && flag7 == 0) || (flag1 == 1 && flag2 == 1 && flag3 == 0 && flag4 == 0 && flag5 == 0 && flag6 == 1 && flag7 == 0)) {
+            if (flag3 == 1) {
+                System.out.println("Unesite mesto, pocetni datum, krajnji datum i dan za koji zelite da proverite slobodne termine u formatu: mesto dd/mm/yyyy dd/mm/yyyy DAN");
+                linija = sc.nextLine();
+                String[] split = linija.split(" ");
+                return rasporedA.slobodniMestoDatumiDan(split[0], split[1], split[2], split[3]);
+            }
+            System.out.println("Unesite mesto, datum i dan za koji zelite da proverite slobodne termine u formatu: mesto dd/mm/yyyy DAN");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniMestoDatumiDan(split[0], split[1], "", split[2]);
+        } else if (flag1 == 1 && flag2 == 0 && flag3 == 0 && flag4 == 1 && flag5 == 0 && flag6 == 1 && flag7 == 0) {
+            System.out.println("Unesite mesto, pocetno vreme i dan za koji zelite da proverite slobodne termine u formatu: mesto hh:mm DAN");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniMestoPocetakDan(split[0], split[1], split[2]);
+        } else if ((flag1 == 1 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 1 && flag6 == 0 && flag7 == 0) || (flag1 == 1 && flag2 == 1 && flag3 == 0 && flag4 == 1 && flag5 == 1 && flag6 == 0 && flag7 == 0)) {
+            if (flag3 == 1) {
+                System.out.println("Unesite mesto, pocetni datum, krajnji datum, pocetno vreme i krajnje vreme za koje zelite da proverite slobodne termine u formatu: mesto dd/mm/yyyy dd/mm/yyyy hh:mm hh:mm");
+                linija = sc.nextLine();
+                String[] split = linija.split(" ");
+                return rasporedA.slobodniMestoDatumiPocetakKraj(split[0], split[1], split[2], split[3], split[4]);
+            }
+            System.out.println("Unesite mesto, datum, pocetno vreme i krajnje vreme za koje zelite da proverite slobodne termine u formatu: mesto dd/mm/yyyy hh:mm hh:mm");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniMestoDatumiPocetakKraj(split[0], split[1], "", split[2], split[3]);
+        } else if ((flag1 == 1 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 1 && flag6 == 1 && flag7 == 0) || (flag1 == 1 && flag2 == 1 && flag3 == 0 && flag4 == 1 && flag5 == 1 && flag6 == 1 && flag7 == 0)) {
+            if (flag3 == 1) {
+                System.out.println("Unesite mesto, pocetni datum, krajnji datum, pocetno vreme, krajnje vreme i dan za koji zelite da proverite slobodne termine u formatu: mesto dd/mm/yyyy dd/mm/yyyy hh:mm hh:mm DAN");
+                linija = sc.nextLine();
+                String[] split = linija.split(" ");
+                return rasporedA.slobodniMestoDatumiPocetakKrajDan(split[0], split[1], split[2], split[3], split[4], split[5]);
+            }
+            System.out.println("Unesite mesto, datum, pocetno vreme, krajnje vreme i dan za koje zelite da proverite slobodne termine u formatu: mesto dd/mm/yyyy hh:mm hh:mm DAN");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniMestoDatumiPocetakKrajDan(split[0], split[1], "", split[2], split[3], split[4]);
+        } else if ((flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 0 && flag6 == 0 && flag7 == 0) || (flag1 == 0 && flag2 == 1 && flag3 == 0 && flag4 == 1 && flag5 == 0 && flag6 == 0 && flag7 == 0)) {
+            if (flag3 == 1) {
+                System.out.println("Unesite pocetni datum, krajnji datum i pocetno vreme za koje zelite da proverite slobodne termine u formatu: dd/mm/yyyy dd/mm/yyyy hh:mm");
+                linija = sc.nextLine();
+                String[] split = linija.split(" ");
+                return rasporedA.slobodniDatumiPocetak(split[0], split[1], split[2]);
+            }
+            System.out.println("Unesite datum i pocetno vreme za koje zelite da proverite slobodne termine u formatu: dd/mm/yyyy hh:mm");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniDatumiPocetak(split[0], "", split[1]);
+        } else if ((flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 0 && flag5 == 0 && flag6 == 1 && flag7 == 0) || (flag1 == 0 && flag2 == 1 && flag3 == 0 && flag4 == 0 && flag5 == 0 && flag6 == 1 && flag7 == 0)) {
+            if (flag3 == 1) {
+                System.out.println("Unesite pocetni datum, krajnji datum i dan za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy dd/mm/yyyy DAN");
+                linija = sc.nextLine();
+                String[] split = linija.split(" ");
+                return rasporedA.slobodniDatumiDan(split[0], split[1], split[2]);
+            }
+            System.out.println("Unesite datum i dan za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy DAN");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniDatumiDan(split[0], "", split[1]);
+        } else if ((flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 1 && flag6 == 0 && flag7 == 0) || (flag1 == 0 && flag2 == 1 && flag3 == 0 && flag4 == 1 && flag5 == 1 && flag6 == 0 && flag7 == 0)) {
+            if (flag3 == 1) {
+                System.out.println("Unesite pocetni datum, krajnji datum, pocetno vreme i krajnje vreme za koje zelite da proverite slobodne termine u formatu: dd/mm/yyyy dd/mm/yyyy hh:mm hh:mm");
+                linija = sc.nextLine();
+                String[] split = linija.split(" ");
+                return rasporedA.slobodniDatumiPocetakKraj(split[0], split[1], split[2], split[3]);
+            }
+            System.out.println("Unesite datum, pocetno vreme i krajnje vreme za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy hh:mm hh:mm");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniDatumiPocetakKraj(split[0], "", split[1], split[2]);
+        } else if ((flag1 == 0 && flag2 == 1 && flag3 == 1 && flag4 == 1 && flag5 == 0 && flag6 == 1 && flag7 == 0) || (flag1 == 0 && flag2 == 1 && flag3 == 0 && flag4 == 1 && flag5 == 0 && flag6 == 1 && flag7 == 0)) {
+            if (flag3 == 1) {
+                System.out.println("Unesite pocetni datum, krajnji datum, pocetno vreme i dan za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy dd/mm/yyyy hh:mm DAN");
+                linija = sc.nextLine();
+                String[] split = linija.split(" ");
+                return rasporedA.slobodniDatumiPocetakDan(split[0], split[1], split[2], split[3]);
+            }
+            System.out.println("Unesite datum, pocetno vreme i dan za koji zelite da proverite slobodne termine u formatu: dd/mm/yyyy hh:mm DAN");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniDatumiPocetakDan(split[0], "", split[1], split[2]);
+        } else if (flag1 == 0 && flag2 == 0 && flag3 == 0 && flag4 == 1 && flag5 == 1 && flag6 == 0 && flag7 == 0) {
+            System.out.println("Unesite pocetno vreme i krajnje vreme za koje zelite da proverite slobodne termine u formatu: hh:mm hh:mm");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniPocetakKraj(split[0], split[1]);
+        } else if (flag1 == 0 && flag2 == 0 && flag3 == 0 && flag4 == 1 && flag5 == 1 && flag6 == 1 && flag7 == 0) {
+            System.out.println("Unesite pocetno vreme, krajnje vreme i dan za koji zelite da proverite slobodne termine u formatu: hh:mm hh:mm DAN");
+            linija = sc.nextLine();
+            String[] split = linija.split(" ");
+            return rasporedA.slobodniPocetakKrajDan(split[0], split[1], split[2]);
+        } else if (flag1 == 0 && flag2 == 0 && flag3 == 0 && flag4 == 0 && flag5 == 1 && flag6 == 0 && flag7 == 0) {
+            System.out.println("Unesite krajnje vreme za koje zelite da proverite slobodne termine u formatu: hh:mm");
+            linija = sc.nextLine();
+            return rasporedA.slobodniKraj(linija);
+        } else if (flag1 == 0 && flag2 == 0 && flag3 == 0 && flag4 == 0 && flag5 == 0 && flag6 == 1 && flag7 == 0) {
+            System.out.println("Unesite dan ili raspon dana za koji zelite da proverite slobodne termine u formatu: DAN ili DAN DAN");
+            linija = sc.nextLine();
+            if(linija.contains(" ")){
+                String[] split = linija.split(" ");
+                return rasporedA.slobodniDani(split[0], split[1]);
+            }
+            return rasporedA.slobodniPocetak(linija);
 
+        } else if (flag1 == 0 && flag2 == 0 && flag3 == 0 && flag4 == 1 && flag5 == 0 && flag6 == 0 && flag7 == 0) {
+            System.out.println("Unesite pocetno vreme za koje zelite da proverite slobodne termine u formatu: hh:mm");
+            linija = sc.nextLine();
+            return rasporedA.slobodniDan(linija);
+        }
 
         return null;
     }

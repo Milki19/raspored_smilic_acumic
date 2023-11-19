@@ -41,7 +41,7 @@ public abstract class RasporedA {
 
     //Slobodni termini
     public abstract void generisiSlobodneTermine(String pocetakRadnogVremena, String krajRadnogVremena, String pocetakDatum, String krajDatum);
-    public abstract List<Termin> slobodniDatumiPocetakVremeKrajVremeDan (String pocetakDatum, String krajDatum, String pocetakVreme, String krajVrene, String dan);
+    public abstract List<Termin> slobodniDatumiPocetakVremeKrajVremeDan (String pocetakDatum, String krajDatum, String pocetakVreme, String krajVreme, String dan);
     public abstract List<Termin> slobodniDatum(String datum);
     public abstract List<Termin> slobodniDatumi(String pDatum, String kDatum);
     public abstract List<Termin> slobodniDodatak(String dodatak);
@@ -57,11 +57,11 @@ public abstract class RasporedA {
     public abstract List<Termin> slobodniDatumiDan(String datum, String krajDatum, String dan);
     public abstract List<Termin> slobodniDatumiPocetakKraj(String datum, String krajDatum, String pocetakVreme, String krajVreme);
     public abstract List<Termin> slobodniDatumiPocetakDan(String datum, String krajDatum, String pocetakVreme, String dan);
-    public abstract List<Termin> slobodniDatumiPocetakKrajDan(String datum, String krajDatum, String pocetakVreme, String krajVreme, String dan);
     public abstract List<Termin> slobodniPocetak(String pocetakVreme);
     public abstract List<Termin> slobodniPocetakKraj(String pocetakVreme, String krajVreme);
     public abstract List<Termin> slobodniPocetakKrajDan(String pocetakVreme, String krajVreme, String dan);
     public abstract List<Termin> slobodniKraj(String krajVreme);
+    public abstract List<Termin> slobodniDani(String dan1, String dan2);
     public abstract List<Termin> slobodniDan(String dan);
 
 }

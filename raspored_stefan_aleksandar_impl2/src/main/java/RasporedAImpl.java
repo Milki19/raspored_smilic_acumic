@@ -180,11 +180,6 @@ public class RasporedAImpl extends RasporedA{
     }
 
     @Override
-    public List<Termin> slobodniDatumiPocetakKrajDan(String datum, String krajDatum, String pocetakVreme, String krajVreme, String dan) {
-        return null;
-    }
-
-    @Override
     public List<Termin> slobodniPocetak(String pocetakVreme) {
         return null;
     }
@@ -201,6 +196,11 @@ public class RasporedAImpl extends RasporedA{
 
     @Override
     public List<Termin> slobodniKraj(String krajVreme) {
+        return null;
+    }
+
+    @Override
+    public List<Termin> slobodniDani(String dan1, String dan2) {
         return null;
     }
 

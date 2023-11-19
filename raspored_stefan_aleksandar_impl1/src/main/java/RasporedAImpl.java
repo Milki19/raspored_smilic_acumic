@@ -190,7 +190,7 @@ public class RasporedAImpl extends RasporedA{
             }
         }else {
             for (Termin t : raspored.getSlobodniTermini()) {
-                if(t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme) && t.getDan().equals(dan) && t.getPocetakVreme().equals(pocetakVreme)) {
+                if(t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme) && t.getDan().equals(dan) && t.getDatum().equals(pocetakDatum)) {
                     raspored.getPretrazeno().add(t);
                 }
             }
@@ -199,6 +199,9 @@ public class RasporedAImpl extends RasporedA{
         for (Termin t : raspored.getPretrazeno()) {
             System.out.println(t);
         }
+
+        // 03/10/2023 03/11/2023 15:00 21:00 UTO
+        // 03/10/2023 15:00 21:00 UTO
 
         return raspored.getPretrazeno();
     }
@@ -225,9 +228,24 @@ public class RasporedAImpl extends RasporedA{
     public List<Termin> slobodniDatumiPocetak(String datum, String krajDatum, String pocetakVreme) {
         raspored.getPretrazeno().clear();
 
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme)){
-                raspored.getPretrazeno().add(t);
+        if(!(krajDatum.isEmpty())){
+            LocalDate prviDatum = LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            LocalDate drugiDatum = LocalDate.parse(krajDatum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+            for(Termin t : raspored.getSlobodniTermini()){
+                LocalDate d1 = LocalDate.parse(t.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                LocalDate d2 = LocalDate.parse(t.getKrajDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                if(d1.isAfter(prviDatum.minusDays(1)) && d2.isBefore(drugiDatum.plusDays(1))){
+                    if(t.getPocetakVreme().equals(pocetakVreme)) {
+                        raspored.getPretrazeno().add(t);
+                    }
+                }
+            }
+        }else {
+            for (Termin t : raspored.getSlobodniTermini()) {
+                if(t.getPocetakVreme().equals(pocetakVreme) && t.getDatum().equals(datum)) {
+                    raspored.getPretrazeno().add(t);
+                }
             }
         }
 
@@ -242,9 +260,24 @@ public class RasporedAImpl extends RasporedA{
     public List<Termin> slobodniDatumiDan(String datum, String krajDatum, String dan) {
         raspored.getPretrazeno().clear();
 
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getDatum().equals(datum) && t.getDan().equals(dan)){
-                raspored.getPretrazeno().add(t);
+        if(!(krajDatum.isEmpty())){
+            LocalDate prviDatum = LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            LocalDate drugiDatum = LocalDate.parse(krajDatum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+            for(Termin t : raspored.getSlobodniTermini()){
+                LocalDate d1 = LocalDate.parse(t.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                LocalDate d2 = LocalDate.parse(t.getKrajDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                if(d1.isAfter(prviDatum.minusDays(1)) && d2.isBefore(drugiDatum.plusDays(1))){
+                    if(t.getDan().equals(dan)) {
+                        raspored.getPretrazeno().add(t);
+                    }
+                }
+            }
+        }else {
+            for (Termin t : raspored.getSlobodniTermini()) {
+                if(t.getDan().equals(dan) && t.getDatum().equals(datum)) {
+                    raspored.getPretrazeno().add(t);
+                }
             }
         }
 
@@ -259,9 +292,24 @@ public class RasporedAImpl extends RasporedA{
     public List<Termin> slobodniDatumiPocetakKraj(String datum, String krajDatum, String pocetakVreme, String krajVreme) {
         raspored.getPretrazeno().clear();
 
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme)){
-                raspored.getPretrazeno().add(t);
+        if(!(krajDatum.isEmpty())){
+            LocalDate prviDatum = LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            LocalDate drugiDatum = LocalDate.parse(krajDatum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+            for(Termin t : raspored.getSlobodniTermini()){
+                LocalDate d1 = LocalDate.parse(t.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                LocalDate d2 = LocalDate.parse(t.getKrajDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                if(d1.isAfter(prviDatum.minusDays(1)) && d2.isBefore(drugiDatum.plusDays(1))){
+                    if(t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme)) {
+                        raspored.getPretrazeno().add(t);
+                    }
+                }
+            }
+        }else {
+            for (Termin t : raspored.getSlobodniTermini()) {
+                if(t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme) && t.getDatum().equals(datum)) {
+                    raspored.getPretrazeno().add(t);
+                }
             }
         }
 
@@ -276,26 +324,24 @@ public class RasporedAImpl extends RasporedA{
     public List<Termin> slobodniDatumiPocetakDan(String datum, String krajDatum, String pocetakVreme, String dan) {
         raspored.getPretrazeno().clear();
 
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getDan().equals(dan)){
-                raspored.getPretrazeno().add(t);
+        if(!(krajDatum.isEmpty())){
+            LocalDate prviDatum = LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            LocalDate drugiDatum = LocalDate.parse(krajDatum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+            for(Termin t : raspored.getSlobodniTermini()){
+                LocalDate d1 = LocalDate.parse(t.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                LocalDate d2 = LocalDate.parse(t.getKrajDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                if(d1.isAfter(prviDatum.minusDays(1)) && d2.isBefore(drugiDatum.plusDays(1))){
+                    if(t.getPocetakVreme().equals(pocetakVreme) && t.getDan().equals(dan)) {
+                        raspored.getPretrazeno().add(t);
+                    }
+                }
             }
-        }
-
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
-
-        return raspored.getPretrazeno();
-    }
-
-    @Override
-    public List<Termin> slobodniDatumiPocetakKrajDan(String datum, String krajDatum, String pocetakVreme, String krajVreme, String dan) {
-        raspored.getPretrazeno().clear();
-
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme) && t.getDan().equals(dan)){
-                raspored.getPretrazeno().add(t);
+        }else {
+            for (Termin t : raspored.getSlobodniTermini()) {
+                if(t.getPocetakVreme().equals(pocetakVreme) && t.getDan().equals(dan) && t.getDatum().equals(datum)) {
+                    raspored.getPretrazeno().add(t);
+                }
             }
         }
 
@@ -363,6 +409,74 @@ public class RasporedAImpl extends RasporedA{
 
         for(Termin t : raspored.getSlobodniTermini()){
             if(t.getKrajVreme().equals(krajVreme)){
+                raspored.getPretrazeno().add(t);
+            }
+        }
+
+        for(Termin t : raspored.getPretrazeno()){
+            System.out.println(t);
+        }
+
+        return raspored.getPretrazeno();
+    }
+
+    @Override
+    public List<Termin> slobodniDani(String dan1, String dan2) {
+        raspored.getPretrazeno().clear();
+        int cnt = 0, d1 = 0, d2 = 0;
+        if(dan1.equals("PON")){
+            d1 = 1;
+        }
+        if(dan1.equals("UTO")) {
+            d1 = 2;
+        }
+        if(dan1.equals("SRE")) {
+            d1 = 3;
+        }
+        if(dan1.equals("CET")) {
+            d1 = 4;
+        }
+        if(dan1.equals("PET")) {
+            d1 = 5;
+        }
+
+        if(dan2.equals("PON")){
+            d2 = 1;
+        }
+        if(dan2.equals("UTO")) {
+            d2 = 2;
+        }
+        if(dan2.equals("SRE")) {
+            d2 = 3;
+        }
+        if(dan2.equals("CET")) {
+            d2 = 4;
+        }
+        if(dan2.equals("PET")) {
+            d2 = 5;
+        }
+
+        // d1 = 2, d2 = 4
+
+        for(Termin t : raspored.getSlobodniTermini()){
+            if(t.getDan().equals("PON")){
+                cnt = 1;
+            }
+            if(t.getDan().equals("UTO")) {
+                cnt = 2;
+            }
+            if(t.getDan().equals("SRE")) {
+                cnt = 3;
+            }
+            if(t.getDan().equals("CET")) {
+                cnt = 4;
+            }
+            if(t.getDan().equals("PET")) {
+                cnt = 5;
+            }
+
+            // d1 = 2, cnt = 3, d2 = 4
+            if(cnt >= d1 && cnt <= d2){
                 raspored.getPretrazeno().add(t);
             }
         }
@@ -449,9 +563,24 @@ public class RasporedAImpl extends RasporedA{
     public List<Termin> slobodniMestoDatumi(String mesto, String datum, String krajDatum) {
         raspored.getPretrazeno().clear();
 
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getMesto().equals(mesto) && t.getDatum().equals(datum)){
-                raspored.getPretrazeno().add(t);
+        if(!(krajDatum.isEmpty())){
+            LocalDate prviDatum = LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            LocalDate drugiDatum = LocalDate.parse(krajDatum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+            for(Termin t : raspored.getSlobodniTermini()){
+                LocalDate d1 = LocalDate.parse(t.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                LocalDate d2 = LocalDate.parse(t.getKrajDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                if(d1.isAfter(prviDatum.minusDays(1)) && d2.isBefore(drugiDatum.plusDays(1))){
+                    if(t.getMesto().equals(mesto)) {
+                        raspored.getPretrazeno().add(t);
+                    }
+                }
+            }
+        }else {
+            for (Termin t : raspored.getSlobodniTermini()) {
+                if(t.getMesto().equals(mesto) && t.getDatum().equals(datum)) {
+                    raspored.getPretrazeno().add(t);
+                }
             }
         }
 
@@ -483,9 +612,24 @@ public class RasporedAImpl extends RasporedA{
     public List<Termin> slobodniMestoDatumiPocetak(String mesto, String datum, String krajDatum, String pocetakVreme) {
         raspored.getPretrazeno().clear();
 
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getMesto().equals(mesto) && t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme)){
-                raspored.getPretrazeno().add(t);
+        if(!(krajDatum.isEmpty())){
+            LocalDate prviDatum = LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            LocalDate drugiDatum = LocalDate.parse(krajDatum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+            for(Termin t : raspored.getSlobodniTermini()){
+                LocalDate d1 = LocalDate.parse(t.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                LocalDate d2 = LocalDate.parse(t.getKrajDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                if(d1.isAfter(prviDatum.minusDays(1)) && d2.isBefore(drugiDatum.plusDays(1))){
+                    if(t.getPocetakVreme().equals(pocetakVreme) && t.getMesto().equals(mesto)) {
+                        raspored.getPretrazeno().add(t);
+                    }
+                }
+            }
+        }else {
+            for (Termin t : raspored.getSlobodniTermini()) {
+                if(t.getPocetakVreme().equals(pocetakVreme) && t.getMesto().equals(mesto) && t.getDatum().equals(datum)) {
+                    raspored.getPretrazeno().add(t);
+                }
             }
         }
 
@@ -500,9 +644,24 @@ public class RasporedAImpl extends RasporedA{
     public List<Termin> slobodniMestoDatumiDan(String mesto, String datum, String krajDatum, String dan) {
         raspored.getPretrazeno().clear();
 
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getMesto().equals(mesto) && t.getDatum().equals(datum) && t.getDan().equals(dan)){
-                raspored.getPretrazeno().add(t);
+        if(!(krajDatum.isEmpty())){
+            LocalDate prviDatum = LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            LocalDate drugiDatum = LocalDate.parse(krajDatum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+            for(Termin t : raspored.getSlobodniTermini()){
+                LocalDate d1 = LocalDate.parse(t.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                LocalDate d2 = LocalDate.parse(t.getKrajDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                if(d1.isAfter(prviDatum.minusDays(1)) && d2.isBefore(drugiDatum.plusDays(1))){
+                    if(t.getMesto().equals(mesto) && t.getDan().equals(dan)) {
+                        raspored.getPretrazeno().add(t);
+                    }
+                }
+            }
+        }else {
+            for (Termin t : raspored.getSlobodniTermini()) {
+                if(t.getMesto().equals(mesto) && t.getDan().equals(dan) && t.getDatum().equals(datum)) {
+                    raspored.getPretrazeno().add(t);
+                }
             }
         }
 
@@ -534,9 +693,24 @@ public class RasporedAImpl extends RasporedA{
     public List<Termin> slobodniMestoDatumiPocetakKraj(String mesto, String datum, String krajDatum, String pocetakVreme, String krajVreme) {
         raspored.getPretrazeno().clear();
 
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getMesto().equals(mesto) && t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme)){
-                raspored.getPretrazeno().add(t);
+        if(!(krajDatum.isEmpty())){
+            LocalDate prviDatum = LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            LocalDate drugiDatum = LocalDate.parse(krajDatum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+            for(Termin t : raspored.getSlobodniTermini()){
+                LocalDate d1 = LocalDate.parse(t.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                LocalDate d2 = LocalDate.parse(t.getKrajDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                if(d1.isAfter(prviDatum.minusDays(1)) && d2.isBefore(drugiDatum.plusDays(1))){
+                    if(t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme) && t.getMesto().equals(mesto)) {
+                        raspored.getPretrazeno().add(t);
+                    }
+                }
+            }
+        }else {
+            for (Termin t : raspored.getSlobodniTermini()) {
+                if(t.getPocetakVreme().equals(pocetakVreme) && t.getMesto().equals(mesto) && t.getDatum().equals(datum) && t.getKrajVreme().equals(krajVreme)) {
+                    raspored.getPretrazeno().add(t);
+                }
             }
         }
 
@@ -551,9 +725,24 @@ public class RasporedAImpl extends RasporedA{
     public List<Termin> slobodniMestoDatumiPocetakKrajDan(String mesto, String datum, String krajDatum, String pocetakVreme, String krajVreme, String dan) {
         raspored.getPretrazeno().clear();
 
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getMesto().equals(mesto) && t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme) && t.getDan().equals(dan)){
-                raspored.getPretrazeno().add(t);
+        if(!(krajDatum.isEmpty())){
+            LocalDate prviDatum = LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            LocalDate drugiDatum = LocalDate.parse(krajDatum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+            for(Termin t : raspored.getSlobodniTermini()){
+                LocalDate d1 = LocalDate.parse(t.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                LocalDate d2 = LocalDate.parse(t.getKrajDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                if(d1.isAfter(prviDatum.minusDays(1)) && d2.isBefore(drugiDatum.plusDays(1))){
+                    if(t.getPocetakVreme().equals(pocetakVreme) && t.getDan().equals(dan) && t.getKrajVreme().equals(krajVreme) && t.getMesto().equals(mesto)) {
+                        raspored.getPretrazeno().add(t);
+                    }
+                }
+            }
+        }else {
+            for (Termin t : raspored.getSlobodniTermini()) {
+                if(t.getPocetakVreme().equals(pocetakVreme) && t.getDan().equals(dan) && t.getDatum().equals(datum)) {
+                    raspored.getPretrazeno().add(t);
+                }
             }
         }
 
