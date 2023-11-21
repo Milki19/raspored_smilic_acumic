@@ -953,6 +953,8 @@ public class RasporedAImpl extends RasporedA {
                         break;
                     case "datum":
                         termin.setDatum(record.get(columnIndex));
+                        break;
+                    case "krajDatum":
                         termin.setKrajDatum(record.get(columnIndex));
                         break;
                     case "dan":

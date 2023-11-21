@@ -1,0 +1,133 @@
+Mesto,Dan,Datum,KrajDatum,PocetakVreme,KrajVreme,Predmet,Profesor,Racunar
+Kolarac2,PON,02/10/2023,25/01/2024,11:15,13:00,Uvod u programiranje,Urosevic Dragan,NE
+Kolarac2,PON,02/10/2023,25/01/2024,13:15,15:00,Napredno veb programiranje,Vidakovic Milan,DA
+Kolarac3,PON,02/10/2023,25/01/2024,19:15,21:00,Diskretne strukture,Jeremic Adrijana,NE
+RAF01,PON,02/10/2023,25/01/2024,12:15,15:00,Uvod u softversko inzenjerstvo,Prvulovic Petar,NE
+RAF01,PON,02/10/2023,25/01/2024,17:15,19:00,Povezivanje mreza,Milovic Njegovan,NE
+RAF01,PON,02/10/2023,25/01/2024,19:15,21:00,Povezivanje mreza,Milovic Njegovan,NE
+RAF03,PON,02/10/2023,25/01/2024,09:15,11:00,IT servis menadzment,Pilipovic Dragoljub,NE
+RAF03,PON,02/10/2023,25/01/2024,09:15,11:00,Skladista podataka,Radenkovic Milos,NE
+RAF03,PON,02/10/2023,25/01/2024,19:15,21:00,Uvod u programiranje,Radenkovic Zarko,DA
+RAF04,PON,02/10/2023,25/01/2024,09:15,11:00,Poslovne aplikacije,Mijatovic Igor,DA
+RAF04,PON,02/10/2023,25/01/2024,11:15,13:00,Poslovne aplikacije,Mijatovic Igor,DA
+RAF04,PON,02/10/2023,25/01/2024,11:15,13:00,Poslovne aplikacije,Mijatovic Igor,DA
+RAF04,PON,02/10/2023,25/01/2024,13:15,15:00,Poslovne aplikacije,Mijatovic Igor,DA
+RAF04,PON,02/10/2023,25/01/2024,15:15,17:00,Poslovne aplikacije,Mijatovic Igor,DA
+RAF05,PON,02/10/2023,25/01/2024,11:15,13:00,Softverske komponente,Najdic Jefimija,NE
+RAF05,PON,02/10/2023,25/01/2024,13:15,15:00,Skript jezici,Ciganovic Igor,NE
+RAF05,PON,02/10/2023,25/01/2024,17:15,19:00,Verovatnoca i statistika,Maric Nevena,NE
+RAF07,PON,02/10/2023,25/01/2024,09:15,11:00,Konfiguracija i odrzavanje IP mreza,Pernar Veljko,NE
+RAF07,PON,02/10/2023,25/01/2024,14:15,16:00,Uvod u programiranje,Tomic Milan,DA
+RAF07,PON,02/10/2023,25/01/2024,16:15,18:00,Sistemi u realnom vremenu,Jovanovic Milos,NE
+RAF07,PON,02/10/2023,25/01/2024,18:15,20:00,Uvod u programiranje,Dejanovic Lazar,DA
+RAF09,PON,02/10/2023,25/01/2024,16:15,18:00,IT servis menadzment,Pilipovic Dragoljub,DA
+RAF11,PON,02/10/2023,25/01/2024,15:15,17:00,Povezivanje mreza,Bojovic Petar,DA
+RAF11,PON,02/10/2023,25/01/2024,17:15,19:00,Engleski 1,Cuk Bojana,NE
+RAF20,PON,02/10/2023,25/01/2024,13:15,16:00,Linearna algebra i analiticka geometrija,Gardasevic Filipovic Milanka,NE
+RAF20,PON,02/10/2023,25/01/2024,17:15,20:00,Linearna algebra i analiticka geometrija,Gardasevic Filipovic Milanka,NE
+RG07,PON,02/10/2023,25/01/2024,11:15,13:00,Uvod u programiranje,Najdic Jefimija,DA
+RG07,PON,02/10/2023,25/01/2024,15:15,17:00,Uvod u programiranje,Brnabic Mateja,DA
+Kolarac3,UTO,03/10/2023,25/01/2024,13:15,15:00,Engleski 1,Cuk Bojana,NE
+Kolarac3,UTO,03/10/2023,25/01/2024,13:15,15:00,Diskretne strukture,Jovanovic Irena,NE
+Kolarac3,UTO,03/10/2023,25/01/2024,15:15,17:00,Kombinatorika i teorija gRAFova,Jeremic Adrijana,DA
+Kolarac3,UTO,03/10/2023,25/01/2024,17:15,20:00,Linearna algebra i analiticka geometrija,Jerotijevic Marija,NE
+RAF01,UTO,03/10/2023,25/01/2024,12:15,14:00,Uvod u administraciju IP mreza,Zivanovic Marko,NE
+RAF01,UTO,03/10/2023,25/01/2024,15:15,17:00,Primenjena vestacka inteligencija,Tomic Milan,NE
+RAF02,UTO,03/10/2023,25/01/2024,13:15,15:00,Uvod u programiranje,Tomic Milan,DA
+RAF02,UTO,03/10/2023,25/01/2024,18:15,20:00,Uvod u programiranje,Stojanovic Mihajlo,DA
+RAF03,UTO,03/10/2023,25/01/2024,12:15,14:00,Programski prevodioci,Stojanovic Mihajlo,NE
+RAF03,UTO,03/10/2023,25/01/2024,14:15,15:00,IT servis menadzment,Pilipovic Dragoljub,NE
+RAF03,UTO,03/10/2023,25/01/2024,15:15,17:00,Uvod u programiranje,Arsenovic Arsen,DA
+RAF03,UTO,03/10/2023,25/01/2024,17:15,19:00,Uvod u programiranje,Arsenovic Arsen,DA
+RAF03,UTO,03/10/2023,25/01/2024,19:15,21:00,Uvod u programiranje,Redzic Nikola Jovan,DA
+RAF04,UTO,03/10/2023,25/01/2024,09:15,11:00,Poslovne aplikacije,Mijatovic Igor,DA
+RAF04,UTO,03/10/2023,25/01/2024,13:15,15:00,Poslovne aplikacije,Mijatovic Igor,DA
+RAF04,UTO,03/10/2023,25/01/2024,15:15,17:00,Poslovne aplikacije,Mijatovic Igor,DA
+RAF05,UTO,03/10/2023,25/01/2024,15:15,17:00,Verovatnoca i statistika,Maric Nevena,DA
+RAF06,UTO,03/10/2023,25/01/2024,17:15,19:00,Engleski 1,Cuk Bojana,NE
+RAF09,UTO,03/10/2023,25/01/2024,14:15,16:00,Upravljanje informacijama,Radenkovic Milos,DA
+RAF09,UTO,03/10/2023,25/01/2024,17:15,19:00,Sistemi u realnom vremenu,Jovanovic Milos,DA
+RAF11,UTO,03/10/2023,25/01/2024,14:15,16:00,Uvod u softversko inzenjerstvo,Mladenovic Marko,DA
+RAF14,UTO,03/10/2023,25/01/2024,15:15,18:00,GRAFicki projekti,Stojanovic Danica,NE
+RAF16,UTO,03/10/2023,25/01/2024,09:15,12:00,Multimedijalni projekti 1,Kukic Rastko,NE
+RAF16,UTO,03/10/2023,25/01/2024,12:15,15:00,Multimedijalni projekti 1,Kukic Rastko,NE
+RAF16,UTO,03/10/2023,25/01/2024,18:15,21:00,Multimedijalni projekti 1,Jonic Teodora,NE
+RAF20,UTO,03/10/2023,25/01/2024,15:15,17:00,Diskretne strukture,Jovanovic Irena,NE
+RAF21,UTO,03/10/2023,25/01/2024,13:15,15:00,Diskretne strukture,Jovanovic Irena,NE
+RAF21,UTO,03/10/2023,25/01/2024,15:15,17:00,Engleski 1,Cuk Bojana,NE
+RAF21,UTO,03/10/2023,25/01/2024,17:15,20:00,Diskretne strukture,Jeremic Adrijana,NE
+RG07,UTO,03/10/2023,25/01/2024,09:15,11:00,Testiranje softvera,Ivkovic Sava,NE
+RG07,UTO,03/10/2023,25/01/2024,13:15,15:00,Uvod u programiranje,Brnabic Mateja,DA
+RG07,UTO,03/10/2023,25/01/2024,13:15,15:00,Uvod u programiranje,Jovanovic Mladen,DA
+RG07,UTO,03/10/2023,25/01/2024,13:15,15:00,Programski prevodioci,Stojanovic Mihajlo,DA
+RG07,UTO,03/10/2023,25/01/2024,15:15,17:00,Verovatnoca i statistika,Maric Nevena,DA
+CET,SRE,04/10/2023,25/01/2024,11:15,13:00,Projektovanje racunarskih sistema,Radivojevic Mirjana,NE
+Kolarac3,SRE,04/10/2023,25/01/2024,11:15,13:00,Kombinatorika i teorija gRAFova,Jovanovic Irena,DA
+Kolarac3,SRE,04/10/2023,25/01/2024,16:15,19:00,Linearna algebra i analiticka geometrija,Gardasevic Filipovic Milanka,NE
+RAF01,SRE,04/10/2023,25/01/2024,11:15,13:00,Upravljanje informacijama,Stojanovic Mihajlo,NE
+RAF02,SRE,04/10/2023,25/01/2024,14:15,16:00,Skript jezici,Ciganovic Igor,NE
+RAF04,SRE,04/10/2023,25/01/2024,11:15,13:00,Poslovne aplikacije,Mijatovic Igor,DA
+RAF04,SRE,04/10/2023,25/01/2024,13:15,15:00,Poslovne aplikacije,Mijatovic Igor,DA
+RAF04,SRE,04/10/2023,25/01/2024,15:15,17:00,Poslovne aplikacije,Mijatovic Igor,DA
+RAF05,SRE,04/10/2023,25/01/2024,10:15,12:00,Uvod u programiranje,Matovic Vanja,DA
+RAF05,SRE,04/10/2023,25/01/2024,12:15,14:00,Uvod u programiranje,Jovanovic Mladen,DA
+RAF05,SRE,04/10/2023,25/01/2024,12:15,15:00,C# programiranje,Milosavljevic Milos,NE
+RAF05,SRE,04/10/2023,25/01/2024,14:15,16:00,Verovatnoca i statistika,Maric Nevena,NE
+RAF05,SRE,04/10/2023,25/01/2024,18:15,20:00,Verovatnoca i statistika,Maric Nevena,NE
+RAF06,SRE,04/10/2023,25/01/2024,16:15,18:00,Diskretne strukture,Jovanovic Irena,NE
+RAF07,SRE,04/10/2023,25/01/2024,10:15,12:00,Uvod u programiranje,Jovanovic Mladen,DA
+RAF07,SRE,04/10/2023,25/01/2024,18:15,20:00,Uvod u programiranje,Dejanovic Lazar,DA
+RAF07,SRE,04/10/2023,25/01/2024,18:15,20:00,Sistemsko programiranje,Jovanovic Milos,NE
+RAF09,SRE,04/10/2023,25/01/2024,14:15,16:00,Virtuelizovani mrezni sistemi,Bojovic Petar,DA
+RAF10,SRE,04/10/2023,25/01/2024,14:15,16:00,Projektovanje racunarskih sistema,Radivojevic Mirjana,DA
+RAF15,SRE,04/10/2023,25/01/2024,11:15,13:00,Dizajn i informacione tehnologije 1,Topuzovic Filip,NE
+RAF20,SRE,04/10/2023,25/01/2024,18:15,21:00,Linearna algebra i analiticka geometrija,Jovanovic Jelena,NE
+RAF21,SRE,04/10/2023,25/01/2024,19:15,21:00,Uvod u programiranje,Mladenovic Marko,NE
+RG01,SRE,04/10/2023,25/01/2024,16:15,18:00,Skript jezici,Ciganovic Igor,NE
+RG07,SRE,04/10/2023,25/01/2024,09:15,11:00,C# programiranje,Milosavljevic Milos,NE
+RG07,SRE,04/10/2023,25/01/2024,13:15,15:00,Uvod u programiranje,Redzic Nikola Jovan,DA
+Kolarac3,CET,05/10/2023,25/01/2024,11:15,13:00,Sistemsko programiranje,Jovanovic Milos,NE
+Kolarac3,CET,05/10/2023,25/01/2024,14:15,16:00,Primenjena vestacka inteligencija,Vasiljevic Jelena,NE
+RAF01,CET,05/10/2023,25/01/2024,09:15,11:00,Racunarska gRAFika,Dotlic Emilija,NE
+RAF01,CET,05/10/2023,25/01/2024,09:15,11:00,Skript jezici,Prvulovic Petar,NE
+RAF01,CET,05/10/2023,25/01/2024,13:15,15:00,Programski prevodioci,Stojanovic Mihajlo,NE
+RAF01,CET,05/10/2023,25/01/2024,15:15,17:00,Softverske komponente,Redzic Nikola Jovan,NE
+RAF01,CET,05/10/2023,25/01/2024,17:15,19:00,Uvod u programiranje,Radenkovic Zarko,DA
+RAF03,CET,05/10/2023,25/01/2024,11:15,13:00,Racunarska gRAFika,Masulovic Dragan,NE
+RAF04,CET,05/10/2023,25/01/2024,09:15,11:00,Verovatnoca i statistika,Maric Nevena,NE
+RAF04,CET,05/10/2023,25/01/2024,11:15,13:00,Poslovne aplikacije,Mijatovic Igor,DA
+RAF04,CET,05/10/2023,25/01/2024,13:15,15:00,Poslovne aplikacije,Mijatovic Igor,DA
+RAF04,CET,05/10/2023,25/01/2024,15:15,17:00,Uvod u programiranje,Tomic Milan,DA
+RAF04,CET,05/10/2023,25/01/2024,15:15,17:00,Verovatnoca i statistika,Maric Nevena,NE
+RAF05,CET,05/10/2023,25/01/2024,15:15,18:00,SQL programiranje,Popovic Snezana,NE
+RAF05,CET,05/10/2023,25/01/2024,18:15,21:00,SQL programiranje,Popovic Snezana,NE
+RAF06,CET,05/10/2023,25/01/2024,14:15,16:00,Konfiguracija i odrzavanje IP mreza,Bojovic Petar,DA
+RAF06,CET,05/10/2023,25/01/2024,16:15,18:00,Uvod u administraciju IP mreza,Bojovic Petar,DA
+RAF07,CET,05/10/2023,25/01/2024,11:15,13:00,Uvod u programiranje,Redzic Nikola Jovan,DA
+RAF07,CET,05/10/2023,25/01/2024,15:15,17:00,Uvod u programiranje,Matovic Vanja,DA
+RAF09,CET,05/10/2023,25/01/2024,14:15,16:00,Geometrijski algoritmi,Urosevic Dragan,DA
+RAF09,CET,05/10/2023,25/01/2024,16:15,18:00,Geometrijski algoritmi,Urosevic Dragan,DA
+RAF13,CET,05/10/2023,25/01/2024,11:15,13:00,Osnovi animacije,Djuric Milan,NE
+RAF14,CET,05/10/2023,25/01/2024,13:15,14:00,Dizajn i informacione tehnologije 1,Topuzovic Filip,NE
+RAF14,CET,05/10/2023,25/01/2024,14:15,16:00,Osnovi animacije,Koturanovic Aleksandar,NE
+RAF14,CET,05/10/2023,25/01/2024,16:15,19:00,Multimedijalni projekti 1,Jonic Teodora,NE
+RAF20,CET,05/10/2023,25/01/2024,18:15,21:00,Linearna algebra i analiticka geometrija,Jovanovic Jelena,NE
+RAF21,CET,05/10/2023,25/01/2024,13:15,15:00,Uvod u programiranje,Mladenovic Marko,NE
+RAF21,CET,05/10/2023,25/01/2024,17:15,19:00,Programski prevodioci,Vujosevic Dusan,DA
+RG02,CET,05/10/2023,25/01/2024,15:15,17:00,Uvod u programiranje,Stojanovic Mihajlo,DA
+RG04,CET,05/10/2023,25/01/2024,15:15,17:00,Veliki podaci,Najdic Jefimija,NE
+RG07,CET,05/10/2023,25/01/2024,09:15,11:00,Virtuelizovani mrezni sistemi,Zivanovic Marko,DA
+RG07,CET,05/10/2023,25/01/2024,11:15,13:00,Uvod u programiranje,Najdic Jefimija,DA
+RG07,CET,05/10/2023,25/01/2024,13:15,15:00,Uvod u programiranje,Najdic Jefimija,DA
+Kolarac3,PET,06/10/2023,25/01/2024,14:15,17:00,Linearna algebra i analiticka geometrija,Gardasevic Filipovic Milanka,NE
+RAF06,PET,06/10/2023,25/01/2024,17:15,19:00,Engleski 1,Cuk Bojana,NE
+RAF08,PET,06/10/2023,25/01/2024,15:15,17:00,Skladista podataka,Popovic Snezana,DA
+RAF13,PET,06/10/2023,25/01/2024,18:15,20:00,Osnovi animacije,Djuric Milan,NE
+RAF14,PET,06/10/2023,25/01/2024,12:15,15:00,GRAFicki projekti,Stojanovic Danica,NE
+RAF20,PET,06/10/2023,25/01/2024,13:15,15:00,Paralelni algoritmi,Rakocevic Goran,DA
+RAF20,PET,06/10/2023,25/01/2024,15:15,18:00,Linearna algebra i analiticka geometrija,Jerotijevic Marija,NE
+RAF20,PET,06/10/2023,25/01/2024,18:15,21:00,Diskretne strukture,Jeremic Adrijana,NE
+RAF21,PET,06/10/2023,25/01/2024,10:15,12:00,Engleski 1,Cuk Bojana,NE
+RAF21,PET,06/10/2023,25/01/2024,12:15,15:00,Linearna algebra i analiticka geometrija,Jerotijevic Marija,NE
+RAF21,PET,06/10/2023,25/01/2024,14:15,17:00,Linearna algebra i analiticka geometrija,Gardasevic Filipovic Milanka,NE
+RG07,PET,06/10/2023,25/01/2024,12:15,15:00,Uvod u programiranje,Najdic Jefimija,DA

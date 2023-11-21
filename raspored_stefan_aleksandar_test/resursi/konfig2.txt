@@ -1,0 +1,9 @@
+0 Mesto mesto
+1 Dan dan
+2 Datum datum
+3 KrajDatum krajDatum
+4 PocetakVreme pocetakVreme
+5 KrajVreme krajVreme
+6 Predmet dodaci
+7 Profesor dodaci
+8 Racunar dodaci
