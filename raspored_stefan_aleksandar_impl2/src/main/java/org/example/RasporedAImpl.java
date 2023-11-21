@@ -1,3 +1,5 @@
+package org.example;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.apache.commons.csv.CSVFormat;
@@ -10,166 +12,99 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import java.io.*;
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class RasporedAImpl extends RasporedA{
+public class RasporedAImpl extends RasporedA {
+
+
+
 
     public RasporedAImpl(){
         this.raspored = new Raspored();
     }
 
-
     @Override
     public void generisiSlobodneTermine(String pocetakRadnogVremena, String krajRadnogVremena, String pocetakDatum, String krajDatum) {
+
+        dodajDaneiMestoDatum();
+        raspored.getSviTermini().sort(Termin.getComparator());
+
         LocalTime pocetak = LocalTime.parse(pocetakRadnogVremena);
         LocalTime kraj = LocalTime.parse(krajRadnogVremena);
         List<Termin> slobodniTermini = raspored.getSlobodniTermini();
-        dodajDaneiMestoDatum();
 
+        LocalTime pocetniSledeci = pocetak;
 
         for (String d : raspored.getDani()) {
-            for (String dat : raspored.getDatumi()) {
-                for (String m : raspored.getMesta()) {
-                    for (Termin t : raspored.getSviTermini()) {
-                        LocalTime pocetniSledeci = pocetak;
-                        LocalTime tPV = LocalTime.parse(t.getPocetakVreme());
-                        LocalTime tKV = LocalTime.parse(t.getKrajVreme());
-                        if (d.equals(t.getDan()) && m.equals(t.getMesto()) && dat.equals(t.getDatum())) {
-                            if (pocetniSledeci.isBefore(tPV) && !(kraj.equals(tKV))) {
-                                //String mesto, String dan, String datum, String pocetakVreme, String krajVreme
-                                Termin slobodanTermin = new Termin(m, d, t.getDatum(), pocetniSledeci.toString(), tPV.toString());
-                                if (!slobodniTermini.contains(slobodanTermin)) {
-                                    slobodniTermini.add(slobodanTermin);
+            for (String m : raspored.getMesta()) {
+                for (Termin t : raspored.getSviTermini()) {
 
+                    LocalTime tPV = LocalTime.parse(t.getPocetakVreme());
+                    LocalTime tKV = LocalTime.parse(t.getKrajVreme());
+
+                    if (t.getDan().equalsIgnoreCase(d) && t.getMesto().equalsIgnoreCase(m)) {
+                        //org.example.Termin poredjenje = new org.example.Termin(m, d, t.getDatum(), t.getKrajDatum(), pocetniSledeci.toString(), krajRadnogVremena);
+
+
+                        if (pocetniSledeci.isBefore(tPV) && !pocetniSledeci.equals(tPV)) {
+                            Termin termin = new Termin(m, t.getDan(), t.getDatum(), t.getKrajDatum(), pocetniSledeci.toString(), t.getPocetakVreme());
+                            if (!slobodniTermini.contains(termin) && !raspored.getSviTermini().contains(termin)) {
+                                if (!slobodniTermini.contains(termin)) {
+                                    slobodniTermini.add(termin);
                                 }
-                                pocetniSledeci = tKV;
                             }
-                            if (!(pocetniSledeci.isBefore(tKV) && pocetniSledeci.isAfter(tPV))) {
-                                Termin slobodanTermin = new Termin(m, d, t.getDatum(), pocetniSledeci.toString(), krajRadnogVremena);
-                                if (!slobodniTermini.contains(slobodanTermin)) {
-                                    slobodniTermini.add(slobodanTermin);
-                                }
-                            }
+                            pocetniSledeci = tKV;
+                            continue;
                         }
-                        pocetniSledeci = tKV;
 
+                        pocetniSledeci = tKV;
                     }
                 }
+
+                pocetniSledeci = pocetak;
             }
+
         }
 
-        slobodniTermini.removeIf(s -> s.getPocetakVreme().equals(pocetakRadnogVremena) && s.getKrajVreme().equals(krajRadnogVremena));
+        slobodniTermini.removeIf(s -> s.getPocetakVreme().equals(s.getKrajVreme()) && s.getKrajVreme().equals(s.getPocetakVreme()) && s.getPocetakVreme().equals(pocetakRadnogVremena) && s.getKrajVreme().equals(krajRadnogVremena));
 
-        List<Termin> temp = new ArrayList<>();
-
-        for(String dat : raspored.getDatumi()){
+        Termin prethodni = new Termin();
+        for(String dan : raspored.getDani()) {
             for(String mesto : raspored.getMesta()){
                 for(Termin t : slobodniTermini){
-                    if(t.getDatum().equals(dat)){
-                        if(!t.getMesto().equals(mesto)){
-                            //String mesto, String dan, String datum, String pocetakVreme, String krajVreme
-                            Termin termin = new Termin(mesto, t.getDan(), dat, pocetakRadnogVremena, krajRadnogVremena);
-                            if(!slobodniTermini.contains(termin)) {
-                                if(!temp.contains(termin)) {
-                                    temp.add(termin);
-                                }
-                            }
-                        }
+
+                    if (dan.equalsIgnoreCase(t.getDan()) && mesto.equalsIgnoreCase(t.getMesto())) {
+                        prethodni = t;
+                    }
+                }
+                if (!prethodni.getKrajVreme().equals(krajRadnogVremena)) {
+                    Termin novi = new Termin(mesto, dan, prethodni.getDatum(), prethodni.getKrajDatum(), prethodni.getPocetakVreme(), krajRadnogVremena);
+                    if (!slobodniTermini.contains(novi) && !raspored.getSviTermini().contains(novi)) {
+                        slobodniTermini.remove(prethodni);
+                        slobodniTermini.add(novi);
                     }
                 }
             }
         }
-
-        slobodniTermini.addAll(temp);
 
         slobodniTermini.sort(Termin.getComparator());
     }
 
     private void dodajDaneiMestoDatum() {
         for (Termin t : raspored.getSviTermini()) {
-            if (!raspored.getDani().contains(t.getDan())) {
-                raspored.getDani().add(t.getDan());
+            if (!raspored.getDani().contains(t.getDan().toUpperCase())) {
+                raspored.getDani().add(t.getDan().toUpperCase());
             }
-            if (!raspored.getMesta().contains(t.getMesto())){
-                raspored.getMesta().add(t.getMesto());
+            if (!raspored.getMesta().contains(t.getMesto().toUpperCase())){
+                raspored.getMesta().add(t.getMesto().toUpperCase());
             }
             if (!raspored.getDatumi().contains(t.getDatum())) {
                 raspored.getDatumi().add(t.getDatum());
             }
         }
-    }
-    private static List<Konfiguracija> citajKonfiguraciju(String configPath) throws FileNotFoundException {
-
-        List<Konfiguracija> mapiranje = new ArrayList<>();
-
-        File file = new File(configPath);
-        Scanner sc = new Scanner(file);
-
-        while (sc.hasNextLine()){
-            String line = sc.nextLine();
-            String[] split = line.split(" ", 3);
-
-            mapiranje.add(new Konfiguracija(Integer.valueOf(split[0]), split[1], split[2]));
-        }
-
-        sc.close();
-
-
-        return mapiranje;
-    }
-
-    @Override
-    public void ucitajCSV(String path, String configPath) throws IOException {
-        List<Konfiguracija> mapiranje = citajKonfiguraciju(configPath);
-        Map<Integer, String> mapa = new HashMap<>();
-
-        for (Konfiguracija konfiguracija : mapiranje) {
-            mapa.put(konfiguracija.getIndex(), konfiguracija.getOriginal());
-        }
-
-        FileReader fileReader = new FileReader(path);
-        CSVParser csvParser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(fileReader);
-
-        for (CSVRecord record : csvParser) {
-            Termin termin = new Termin();
-
-            for (Konfiguracija konfiguracija : mapiranje) {
-                int columnIndex = konfiguracija.getIndex();
-
-                String columnName = konfiguracija.getCustom();
-
-                switch (mapa.get(columnIndex)) {
-                    case "mesto":
-                        termin.setMesto(record.get(columnIndex));
-                        break;
-                    case "datum":
-                        termin.setDatum(record.get(columnIndex));
-                        termin.setKrajDatum(record.get(columnIndex));
-                        break;
-                    case "dan":
-                        termin.setDan(record.get(columnIndex));
-                        break;
-                    case "pocetakVreme":
-                        termin.setPocetakVreme(record.get(columnIndex));
-                        break;
-                    case "krajVreme":
-                        termin.setKrajVreme(record.get(columnIndex));
-                        break;
-                    case "dodaci":
-                        termin.getDodaci().put(columnName, record.get(columnIndex));
-                        break;
-                }
-
-            }
-
-            raspored.getSviTermini().add(termin);
-
-        }
-
     }
 
     @Override
@@ -219,176 +154,6 @@ public class RasporedAImpl extends RasporedA{
         }
 
         return getRaspored().getPretrazeno();
-    }
-
-    @Override
-    public List<Termin> slobodniDatumiPocetak(String datum, String krajDatum, String pocetakVreme) {
-        raspored.getPretrazeno().clear();
-
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme)){
-                raspored.getPretrazeno().add(t);
-            }
-        }
-
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
-
-        return raspored.getPretrazeno();
-    }
-
-    @Override
-    public List<Termin> slobodniDatumiDan(String datum, String krajDatum, String dan) {
-        raspored.getPretrazeno().clear();
-
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getDatum().equals(datum) && t.getDan().equals(dan)){
-                raspored.getPretrazeno().add(t);
-            }
-        }
-
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
-
-        return raspored.getPretrazeno();
-    }
-
-    @Override
-    public List<Termin> slobodniDatumiPocetakKraj(String datum, String krajDatum, String pocetakVreme, String krajVreme) {
-        raspored.getPretrazeno().clear();
-
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme)){
-                raspored.getPretrazeno().add(t);
-            }
-        }
-
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
-
-        return raspored.getPretrazeno();
-    }
-
-    @Override
-    public List<Termin> slobodniDatumiPocetakDan(String datum, String krajDatum, String pocetakVreme, String dan) {
-        raspored.getPretrazeno().clear();
-
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getDan().equals(dan)){
-                raspored.getPretrazeno().add(t);
-            }
-        }
-
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
-
-        return raspored.getPretrazeno();
-    }
-
-    @Override
-    public List<Termin> slobodniDatumiPocetakKrajDan(String datum, String krajDatum, String pocetakVreme, String krajVreme, String dan) {
-        raspored.getPretrazeno().clear();
-
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme) && t.getDan().equals(dan)){
-                raspored.getPretrazeno().add(t);
-            }
-        }
-
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
-
-        return raspored.getPretrazeno();
-    }
-
-    @Override
-    public List<Termin> slobodniPocetak(String pocetakVreme) {
-        raspored.getPretrazeno().clear();
-
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getPocetakVreme().equals(pocetakVreme)){
-                raspored.getPretrazeno().add(t);
-            }
-        }
-
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
-
-        return raspored.getPretrazeno();
-    }
-
-    @Override
-    public List<Termin> slobodniPocetakKraj(String pocetakVreme, String krajVreme) {
-        raspored.getPretrazeno().clear();
-
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme)){
-                raspored.getPretrazeno().add(t);
-            }
-        }
-
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
-
-        return raspored.getPretrazeno();
-    }
-
-    @Override
-    public List<Termin> slobodniPocetakKrajDan(String pocetakVreme, String krajVreme, String dan) {
-        raspored.getPretrazeno().clear();
-
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme) && t.getDan().equals(dan)){
-                raspored.getPretrazeno().add(t);
-            }
-        }
-
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
-
-        return raspored.getPretrazeno();
-    }
-
-    @Override
-    public List<Termin> slobodniKraj(String krajVreme) {
-        raspored.getPretrazeno().clear();
-
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getKrajVreme().equals(krajVreme)){
-                raspored.getPretrazeno().add(t);
-            }
-        }
-
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
-
-        return raspored.getPretrazeno();
-    }
-
-    @Override
-    public List<Termin> slobodniDan(String dan) {
-        raspored.getPretrazeno().clear();
-
-        for(Termin t : raspored.getSlobodniTermini()){
-            if(t.getDan().equals(dan)){
-                raspored.getPretrazeno().add(t);
-            }
-        }
-
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
-
-        return raspored.getPretrazeno();
     }
 
     @Override
@@ -564,21 +329,225 @@ public class RasporedAImpl extends RasporedA{
         return raspored.getPretrazeno();
     }
 
-    @Override
-    public void obrisiTermin(Raspored raspored, String mesto, String dan, String datum, String pocetakVreme, String krajVreme, String dodaci) {
-        DodatneFunkcionalnosti df = new DodatneFunkcionalnosti();
-        Termin zaBrisanje = new Termin(mesto, dan, datum, pocetakVreme, krajVreme);
 
-        df.obrisiTermin(raspored, zaBrisanje);
+    @Override
+    public List<Termin> slobodniDatumiPocetak(String datum, String krajDatum, String pocetakVreme) {
+        raspored.getPretrazeno().clear();
+
+        for(Termin t : raspored.getSlobodniTermini()){
+            if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme)){
+                raspored.getPretrazeno().add(t);
+            }
+        }
+
+        for(Termin t : raspored.getPretrazeno()){
+            System.out.println(t);
+        }
+
+        return raspored.getPretrazeno();
+    }
+
+    @Override
+    public List<Termin> slobodniDatumiDan(String datum, String krajDatum, String dan) {
+        raspored.getPretrazeno().clear();
+
+        for(Termin t : raspored.getSlobodniTermini()){
+            if(t.getDatum().equals(datum) && t.getDan().equals(dan)){
+                raspored.getPretrazeno().add(t);
+            }
+        }
+
+        for(Termin t : raspored.getPretrazeno()){
+            System.out.println(t);
+        }
+
+        return raspored.getPretrazeno();
+    }
+
+    @Override
+    public List<Termin> slobodniDatumiPocetakKraj(String datum, String krajDatum, String pocetakVreme, String krajVreme) {
+        raspored.getPretrazeno().clear();
+
+        for(Termin t : raspored.getSlobodniTermini()){
+            if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme)){
+                raspored.getPretrazeno().add(t);
+            }
+        }
+
+        for(Termin t : raspored.getPretrazeno()){
+            System.out.println(t);
+        }
+
+        return raspored.getPretrazeno();
+    }
+
+    @Override
+    public List<Termin> slobodniDatumiPocetakDan(String datum, String krajDatum, String pocetakVreme, String dan) {
+        raspored.getPretrazeno().clear();
+
+        for(Termin t : raspored.getSlobodniTermini()){
+            if(t.getDatum().equals(datum) && t.getPocetakVreme().equals(pocetakVreme) && t.getDan().equals(dan)){
+                raspored.getPretrazeno().add(t);
+            }
+        }
+
+        for(Termin t : raspored.getPretrazeno()){
+            System.out.println(t);
+        }
+
+        return raspored.getPretrazeno();
+    }
+
+    @Override
+    public List<Termin> slobodniPocetak(String pocetakVreme) {
+        raspored.getPretrazeno().clear();
+
+        for(Termin t : raspored.getSlobodniTermini()){
+            if(t.getPocetakVreme().equals(pocetakVreme)){
+                raspored.getPretrazeno().add(t);
+            }
+        }
+
+        for(Termin t : raspored.getPretrazeno()){
+            System.out.println(t);
+        }
+
+        return raspored.getPretrazeno();
+    }
+
+    @Override
+    public List<Termin> slobodniPocetakKraj(String pocetakVreme, String krajVreme) {
+        raspored.getPretrazeno().clear();
+
+        for(Termin t : raspored.getSlobodniTermini()){
+            if(t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme)){
+                raspored.getPretrazeno().add(t);
+            }
+        }
+
+        for(Termin t : raspored.getPretrazeno()){
+            System.out.println(t);
+        }
+
+        return raspored.getPretrazeno();
+    }
+
+    @Override
+    public List<Termin> slobodniPocetakKrajDan(String pocetakVreme, String krajVreme, String dan) {
+        raspored.getPretrazeno().clear();
+
+        for(Termin t : raspored.getSlobodniTermini()){
+            if(t.getPocetakVreme().equals(pocetakVreme) && t.getKrajVreme().equals(krajVreme) && t.getDan().equals(dan)){
+                raspored.getPretrazeno().add(t);
+            }
+        }
+
+        for(Termin t : raspored.getPretrazeno()){
+            System.out.println(t);
+        }
+
+        return raspored.getPretrazeno();
+    }
+
+    @Override
+    public List<Termin> slobodniKraj(String krajVreme) {
+        raspored.getPretrazeno().clear();
+
+        for(Termin t : raspored.getSlobodniTermini()){
+            if(t.getKrajVreme().equals(krajVreme)){
+                raspored.getPretrazeno().add(t);
+            }
+        }
+
+        for(Termin t : raspored.getPretrazeno()){
+            System.out.println(t);
+        }
+
+        return raspored.getPretrazeno();
+    }
+
+    @Override
+    public List<Termin> slobodniDani(String dan1, String dan2) {
+        raspored.getPretrazeno().clear();
+        int cnt = 0, d1 = 0, d2 = 0;
+
+        int i = 1;
+
+        for(String dan : getRaspored().getDani()){
+            if(dan1.equals(dan)){
+                d1 = i;
+                break;
+            }
+            i++;
+        }
+        i = 1;
+        for(String dan : getRaspored().getDani()){
+            if(dan2.equals(dan)){
+                d2 = i;
+                break;
+            }
+            i++;
+        }
+
+        for(Termin t : raspored.getSlobodniTermini()){
+            i = 1;
+            for(String dan : raspored.getDani()){
+                if(t.getDan().equals(dan)){
+                    cnt = i;
+                    break;
+                }
+                i++;
+            }
+
+            if(cnt >= d1 && cnt <= d2){
+                raspored.getPretrazeno().add(t);
+            }
+        }
+
+        for(Termin t : raspored.getPretrazeno()){
+            System.out.println(t);
+        }
+
+        return raspored.getPretrazeno();
+    }
+
+    @Override
+    public List<Termin> slobodniDan(String dan) {
+        raspored.getPretrazeno().clear();
+
+        for(Termin t : raspored.getSlobodniTermini()){
+            if(t.getDan().equals(dan)){
+                raspored.getPretrazeno().add(t);
+            }
+        }
+
+        for(Termin t : raspored.getPretrazeno()){
+            System.out.println(t);
+        }
+
+        return raspored.getPretrazeno();
     }
 
 
     @Override
-    public void dodajTermin(Raspored raspored, String mesto, String dan, String datum, String pocetakVreme, String krajVreme, String dodaci){
+    public void dodajTermin(Raspored raspored, Termin termin){
+        DodatneFunkcionalnosti df = new DodatneFunkcionalnosti();
+        raspored.getSlobodniTermini().clear();
+        df.dodajNoviTermin(getRaspored(), termin);
+        generisiSlobodneTermine(raspored.pocetakRadnogVremena, raspored.krajRadnogVremena, raspored.getPocetakDatum(), raspored.getKrajDatum());
+    }
+
+    @Override
+    public void obrisiTermin(Raspored raspored, Termin termin) {
         DodatneFunkcionalnosti df = new DodatneFunkcionalnosti();
 
-        df.dodajNoviTermin(raspored, mesto, dan, datum, "", pocetakVreme, krajVreme, dodaci);
+        raspored.getSlobodniTermini().clear();
+        raspored.getSviTermini().remove(termin);
+        generisiSlobodneTermine(raspored.pocetakRadnogVremena, raspored.krajRadnogVremena, raspored.getPocetakDatum(), raspored.getKrajDatum());
+
+        //df.obrisiTermin(raspored, termin);
     }
+
 
     @Override
     public void izmeniTermin(Raspored raspored, Termin kojiHocemoDaMenjamo, Termin saCimeMenjamo) {
@@ -589,6 +558,10 @@ public class RasporedAImpl extends RasporedA{
         raspored.getSviTermini().remove(kojiHocemoDaMenjamo);
         raspored.getSviTermini().add(saCimeMenjamo);
         raspored.getSviTermini().sort(Termin.getComparator());
+
+        for(Termin t : getRaspored().getSviTermini()){
+            System.out.println(t);
+        }
 
         generisiSlobodneTermine(raspored.pocetakRadnogVremena, raspored.krajRadnogVremena, raspored.pocetakRasporeda, raspored.krajRasporeda);
     }
@@ -836,7 +809,7 @@ public class RasporedAImpl extends RasporedA{
     }
 
     @Override
-    public void exportPDF(String path) throws IOException{
+    public void exportPDF(String path, List<Termin> termini, String location) throws IOException{
 
         PDDocument document = new PDDocument();
         PDPage page = new PDPage();
@@ -851,7 +824,7 @@ public class RasporedAImpl extends RasporedA{
         contentStream.beginText();
         contentStream.newLineAtOffset(100, y);
 
-        for (Termin t : this.raspored.getSviTermini()) {
+        for (Termin t : termini) {
             if (y < yGranica) {
                 contentStream.endText();
                 contentStream.close();
@@ -879,39 +852,30 @@ public class RasporedAImpl extends RasporedA{
         contentStream.endText();
         contentStream.close();
 
-        System.out.println("Unesite destinaciju na kojoj zelite da bude fajl: ");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
+        System.err.println(location + path);
 
-        document.save(linija + path);
+        document.save(location + path);
         document.close();
     }
 
 
-
     @Override
-    public void exportJSON(String path) throws IOException{
+    public void exportJSON(String path, List<Termin> termini, String location) throws IOException{
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String json = ow.writeValueAsString(raspored);
-        System.out.println("Unesite destinaciju na kojoj zelite da bude fajl: ");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
+        String json = ow.writeValueAsString(termini);
 
-        FileWriter fw = new FileWriter(linija + path);
+        FileWriter fw = new FileWriter(location + path);
         fw.write(json);
 
         fw.close();
     }
 
     @Override
-    public void exportCSV(String path) throws IOException {
-        System.out.println("Unesite destinaciju na kojoj zelite da bude fajl: ");
-        Scanner sc = new Scanner(System.in);
-        String linija = sc.nextLine();
-        FileWriter fileWriter = new FileWriter(linija + path);
+    public void exportCSV(String path, List<Termin> termini, String location) throws IOException {
+        FileWriter fileWriter = new FileWriter(location + path);
         CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT);
 
-        for (Termin termin : super.raspored.getSviTermini()) {
+        for (Termin termin : termini) {
             csvPrinter.printRecord(
                     termin.getDan() + ", "
                             + termin.getDatum() + " "
@@ -925,21 +889,83 @@ public class RasporedAImpl extends RasporedA{
         fileWriter.close();
     }
 
-    @Override
-    public void ucitajJSON(String path) throws IOException {
+    public void ucitajJSON(String path) throws IOException{
         ObjectMapper mapper = new ObjectMapper();
         raspored = mapper.readValue(new File(path), Raspored.class);
 //        Collections.sort(raspored.getSviTermini(), Comparator
-//                .comparing(Termin::getDan)
-//                .thenComparing(Termin::getDatum)
-//                .thenComparing(Termin::getPocetakVreme));
+//                .comparing(org.example.Termin::getDan)
+//                .thenComparing(org.example.Termin::getDatum)
+//                .thenComparing(org.example.Termin::getPocetakVreme));
 //        dodajKrajDatum();
     }
 
-    public void dodajKrajDatum(){
-        for(Termin t : getRaspored().getSviTermini()){
-            t.setKrajDatum(t.getDatum());
+    private static List<Konfiguracija> citajKonfiguraciju(String configPath) throws FileNotFoundException {
+
+        List<Konfiguracija> mapiranje = new ArrayList<>();
+
+        File file = new File(configPath);
+        Scanner sc = new Scanner(file);
+
+        while (sc.hasNextLine()){
+            String line = sc.nextLine();
+            String[] split = line.split(" ", 3);
+
+            mapiranje.add(new Konfiguracija(Integer.valueOf(split[0]), split[1], split[2]));
         }
+
+        sc.close();
+
+
+        return mapiranje;
+    }
+
+    @Override
+    public void ucitajCSV(String path, String configPath) throws IOException {
+        List<Konfiguracija> mapiranje = citajKonfiguraciju(configPath);
+        Map<Integer, String> mapa = new HashMap<>();
+
+        for (Konfiguracija konfiguracija : mapiranje) {
+            mapa.put(konfiguracija.getIndex(), konfiguracija.getOriginal());
+        }
+
+        FileReader fileReader = new FileReader(path);
+        CSVParser csvParser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(fileReader);
+
+        for (CSVRecord record : csvParser) {
+            Termin termin = new Termin();
+
+            for (Konfiguracija konfiguracija : mapiranje) {
+                int columnIndex = konfiguracija.getIndex();
+
+                String columnName = konfiguracija.getCustom();
+
+                switch (mapa.get(columnIndex)) {
+                    case "mesto":
+                        termin.setMesto(record.get(columnIndex));
+                        break;
+                    case "datum":
+                        termin.setDatum(record.get(columnIndex));
+                        termin.setKrajDatum(record.get(columnIndex));
+                        break;
+                    case "dan":
+                        termin.setDan(record.get(columnIndex));
+                        break;
+                    case "pocetakVreme":
+                        termin.setPocetakVreme(record.get(columnIndex));
+                        break;
+                    case "krajVreme":
+                        termin.setKrajVreme(record.get(columnIndex));
+                        break;
+                    case "dodaci":
+                        termin.getDodaci().put(columnName, record.get(columnIndex));
+                        break;
+                }
+
+            }
+
+            raspored.getSviTermini().add(termin);
+        }
+
     }
 
     public void ucitajNeradneDane(String s){

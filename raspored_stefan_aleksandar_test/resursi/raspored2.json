@@ -1,0 +1,1759 @@
+{
+  "pocetakRasporeda": "02/10/2023",
+  "krajRasporeda": "25/01/2024",
+  "pocetakRadnogVremena": "09:15",
+  "krajRadnogVremena": "21:00",
+  "neradniDani": [
+    "07/10/2023",
+    "08/10/2023",
+    "07/10/2023",
+    "08/10/2023",
+    "14/10/2023",
+    "15/10/2023",
+    "21/10/2023",
+    "22/10/2023",
+    "28/10/2023",
+    "29/10/2023",
+    "04/11/2023",
+    "05/11/2023",
+    "11/11/2023",
+    "12/11/2023",
+    "18/11/2023",
+    "19/11/2023",
+    "25/11/2023",
+    "26/11/2023",
+    "02/12/2023",
+    "03/12/2023",
+    "09/12/2023",
+    "10/12/2023",
+    "16/12/2023",
+    "17/12/2023",
+    "23/12/2023",
+    "24/12/2023",
+    "30/12/2023",
+    "31/12/2023",
+    "06/01/2024",
+    "07/01/2024",
+    "13/01/2024",
+    "14/01/2024",
+    "20/01/2024"
+  ],
+  "sviTermini": [
+    {
+      "mesto": "Kolarac2",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "NE",
+        "predavac": "Urosevic Dragan"
+      }
+    },
+    {
+      "mesto": "Kolarac2",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Napredno veb programiranje",
+        "tip": "DA",
+        "predavac": "Vidakovic Milan"
+      }
+    },
+    {
+      "mesto": "Kolarac3",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "19:15",
+      "krajVreme": "21:00",
+      "dodaci": {
+        "predmet": "Diskretne strukture",
+        "tip": "NE",
+        "predavac": "Jeremic Adrijana"
+      }
+    },
+    {
+      "mesto": "RAF01",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "12:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Uvod u softversko inzenjerstvo",
+        "tip": "NE",
+        "predavac": "Prvulovic Petar"
+      }
+    },
+    {
+      "mesto": "RAF01",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "17:15",
+      "krajVreme": "19:00",
+      "dodaci": {
+        "predmet": "Povezivanje mreza",
+        "tip": "NE",
+        "predavac": "Milovic Njegovan"
+      }
+    },
+    {
+      "mesto": "RAF01",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "19:15",
+      "krajVreme": "21:00",
+      "dodaci": {
+        "predmet": "Povezivanje mreza",
+        "tip": "NE",
+        "predavac": "Milovic Njegovan"
+      }
+    },
+    {
+      "mesto": "RAF03",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "09:15",
+      "krajVreme": "11:00",
+      "dodaci": {
+        "predmet": "IT servis menadzment",
+        "tip": "NE",
+        "predavac": "Pilipovic Dragoljub"
+      }
+    },
+    {
+      "mesto": "RAF03",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "09:15",
+      "krajVreme": "11:00",
+      "dodaci": {
+        "predmet": "Skladista podataka",
+        "tip": "NE",
+        "predavac": "Radenkovic Milos"
+      }
+    },
+    {
+      "mesto": "RAF03",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "19:15",
+      "krajVreme": "21:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Radenkovic Zarko"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "09:15",
+      "krajVreme": "11:00",
+      "dodaci": {
+        "predmet": "Poslovne aplikacije",
+        "tip": "DA",
+        "predavac": "Mijatovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Poslovne aplikacije",
+        "tip": "DA",
+        "predavac": "Mijatovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Poslovne aplikacije",
+        "tip": "DA",
+        "predavac": "Mijatovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Poslovne aplikacije",
+        "tip": "DA",
+        "predavac": "Mijatovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Poslovne aplikacije",
+        "tip": "DA",
+        "predavac": "Mijatovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF05",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Softverske komponente",
+        "tip": "NE",
+        "predavac": "Najdic Jefimija"
+      }
+    },
+    {
+      "mesto": "RAF05",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Skript jezici",
+        "tip": "NE",
+        "predavac": "Ciganovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF05",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "17:15",
+      "krajVreme": "19:00",
+      "dodaci": {
+        "predmet": "Verovatnoca i statistika",
+        "tip": "NE",
+        "predavac": "Maric Nevena"
+      }
+    },
+    {
+      "mesto": "RAF07",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "09:15",
+      "krajVreme": "11:00",
+      "dodaci": {
+        "predmet": "Konfiguracija i odrzavanje IP mreza",
+        "tip": "NE",
+        "predavac": "Pernar Veljko"
+      }
+    },
+    {
+      "mesto": "RAF07",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Tomic Milan"
+      }
+    },
+    {
+      "mesto": "RAF07",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "16:15",
+      "krajVreme": "18:00",
+      "dodaci": {
+        "predmet": "Sistemi u realnom vremenu",
+        "tip": "NE",
+        "predavac": "Jovanovic Milos"
+      }
+    },
+    {
+      "mesto": "RAF07",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "18:15",
+      "krajVreme": "20:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Dejanovic Lazar"
+      }
+    },
+    {
+      "mesto": "RAF09",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "16:15",
+      "krajVreme": "18:00",
+      "dodaci": {
+        "predmet": "IT servis menadzment",
+        "tip": "DA",
+        "predavac": "Pilipovic Dragoljub"
+      }
+    },
+    {
+      "mesto": "RAF11",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Povezivanje mreza",
+        "tip": "DA",
+        "predavac": "Bojovic Petar"
+      }
+    },
+    {
+      "mesto": "RAF11",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "17:15",
+      "krajVreme": "19:00",
+      "dodaci": {
+        "predmet": "Engleski 1",
+        "tip": "NE",
+        "predavac": "Cuk Bojana"
+      }
+    },
+    {
+      "mesto": "RAF20",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Linearna algebra i analiticka geometrija",
+        "tip": "NE",
+        "predavac": "Gardasevic Filipovic Milanka"
+      }
+    },
+    {
+      "mesto": "RAF20",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "17:15",
+      "krajVreme": "20:00",
+      "dodaci": {
+        "predmet": "Linearna algebra i analiticka geometrija",
+        "tip": "NE",
+        "predavac": "Gardasevic Filipovic Milanka"
+      }
+    },
+    {
+      "mesto": "RG07",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Najdic Jefimija"
+      }
+    },
+    {
+      "mesto": "RG07",
+      "dan": "PON",
+      "datum": "02/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Brnabic Mateja"
+      }
+    },
+    {
+      "mesto": "Kolarac3",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Engleski 1",
+        "tip": "NE",
+        "predavac": "Cuk Bojana"
+      }
+    },
+    {
+      "mesto": "Kolarac3",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Diskretne strukture",
+        "tip": "NE",
+        "predavac": "Jovanovic Irena"
+      }
+    },
+    {
+      "mesto": "Kolarac3",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Kombinatorika i teorija gRAFova",
+        "tip": "DA",
+        "predavac": "Jeremic Adrijana"
+      }
+    },
+    {
+      "mesto": "Kolarac3",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "17:15",
+      "krajVreme": "20:00",
+      "dodaci": {
+        "predmet": "Linearna algebra i analiticka geometrija",
+        "tip": "NE",
+        "predavac": "Jerotijevic Marija"
+      }
+    },
+    {
+      "mesto": "RAF01",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "12:15",
+      "krajVreme": "14:00",
+      "dodaci": {
+        "predmet": "Uvod u administraciju IP mreza",
+        "tip": "NE",
+        "predavac": "Zivanovic Marko"
+      }
+    },
+    {
+      "mesto": "RAF01",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Primenjena vestacka inteligencija",
+        "tip": "NE",
+        "predavac": "Tomic Milan"
+      }
+    },
+    {
+      "mesto": "RAF02",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Tomic Milan"
+      }
+    },
+    {
+      "mesto": "RAF02",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "18:15",
+      "krajVreme": "20:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Stojanovic Mihajlo"
+      }
+    },
+    {
+      "mesto": "RAF03",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "12:15",
+      "krajVreme": "14:00",
+      "dodaci": {
+        "predmet": "Programski prevodioci",
+        "tip": "NE",
+        "predavac": "Stojanovic Mihajlo"
+      }
+    },
+    {
+      "mesto": "RAF03",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "IT servis menadzment",
+        "tip": "NE",
+        "predavac": "Pilipovic Dragoljub"
+      }
+    },
+    {
+      "mesto": "RAF03",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Arsenovic Arsen"
+      }
+    },
+    {
+      "mesto": "RAF03",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "17:15",
+      "krajVreme": "19:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Arsenovic Arsen"
+      }
+    },
+    {
+      "mesto": "RAF03",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "19:15",
+      "krajVreme": "21:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Redzic Nikola Jovan"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "09:15",
+      "krajVreme": "11:00",
+      "dodaci": {
+        "predmet": "Poslovne aplikacije",
+        "tip": "DA",
+        "predavac": "Mijatovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Poslovne aplikacije",
+        "tip": "DA",
+        "predavac": "Mijatovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Poslovne aplikacije",
+        "tip": "DA",
+        "predavac": "Mijatovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF05",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Verovatnoca i statistika",
+        "tip": "DA",
+        "predavac": "Maric Nevena"
+      }
+    },
+    {
+      "mesto": "RAF06",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "17:15",
+      "krajVreme": "19:00",
+      "dodaci": {
+        "predmet": "Engleski 1",
+        "tip": "NE",
+        "predavac": "Cuk Bojana"
+      }
+    },
+    {
+      "mesto": "RAF09",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Upravljanje informacijama",
+        "tip": "DA",
+        "predavac": "Radenkovic Milos"
+      }
+    },
+    {
+      "mesto": "RAF09",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "17:15",
+      "krajVreme": "19:00",
+      "dodaci": {
+        "predmet": "Sistemi u realnom vremenu",
+        "tip": "DA",
+        "predavac": "Jovanovic Milos"
+      }
+    },
+    {
+      "mesto": "RAF11",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Uvod u softversko inzenjerstvo",
+        "tip": "DA",
+        "predavac": "Mladenovic Marko"
+      }
+    },
+    {
+      "mesto": "RAF14",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "18:00",
+      "dodaci": {
+        "predmet": "GRAFicki projekti",
+        "tip": "NE",
+        "predavac": "Stojanovic Danica"
+      }
+    },
+    {
+      "mesto": "RAF16",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "09:15",
+      "krajVreme": "12:00",
+      "dodaci": {
+        "predmet": "Multimedijalni projekti 1",
+        "tip": "NE",
+        "predavac": "Kukic Rastko"
+      }
+    },
+    {
+      "mesto": "RAF16",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "12:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Multimedijalni projekti 1",
+        "tip": "NE",
+        "predavac": "Kukic Rastko"
+      }
+    },
+    {
+      "mesto": "RAF16",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "18:15",
+      "krajVreme": "21:00",
+      "dodaci": {
+        "predmet": "Multimedijalni projekti 1",
+        "tip": "NE",
+        "predavac": "Jonic Teodora"
+      }
+    },
+    {
+      "mesto": "RAF20",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Diskretne strukture",
+        "tip": "NE",
+        "predavac": "Jovanovic Irena"
+      }
+    },
+    {
+      "mesto": "RAF21",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Diskretne strukture",
+        "tip": "NE",
+        "predavac": "Jovanovic Irena"
+      }
+    },
+    {
+      "mesto": "RAF21",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Engleski 1",
+        "tip": "NE",
+        "predavac": "Cuk Bojana"
+      }
+    },
+    {
+      "mesto": "RAF21",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "17:15",
+      "krajVreme": "20:00",
+      "dodaci": {
+        "predmet": "Diskretne strukture",
+        "tip": "NE",
+        "predavac": "Jeremic Adrijana"
+      }
+    },
+    {
+      "mesto": "RG07",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "09:15",
+      "krajVreme": "11:00",
+      "dodaci": {
+        "predmet": "Testiranje softvera",
+        "tip": "NE",
+        "predavac": "Ivkovic Sava"
+      }
+    },
+    {
+      "mesto": "RG07",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Brnabic Mateja"
+      }
+    },
+    {
+      "mesto": "RG07",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Jovanovic Mladen"
+      }
+    },
+    {
+      "mesto": "RG07",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Programski prevodioci",
+        "tip": "DA",
+        "predavac": "Stojanovic Mihajlo"
+      }
+    },
+    {
+      "mesto": "RG07",
+      "dan": "UTO",
+      "datum": "03/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Verovatnoca i statistika",
+        "tip": "DA",
+        "predavac": "Maric Nevena"
+      }
+    },
+    {
+      "mesto": "CET",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Projektovanje racunarskih sistema",
+        "tip": "NE",
+        "predavac": "Radivojevic Mirjana"
+      }
+    },
+    {
+      "mesto": "Kolarac3",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Kombinatorika i teorija gRAFova",
+        "tip": "DA",
+        "predavac": "Jovanovic Irena"
+      }
+    },
+    {
+      "mesto": "Kolarac3",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "16:15",
+      "krajVreme": "19:00",
+      "dodaci": {
+        "predmet": "Linearna algebra i analiticka geometrija",
+        "tip": "NE",
+        "predavac": "Gardasevic Filipovic Milanka"
+      }
+    },
+    {
+      "mesto": "RAF01",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Upravljanje informacijama",
+        "tip": "NE",
+        "predavac": "Stojanovic Mihajlo"
+      }
+    },
+    {
+      "mesto": "RAF02",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Skript jezici",
+        "tip": "NE",
+        "predavac": "Ciganovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Poslovne aplikacije",
+        "tip": "DA",
+        "predavac": "Mijatovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Poslovne aplikacije",
+        "tip": "DA",
+        "predavac": "Mijatovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Poslovne aplikacije",
+        "tip": "DA",
+        "predavac": "Mijatovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF05",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "10:15",
+      "krajVreme": "12:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Matovic Vanja"
+      }
+    },
+    {
+      "mesto": "RAF05",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "12:15",
+      "krajVreme": "14:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Jovanovic Mladen"
+      }
+    },
+    {
+      "mesto": "RAF05",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "12:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "C# programiranje",
+        "tip": "NE",
+        "predavac": "Milosavljevic Milos"
+      }
+    },
+    {
+      "mesto": "RAF05",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Verovatnoca i statistika",
+        "tip": "NE",
+        "predavac": "Maric Nevena"
+      }
+    },
+    {
+      "mesto": "RAF05",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "18:15",
+      "krajVreme": "20:00",
+      "dodaci": {
+        "predmet": "Verovatnoca i statistika",
+        "tip": "NE",
+        "predavac": "Maric Nevena"
+      }
+    },
+    {
+      "mesto": "RAF06",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "16:15",
+      "krajVreme": "18:00",
+      "dodaci": {
+        "predmet": "Diskretne strukture",
+        "tip": "NE",
+        "predavac": "Jovanovic Irena"
+      }
+    },
+    {
+      "mesto": "RAF07",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "10:15",
+      "krajVreme": "12:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Jovanovic Mladen"
+      }
+    },
+    {
+      "mesto": "RAF07",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "18:15",
+      "krajVreme": "20:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Dejanovic Lazar"
+      }
+    },
+    {
+      "mesto": "RAF07",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "18:15",
+      "krajVreme": "20:00",
+      "dodaci": {
+        "predmet": "Sistemsko programiranje",
+        "tip": "NE",
+        "predavac": "Jovanovic Milos"
+      }
+    },
+    {
+      "mesto": "RAF09",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Virtuelizovani mrezni sistemi",
+        "tip": "DA",
+        "predavac": "Bojovic Petar"
+      }
+    },
+    {
+      "mesto": "RAF10",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Projektovanje racunarskih sistema",
+        "tip": "DA",
+        "predavac": "Radivojevic Mirjana"
+      }
+    },
+    {
+      "mesto": "RAF15",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Dizajn i informacione tehnologije 1",
+        "tip": "NE",
+        "predavac": "Topuzovic Filip"
+      }
+    },
+    {
+      "mesto": "RAF20",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "18:15",
+      "krajVreme": "21:00",
+      "dodaci": {
+        "predmet": "Linearna algebra i analiticka geometrija",
+        "tip": "NE",
+        "predavac": "Jovanovic Jelena"
+      }
+    },
+    {
+      "mesto": "RAF21",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "19:15",
+      "krajVreme": "21:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "NE",
+        "predavac": "Mladenovic Marko"
+      }
+    },
+    {
+      "mesto": "RG01",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "16:15",
+      "krajVreme": "18:00",
+      "dodaci": {
+        "predmet": "Skript jezici",
+        "tip": "NE",
+        "predavac": "Ciganovic Igor"
+      }
+    },
+    {
+      "mesto": "RG07",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "09:15",
+      "krajVreme": "11:00",
+      "dodaci": {
+        "predmet": "C# programiranje",
+        "tip": "NE",
+        "predavac": "Milosavljevic Milos"
+      }
+    },
+    {
+      "mesto": "RG07",
+      "dan": "SRE",
+      "datum": "04/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Redzic Nikola Jovan"
+      }
+    },
+    {
+      "mesto": "Kolarac3",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Sistemsko programiranje",
+        "tip": "NE",
+        "predavac": "Jovanovic Milos"
+      }
+    },
+    {
+      "mesto": "Kolarac3",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Primenjena vestacka inteligencija",
+        "tip": "NE",
+        "predavac": "Vasiljevic Jelena"
+      }
+    },
+    {
+      "mesto": "RAF01",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "09:15",
+      "krajVreme": "11:00",
+      "dodaci": {
+        "predmet": "Racunarska gRAFika",
+        "tip": "NE",
+        "predavac": "Dotlic Emilija"
+      }
+    },
+    {
+      "mesto": "RAF01",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "09:15",
+      "krajVreme": "11:00",
+      "dodaci": {
+        "predmet": "Skript jezici",
+        "tip": "NE",
+        "predavac": "Prvulovic Petar"
+      }
+    },
+    {
+      "mesto": "RAF01",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Programski prevodioci",
+        "tip": "NE",
+        "predavac": "Stojanovic Mihajlo"
+      }
+    },
+    {
+      "mesto": "RAF01",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Softverske komponente",
+        "tip": "NE",
+        "predavac": "Redzic Nikola Jovan"
+      }
+    },
+    {
+      "mesto": "RAF01",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "17:15",
+      "krajVreme": "19:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Radenkovic Zarko"
+      }
+    },
+    {
+      "mesto": "RAF03",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Racunarska gRAFika",
+        "tip": "NE",
+        "predavac": "Masulovic Dragan"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "09:15",
+      "krajVreme": "11:00",
+      "dodaci": {
+        "predmet": "Verovatnoca i statistika",
+        "tip": "NE",
+        "predavac": "Maric Nevena"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Poslovne aplikacije",
+        "tip": "DA",
+        "predavac": "Mijatovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Poslovne aplikacije",
+        "tip": "DA",
+        "predavac": "Mijatovic Igor"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Tomic Milan"
+      }
+    },
+    {
+      "mesto": "RAF04",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Verovatnoca i statistika",
+        "tip": "NE",
+        "predavac": "Maric Nevena"
+      }
+    },
+    {
+      "mesto": "RAF05",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "18:00",
+      "dodaci": {
+        "predmet": "SQL programiranje",
+        "tip": "NE",
+        "predavac": "Popovic Snezana"
+      }
+    },
+    {
+      "mesto": "RAF05",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "18:15",
+      "krajVreme": "21:00",
+      "dodaci": {
+        "predmet": "SQL programiranje",
+        "tip": "NE",
+        "predavac": "Popovic Snezana"
+      }
+    },
+    {
+      "mesto": "RAF06",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Konfiguracija i odrzavanje IP mreza",
+        "tip": "DA",
+        "predavac": "Bojovic Petar"
+      }
+    },
+    {
+      "mesto": "RAF06",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "16:15",
+      "krajVreme": "18:00",
+      "dodaci": {
+        "predmet": "Uvod u administraciju IP mreza",
+        "tip": "DA",
+        "predavac": "Bojovic Petar"
+      }
+    },
+    {
+      "mesto": "RAF07",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Redzic Nikola Jovan"
+      }
+    },
+    {
+      "mesto": "RAF07",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Matovic Vanja"
+      }
+    },
+    {
+      "mesto": "RAF09",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Geometrijski algoritmi",
+        "tip": "DA",
+        "predavac": "Urosevic Dragan"
+      }
+    },
+    {
+      "mesto": "RAF09",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "16:15",
+      "krajVreme": "18:00",
+      "dodaci": {
+        "predmet": "Geometrijski algoritmi",
+        "tip": "DA",
+        "predavac": "Urosevic Dragan"
+      }
+    },
+    {
+      "mesto": "RAF13",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Osnovi animacije",
+        "tip": "NE",
+        "predavac": "Djuric Milan"
+      }
+    },
+    {
+      "mesto": "RAF14",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "14:00",
+      "dodaci": {
+        "predmet": "Dizajn i informacione tehnologije 1",
+        "tip": "NE",
+        "predavac": "Topuzovic Filip"
+      }
+    },
+    {
+      "mesto": "RAF14",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "16:00",
+      "dodaci": {
+        "predmet": "Osnovi animacije",
+        "tip": "NE",
+        "predavac": "Koturanovic Aleksandar"
+      }
+    },
+    {
+      "mesto": "RAF14",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "16:15",
+      "krajVreme": "19:00",
+      "dodaci": {
+        "predmet": "Multimedijalni projekti 1",
+        "tip": "NE",
+        "predavac": "Jonic Teodora"
+      }
+    },
+    {
+      "mesto": "RAF20",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "18:15",
+      "krajVreme": "21:00",
+      "dodaci": {
+        "predmet": "Linearna algebra i analiticka geometrija",
+        "tip": "NE",
+        "predavac": "Jovanovic Jelena"
+      }
+    },
+    {
+      "mesto": "RAF21",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "NE",
+        "predavac": "Mladenovic Marko"
+      }
+    },
+    {
+      "mesto": "RAF21",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "17:15",
+      "krajVreme": "19:00",
+      "dodaci": {
+        "predmet": "Programski prevodioci",
+        "tip": "DA",
+        "predavac": "Vujosevic Dusan"
+      }
+    },
+    {
+      "mesto": "RG02",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Stojanovic Mihajlo"
+      }
+    },
+    {
+      "mesto": "RG04",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Veliki podaci",
+        "tip": "NE",
+        "predavac": "Najdic Jefimija"
+      }
+    },
+    {
+      "mesto": "RG07",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "09:15",
+      "krajVreme": "11:00",
+      "dodaci": {
+        "predmet": "Virtuelizovani mrezni sistemi",
+        "tip": "DA",
+        "predavac": "Zivanovic Marko"
+      }
+    },
+    {
+      "mesto": "RG07",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "11:15",
+      "krajVreme": "13:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Najdic Jefimija"
+      }
+    },
+    {
+      "mesto": "RG07",
+      "dan": "CET",
+      "datum": "05/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Najdic Jefimija"
+      }
+    },
+    {
+      "mesto": "Kolarac3",
+      "dan": "PET",
+      "datum": "06/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Linearna algebra i analiticka geometrija",
+        "tip": "NE",
+        "predavac": "Gardasevic Filipovic Milanka"
+      }
+    },
+    {
+      "mesto": "RAF06",
+      "dan": "PET",
+      "datum": "06/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "17:15",
+      "krajVreme": "19:00",
+      "dodaci": {
+        "predmet": "Engleski 1",
+        "tip": "NE",
+        "predavac": "Cuk Bojana"
+      }
+    },
+    {
+      "mesto": "RAF08",
+      "dan": "PET",
+      "datum": "06/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Skladista podataka",
+        "tip": "DA",
+        "predavac": "Popovic Snezana"
+      }
+    },
+    {
+      "mesto": "RAF13",
+      "dan": "PET",
+      "datum": "06/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "18:15",
+      "krajVreme": "20:00",
+      "dodaci": {
+        "predmet": "Osnovi animacije",
+        "tip": "NE",
+        "predavac": "Djuric Milan"
+      }
+    },
+    {
+      "mesto": "RAF14",
+      "dan": "PET",
+      "datum": "06/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "12:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "GRAFicki projekti",
+        "tip": "NE",
+        "predavac": "Stojanovic Danica"
+      }
+    },
+    {
+      "mesto": "RAF20",
+      "dan": "PET",
+      "datum": "06/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "13:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Paralelni algoritmi",
+        "tip": "DA",
+        "predavac": "Rakocevic Goran"
+      }
+    },
+    {
+      "mesto": "RAF20",
+      "dan": "PET",
+      "datum": "06/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "15:15",
+      "krajVreme": "18:00",
+      "dodaci": {
+        "predmet": "Linearna algebra i analiticka geometrija",
+        "tip": "NE",
+        "predavac": "Jerotijevic Marija"
+      }
+    },
+    {
+      "mesto": "RAF20",
+      "dan": "PET",
+      "datum": "06/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "18:15",
+      "krajVreme": "21:00",
+      "dodaci": {
+        "predmet": "Diskretne strukture",
+        "tip": "NE",
+        "predavac": "Jeremic Adrijana"
+      }
+    },
+    {
+      "mesto": "RAF21",
+      "dan": "PET",
+      "datum": "06/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "10:15",
+      "krajVreme": "12:00",
+      "dodaci": {
+        "predmet": "Engleski 1",
+        "tip": "NE",
+        "predavac": "Cuk Bojana"
+      }
+    },
+    {
+      "mesto": "RAF21",
+      "dan": "PET",
+      "datum": "06/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "12:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Linearna algebra i analiticka geometrija",
+        "tip": "NE",
+        "predavac": "Jerotijevic Marija"
+      }
+    },
+    {
+      "mesto": "RAF21",
+      "dan": "PET",
+      "datum": "06/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "14:15",
+      "krajVreme": "17:00",
+      "dodaci": {
+        "predmet": "Linearna algebra i analiticka geometrija",
+        "tip": "NE",
+        "predavac": "Gardasevic Filipovic Milanka"
+      }
+    },
+    {
+      "mesto": "RG07",
+      "dan": "PET",
+      "datum": "06/10/2023",
+      "krajDatum": "25/01/2024",
+      "pocetakVreme": "12:15",
+      "krajVreme": "15:00",
+      "dodaci": {
+        "predmet": "Uvod u programiranje",
+        "tip": "DA",
+        "predavac": "Najdic Jefimija"
+      }
+    }
+  ]
+}

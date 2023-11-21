@@ -1,3 +1,5 @@
+package org.example;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
@@ -20,15 +22,12 @@ public class DodatneFunkcionalnosti {
     }
 
 
-    public void dodajNoviTermin(Raspored raspored, String mesto, String dan, String datum, String krajDatum, String pocetakVreme, String krajVreme, String extrass) {
+    public void dodajNoviTermin(Raspored raspored, Termin termin) {
 
-        if (krajDatum.isEmpty())
-            krajDatum = datum;
-
-        LocalTime tPV = LocalTime.parse(pocetakVreme);  //terminpocetnovreme
-        LocalTime tKV = LocalTime.parse(krajVreme);     //kraj
-        LocalDate tDatum = LocalDate.parse(datum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));   //pocetnidatum
-        LocalDate kDatum = LocalDate.parse(krajDatum, DateTimeFormatter.ofPattern("dd/MM/yyyy"));   //krajdatunnovog
+        LocalTime tPV = LocalTime.parse(termin.getPocetakVreme());  //terminpocetnovreme
+        LocalTime tKV = LocalTime.parse(termin.getKrajVreme());     //kraj
+        LocalDate tDatum = LocalDate.parse(termin.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));   //pocetnidatum
+        LocalDate kDatum = LocalDate.parse(termin.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));   //krajdatunnovog
 
 
         for (Termin postojeciTermin : raspored.getSviTermini()) {
@@ -45,36 +44,24 @@ public class DodatneFunkcionalnosti {
 //                System.out.println(tDatum.isBefore(oKDatum) || tDatum.equals(oKDatum));
 //                System.out.println("tDatum = " + tDatum.toString() + oKDatum.toString() + "tDatum.isBefore(oKDatum)");
                 System.out.println("Datum if");
-                if (postojeciTermin.getMesto().equalsIgnoreCase(mesto)) {
+                if (postojeciTermin.getMesto().equalsIgnoreCase(termin.getMesto())) {
                     System.out.println("Mesto if");
                     if (tPV.isBefore(oKVreme) && tKV.isAfter(oPVreme)) {
                         //Raf04 PON 22/10/2023 09:15 11:00
                         //Rg04 CET 25/01/2024 15:15 17:00
                         //raspored_stefan_aleksandar_test/resursi/noviTermini.json
-                        System.out.println("Termin postoji");
+                        System.out.println("org.example.Termin postoji");
                         return;
                     }
                 }
             }
         }
 
-        if (!extrass.isEmpty() || !extrass.equals("") || extrass == null) {
-            String[] split = extrass.split(",");
-            //Raf04 PON 22/10/2023 09:15 11:00 Poslovne aplikacije Igor Mijatovic DA
-//          Raf04 PON 22/10/2022 09:15 11:00
-            dodaci.put(split[0], "Predmet");
-            dodaci.put(split[1], "Profesor");
-            dodaci.put(split[2], "Racunar");
-            Termin noviTermin = new Termin(mesto, dan, datum, krajDatum, pocetakVreme, krajVreme, dodaci);
-            obrisiSlobodanTermin(raspored, noviTermin);
-            System.out.println(noviTermin);
-            raspored.getSviTermini().add(noviTermin);
-        } else {
-            Termin noviTermin = new Termin(mesto, dan, datum, krajDatum, pocetakVreme, krajVreme);
-            obrisiSlobodanTermin(raspored, noviTermin);
-            System.out.println(noviTermin);
-            raspored.getSviTermini().add(noviTermin);
-        }
+
+        obrisiSlobodanTermin(raspored, termin);
+        System.out.println(termin);
+        raspored.getSviTermini().add(termin);
+
 
 
         System.out.println("Novi termin uspešno dodat u raspored.");

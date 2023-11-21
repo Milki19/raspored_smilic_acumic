@@ -1,4 +1,4 @@
-import org.apache.pdfbox.pdmodel.font.encoding.WinAnsiEncoding;
+package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +20,6 @@ public class Raspored {
     private String pocetakDatum;
     private String krajDatum;
     private List<Termin> pretrazeno;
-
-
-
     public Raspored(){
         sviTermini = new ArrayList<>();
         neradniDani = new ArrayList<>();
@@ -33,23 +30,18 @@ public class Raspored {
         pretrazeno = new ArrayList<>();
 
     }
-
     public String getPocetakDatum() {
         return pocetakDatum;
     }
-
     public void setPocetakDatum(String pocetakDatum) {
         this.pocetakDatum = pocetakDatum;
     }
-
     public String getKrajDatum() {
         return krajDatum;
     }
-
     public void setKrajDatum(String krajDatum) {
         this.krajDatum = krajDatum;
     }
-
     public List<Termin> getPretrazeno() {
         return pretrazeno;
     }

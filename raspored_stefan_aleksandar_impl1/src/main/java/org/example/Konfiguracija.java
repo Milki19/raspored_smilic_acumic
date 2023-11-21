@@ -1,4 +1,7 @@
+package org.example;
+
 public class Konfiguracija {
+
     private Integer index;
     private String custom;
     private String original;
@@ -33,4 +36,8 @@ public class Konfiguracija {
         this.original = original;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return false;
+    }
 }

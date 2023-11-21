@@ -1,7 +1,7 @@
 Mesto,Dan,Datum,PocetakVreme,KrajVreme,Predmet,Profesor,Racunar
 "Raf04","PON","02/10/2022","09:15","11:00","Poslovne aplikacije","Mijatovic Igor","DA"
 "Raf03","PON","02/10/2022","09:15","11:00","IT servis menadzment","Pilipovic Dragoljub","NE"
-"Raf07","PON","02/10/2022","09:15","11:00","Konfiguracija i odrzavanje IP mreza","Pernar Veljko","NE"
+"Raf07","PON","02/10/2022","09:15","11:00","org.example.org.example.Konfiguracija i odrzavanje IP mreza","Pernar Veljko","NE"
 "Raf03","PON","02/10/2022","09:15","11:00","Skladista podataka","Radenkovic Milos","NE"
 "RAF04","PON","02/10/2022","11:15","13:00","Poslovne aplikacije","Mijatovic Igor","DA"
 "Kolarac2","PON","02/10/2022","11:15","13:00","Uvod u programiranje","Urosevic Dragan","NE"
@@ -111,7 +111,7 @@ Mesto,Dan,Datum,PocetakVreme,KrajVreme,Predmet,Profesor,Racunar
 "Raf09","CET","05/10/2022","14:15","16:00","Geometrijski algoritmi","Urosevic Dragan","DA"
 "Kolarac3","CET","05/10/2022","14:15","16:00","Primenjena vestacka inteligencija","Vasiljevic Jelena","NE"
 "Raf14","CET","05/10/2022","14:15","16:00","Osnovi animacije","Koturanovic Aleksandar","NE"
-"Raf06","CET","05/10/2022","14:15","16:00","Konfiguracija i odrzavanje IP mreza","Bojovic Petar","DA"
+"Raf06","CET","05/10/2022","14:15","16:00","org.example.org.example.Konfiguracija i odrzavanje IP mreza","Bojovic Petar","DA"
 "Raf04","CET","05/10/2022","15:15","17:00","Uvod u programiranje","Tomic Milan","DA"
 "Raf07","CET","05/10/2022","15:15","17:00","Uvod u programiranje","Matovic Vanja","DA"
 "Rg02","CET","05/10/2022","15:15","17:00","Uvod u programiranje","Stojanovic Mihajlo","DA"
