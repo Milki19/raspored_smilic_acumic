@@ -20,8 +20,6 @@ import java.util.*;
 public class RasporedAImpl extends RasporedA {
 
 
-
-
     public RasporedAImpl(){
         this.raspored = new Raspored();
     }
@@ -46,7 +44,6 @@ public class RasporedAImpl extends RasporedA {
                     LocalTime tKV = LocalTime.parse(t.getKrajVreme());
 
                     if (t.getDan().equalsIgnoreCase(d) && t.getMesto().equalsIgnoreCase(m)) {
-                        //org.example.Termin poredjenje = new org.example.Termin(m, d, t.getDatum(), t.getKrajDatum(), pocetniSledeci.toString(), krajRadnogVremena);
 
 
                         if (pocetniSledeci.isBefore(tPV) && !pocetniSledeci.equals(tPV)) {
@@ -70,7 +67,7 @@ public class RasporedAImpl extends RasporedA {
         }
 
         slobodniTermini.removeIf(s -> s.getPocetakVreme().equals(s.getKrajVreme()) && s.getKrajVreme().equals(s.getPocetakVreme()) && s.getPocetakVreme().equals(pocetakRadnogVremena) && s.getKrajVreme().equals(krajRadnogVremena));
-
+        int i = 0;
         Termin prethodni = new Termin();
         for(String dan : raspored.getDani()) {
             for(String mesto : raspored.getMesta()){
@@ -78,7 +75,10 @@ public class RasporedAImpl extends RasporedA {
 
                     if (dan.equalsIgnoreCase(t.getDan()) && mesto.equalsIgnoreCase(t.getMesto())) {
                         prethodni = t;
+                    }else {
+                        i++;
                     }
+
                 }
                 if (!prethodni.getKrajVreme().equals(krajRadnogVremena)) {
                     Termin novi = new Termin(mesto, dan, prethodni.getDatum(), prethodni.getKrajDatum(), prethodni.getPocetakVreme(), krajRadnogVremena);
@@ -87,6 +87,14 @@ public class RasporedAImpl extends RasporedA {
                         slobodniTermini.add(novi);
                     }
                 }
+                if (i == 0) {
+                    Termin novi = new Termin(mesto, dan, prethodni.getDatum(), prethodni.getKrajDatum(), pocetakRadnogVremena, krajRadnogVremena);
+                    if (!slobodniTermini.contains(novi) && !raspored.getSviTermini().contains(novi)) {
+                        slobodniTermini.remove(prethodni);
+                        slobodniTermini.add(novi);
+                    }
+                }
+                i = 0;
             }
         }
 
