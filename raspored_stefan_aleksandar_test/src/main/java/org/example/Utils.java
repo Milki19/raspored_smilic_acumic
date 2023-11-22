@@ -1,21 +1,20 @@
 package org.example;
 
-import org.example.RasporedA;
-import org.example.Termin;
-
 import java.io.IOException;
 import java.util.*;
 
-public class Utils2 {
+public class Utils {
 
     private List<Termin> pretrazeneStvari;
+    public int ispisano = 0;
 
-    public Utils2 () {
+    public Utils() {
         pretrazeneStvari = new ArrayList<>();
     }
 
     public void interakcijaSaKorisnikom(RasporedA rasporedA) throws IOException {
         System.out.println("\nIzabite sta sledece zelite da uradite, tako sto napisete broj koji se nalazi ispred:");
+        System.out.println("0. Prikazi sve termine");
         System.out.println("1. Dodati termin");
         System.out.println("2. Izbrisati termin");
         System.out.println("3. Izmeniti termin");
@@ -26,16 +25,18 @@ public class Utils2 {
         Map<String, String> dodaci = new HashMap<>();
         String linija = sc.nextLine();
 
-        if(linija.equals("1")){
-            System.out.println("Unesite obavezne podatke za (mesto, dan, pocetni datum, pocetno vreme, krajnje vreme) u sledeceom formatu: mesto DAN dd/mm/yyyy hh:mm hh:mm");
+        if(linija.equals("0")){
+            for(Termin t : rasporedA.getRaspored().getSviTermini()){
+                System.out.println(t);
+            }
+            interakcijaSaKorisnikom(rasporedA);
+        } else if(linija.equals("1")){
+            System.out.println("Unesite obavezne podatke za (mesto, dan, pocetni datum, pocetno vreme, krajnje vreme) i opciono sve dodatke u sledeceom formatu: mesto DAN dd/mm/yyyy hh:mm hh:mm dodaci");
             //Raf04,PON,02/10/2022,09:15,11:00
             //Raf04 PON 22/10/2022 09:15 11:00 Poslovne aplikacije Igro Mijatovic DA
             //"Raf04","PON","02/10/2022","09:15","11:00","Poslovne aplikacije","Mijatovic Igor","DA"
             linija = sc.nextLine();
             String[] split = linija.split(" ", 7);
-            for (String s : split) {
-                System.out.println(s);
-            }
             if (split.length == 5) {
                 rasporedA.dodajTermin(rasporedA.getRaspored(), new Termin(split[0], split[1], split[2], split[3], split[4]));
             }else if (split.length == 6) {
@@ -44,13 +45,14 @@ public class Utils2 {
                 String[] dodatak = split[5].split(",");
                 //Raf04 PON 22/10/2023 09:15 11:00 Poslovne aplikacije Igor Mijatovic DA
 //              Raf04 PON 22/10/2022 09:15 11:00
-                dodaci.put(split[0], "Predmet");
-                dodaci.put(split[1], "Profesor");
-                dodaci.put(split[2], "Racunar");
+                dodaci.put(dodatak[0], "Predmet");
+                dodaci.put(dodatak[1], "Profesor");
+                dodaci.put(dodatak[2], "Racunar");
 
                 rasporedA.dodajTermin(rasporedA.getRaspored(), new Termin(split[0], split[1], split[2], split[3], split[4], dodaci));
             }
 
+            interakcijaSaKorisnikom(rasporedA);
 
         }else if(linija.equals("2")){
             System.out.println("Podatke za termin koji zelite da obrisete za (mesto, dan, pocetni datum, pocetno vreme, krajnje vreme) u sledeceom formatu: mesto DAN dd/mm/yyyy hh:mm hh:mm");
@@ -64,12 +66,6 @@ public class Utils2 {
             }
 
             rasporedA.obrisiTermin(rasporedA.getRaspored(), new Termin (split[0], split[1], split[2], split[3], split[4], split[5]));
-            System.err.println("Slobodni termini size: " + rasporedA.getRaspored().getSlobodniTermini().size());
-            for (Termin t : rasporedA.getRaspored().getSlobodniTermini()) {
-                System.out.println(t);
-            }
-
-            System.err.println("Termini size: " + rasporedA.getRaspored().getSviTermini().size());
 
         }else if(linija.equals("3")){
 
@@ -89,15 +85,14 @@ public class Utils2 {
                 if(t.getMesto().equals(strTer[0]) && t.getDatum().equals(strTer[2]) && t.getPocetakVreme().equals(strTer[4]) && t.getKrajVreme().equals(strTer[5]) && t.getDan().equals(strTer[1])){
                     rasporedA.izmeniTermin(rasporedA.getRaspored(), t, new Termin(novTer[0], novTer[1], novTer[2], novTer[3], novTer[4], novTer[5]));
                     return;
-                }else{
-                    System.out.println("Ne postoji trenutni termin.");
                 }
             }
+            System.out.println("Ne postoji trenutni termin.");
 
+            interakcijaSaKorisnikom(rasporedA);
 
         }else if(linija.equals("4")){
             pretrazeneStvari = pretraga(rasporedA);
-            System.out.println(pretrazeneStvari);
 
             System.out.println("Da li zelite da exportujete pretrazene odgovore? Da/Ne");
             linija = sc.nextLine();
@@ -107,12 +102,15 @@ public class Utils2 {
                 String[] niz = linija.split(" ");
                 if(niz[0].contains(".csv")){
                     rasporedA.exportCSV(niz[0], pretrazeneStvari, niz[1]);
+                    ispisano = 1;
                 }else if(niz[0].contains(".json")){
                     rasporedA.exportJSON(niz[0], pretrazeneStvari, niz[1]);
+                    ispisano = 1;
                 }else{
                     rasporedA.exportPDF(niz[0], pretrazeneStvari, niz[1]);
-                    return;
+                    ispisano = 1;
                 }
+                return;
             }
             interakcijaSaKorisnikom(rasporedA);
         }else if(linija.equals("5")){
@@ -126,10 +124,13 @@ public class Utils2 {
                 String[] niz = linija.split(" ");
                 if(niz[0].contains(".csv")){
                     rasporedA.exportCSV(niz[0], pretrazeneStvari, niz[1]);
+                    ispisano = 1;
                 }else if(niz[0].contains(".json")){
                     rasporedA.exportJSON(niz[0], pretrazeneStvari, niz[1]);
+                    ispisano = 1;
                 }else{
                     rasporedA.exportPDF(niz[0], pretrazeneStvari, niz[1]);
+                    ispisano = 1;
                 }
                 return;
             }
@@ -289,6 +290,7 @@ public class Utils2 {
 
     public List<Termin> slobodniSearch (RasporedA rasporedA) {
         System.out.println("\nIzaberite po cemu zelite da pretrazite slobodne termine razvodejene razmakom:");
+        System.out.println("0. Prikazi sve slobodne termine");
         System.out.println("1. Mesto");
         System.out.println("2. Pocetni datum");
         System.out.println("3. Krajnji datum");
@@ -300,7 +302,12 @@ public class Utils2 {
         Scanner sc = new Scanner(System.in);
         String linija = sc.nextLine();
 
-        // 1 3 5
+        if(linija.equals("0")){
+            for(Termin t : rasporedA.getRaspored().getSlobodniTermini()){
+                System.out.println(t);
+            }
+            return rasporedA.getRaspored().getSlobodniTermini();
+        }
 
         String[] niz = linija.split(" ");
 
@@ -506,4 +513,7 @@ public class Utils2 {
         return null;
     }
 
+    public int getIspisano() {
+        return ispisano;
+    }
 }

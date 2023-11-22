@@ -139,10 +139,6 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for (Termin t : raspored.getPretrazeno()) {
-            System.out.println(t);
-        }
-
         return raspored.getPretrazeno();
     }
 
@@ -157,9 +153,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return getRaspored().getPretrazeno();
     }
@@ -182,9 +176,7 @@ public class RasporedAImpl extends RasporedA {
 
         // 09/10/2023 20/10/2023
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -201,9 +193,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -211,9 +201,7 @@ public class RasporedAImpl extends RasporedA {
     @Override
     public List<Termin> slobodniMesto(String mesto) {
         raspored.getPretrazeno().clear();
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -228,9 +216,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -245,9 +231,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -262,9 +246,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -279,9 +261,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -296,9 +276,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -313,9 +291,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -330,9 +306,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -348,9 +322,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -365,9 +337,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -382,9 +352,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -399,9 +367,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -416,9 +382,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -433,9 +397,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -450,9 +412,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -467,9 +427,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -512,9 +470,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -529,9 +485,7 @@ public class RasporedAImpl extends RasporedA {
             }
         }
 
-        for(Termin t : raspored.getPretrazeno()){
-            System.out.println(t);
-        }
+
 
         return raspored.getPretrazeno();
     }
@@ -860,8 +814,6 @@ public class RasporedAImpl extends RasporedA {
         contentStream.endText();
         contentStream.close();
 
-        System.err.println(location + path);
-
         document.save(location + path);
         document.close();
     }
@@ -900,11 +852,6 @@ public class RasporedAImpl extends RasporedA {
     public void ucitajJSON(String path) throws IOException{
         ObjectMapper mapper = new ObjectMapper();
         raspored = mapper.readValue(new File(path), Raspored.class);
-//        Collections.sort(raspored.getSviTermini(), Comparator
-//                .comparing(org.example.Termin::getDan)
-//                .thenComparing(org.example.Termin::getDatum)
-//                .thenComparing(org.example.Termin::getPocetakVreme));
-//        dodajKrajDatum();
     }
 
     private static List<Konfiguracija> citajKonfiguraciju(String configPath) throws FileNotFoundException {
