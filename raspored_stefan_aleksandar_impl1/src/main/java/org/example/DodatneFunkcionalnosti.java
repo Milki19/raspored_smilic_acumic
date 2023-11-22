@@ -37,20 +37,12 @@ public class DodatneFunkcionalnosti {
             LocalTime oKVreme = LocalTime.parse(postojeciTermin.getKrajVreme());
             LocalDate oKDatum = LocalDate.parse(postojeciTermin.getDatum(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             if (raspored.getNeradniDani().contains(postojeciTermin.getDatum())) {
-                continue;
+                return;
             }
 
             if ((tDatum.isBefore(oKDatum) || tDatum.equals(oKDatum)) && (kDatum.isAfter(oPDatum) || kDatum.equals(oPDatum))) { // izbacio !
-//                System.out.println(tDatum.isBefore(oKDatum) || tDatum.equals(oKDatum));
-//                System.out.println("tDatum = " + tDatum.toString() + oKDatum.toString() + "tDatum.isBefore(oKDatum)");
-                System.out.println("Datum if");
                 if (postojeciTermin.getMesto().equalsIgnoreCase(termin.getMesto())) {
-                    System.out.println("Mesto if");
                     if (tPV.isBefore(oKVreme) && tKV.isAfter(oPVreme)) {
-                        //Raf04 PON 22/10/2023 09:15 11:00
-                        //Rg04 CET 25/01/2024 15:15 17:00
-                        //raspored_stefan_aleksandar_test/resursi/noviTermini.json
-                        System.out.println("org.example.Termin postoji");
                         return;
                     }
                 }
@@ -59,20 +51,13 @@ public class DodatneFunkcionalnosti {
 
 
         obrisiSlobodanTermin(raspored, termin);
-        System.out.println(termin);
         raspored.getSviTermini().add(termin);
 
-
-
-        System.out.println("Novi termin uspešno dodat u raspored.");
-        for (Termin t : raspored.getSlobodniTermini()) {
-            System.out.println(t);
-        }
     }
 
     public boolean obrisiSlobodanTermin(Raspored raspored, Termin termin) {
 
-        // RAF20 PON 02/10/2023 11:15 13:00 Igro Mijatovic
+        // RAF20 PON 02/10/2023 11:15 13:00
 
         List<Termin> slobodniTermnini = raspored.getSlobodniTermini();
 
@@ -89,7 +74,6 @@ public class DodatneFunkcionalnosti {
 
                 if ((tPV.equals(oPV) || t.getPocetakVreme().equals(termin.getPocetakVreme())) && tKV.isBefore(oKV)) {
                     t.setPocetakVreme(termin.getKrajVreme());
-                    System.err.println(t);
                     slobodniTermnini.remove(termin);
                     return true;
                 } else if (tKV.equals(oKV) && tPV.isAfter(oPV)) {
@@ -128,7 +112,6 @@ public class DodatneFunkcionalnosti {
 
         for (Termin t : slobodniTermnini) {
             if (termin.getMesto().equalsIgnoreCase(t.getMesto()) && termin.getDatum().equals(t.getDatum()) && termin.getDan().equalsIgnoreCase(t.getDan())) {
-                System.out.println("```Prvi if" + t.getKrajVreme());
                 LocalTime oPV = LocalTime.parse(t.getPocetakVreme());
                 LocalTime oKV = LocalTime.parse(t.getKrajVreme());
 
@@ -139,10 +122,8 @@ public class DodatneFunkcionalnosti {
                     prosao = false;
                     return;
                 } else if (tPV.getHour() == oKV.getHour() && !prosao) {
-                    System.out.println("```Usao u drugi if");
                     prosao = true;
                     prethodni = t;
-                    System.err.println("`Prethodni: " + prethodni );
                     t.setKrajVreme(termin.getKrajVreme());
                     raspored.getSviTermini().remove(termin);
                 }

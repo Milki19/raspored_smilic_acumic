@@ -61,11 +61,28 @@ public class Utils {
             //"Raf04","PON","02/10/2022","09:15","11:00","Poslovne aplikacije","Mijatovic Igor","DA"
             linija = sc.nextLine();
             String[] split = linija.split(" ", 7);
-            for (String s : split) {
-                System.out.println(s);
-            }
 
-            rasporedA.obrisiTermin(rasporedA.getRaspored(), new Termin (split[0], split[1], split[2], split[3], split[4], split[5]));
+            rasporedA.obrisiTermin(rasporedA.getRaspored(), new Termin (split[0], split[1], split[2], split[3], split[4]));
+
+            System.out.println("Da li zelite da exportujete pretrazene odgovore? Da/Ne");
+            linija = sc.nextLine();
+            if(linija.equals("Da")){
+                System.out.println("Unesite ime fajla i destinaciju razdvojene razmakom.");
+                linija = sc.nextLine();
+                String[] niz = linija.split(" ");
+                if(niz[0].contains(".csv")){
+                    rasporedA.exportCSV(niz[0], pretrazeneStvari, niz[1]);
+                    ispisano = 1;
+                }else if(niz[0].contains(".json")){
+                    rasporedA.exportJSON(niz[0], pretrazeneStvari, niz[1]);
+                    ispisano = 1;
+                }else{
+                    rasporedA.exportPDF(niz[0], pretrazeneStvari, niz[1]);
+                    ispisano = 1;
+                }
+                return;
+            }
+            interakcijaSaKorisnikom(rasporedA);
 
         }else if(linija.equals("3")){
 
@@ -78,18 +95,33 @@ public class Utils {
             String[] strTer = stariTermin.split(" ");
             String[] novTer = noviTermin.split(" ");
 
-            // RAF20 02/10/2023 13:15 16:00
-            // RAF20 PON 02/10/2023 02/10/2023 14:15 16:00
-
             for(Termin t : rasporedA.getRaspored().getSviTermini()){
-                if(t.getMesto().equals(strTer[0]) && t.getDatum().equals(strTer[2]) && t.getPocetakVreme().equals(strTer[4]) && t.getKrajVreme().equals(strTer[5]) && t.getDan().equals(strTer[1])){
-                    rasporedA.izmeniTermin(rasporedA.getRaspored(), t, new Termin(novTer[0], novTer[1], novTer[2], novTer[3], novTer[4], novTer[5]));
-                    return;
+                if(t.getMesto().equals(strTer[0]) && t.getDan().equals(strTer[1]) && t.getDatum().equals(strTer[2]) && t.getPocetakVreme().equals(strTer[3]) && t.getKrajVreme().equals(strTer[4])){
+                    rasporedA.izmeniTermin(rasporedA.getRaspored(), t, new Termin(novTer[0], novTer[1], novTer[2], novTer[3], novTer[4]));
+                    break;
                 }
             }
-            System.out.println("Ne postoji trenutni termin.");
-
+            System.out.println("Da li zelite da exportujete pretrazene odgovore? Da/Ne");
+            linija = sc.nextLine();
+            if(linija.equals("Da")){
+                System.out.println("Unesite ime fajla i destinaciju razdvojene razmakom.");
+                linija = sc.nextLine();
+                String[] niz = linija.split(" ");
+                if(niz[0].contains(".csv")){
+                    rasporedA.exportCSV(niz[0], pretrazeneStvari, niz[1]);
+                    ispisano = 1;
+                }else if(niz[0].contains(".json")){
+                    rasporedA.exportJSON(niz[0], pretrazeneStvari, niz[1]);
+                    ispisano = 1;
+                }else{
+                    rasporedA.exportPDF(niz[0], pretrazeneStvari, niz[1]);
+                    ispisano = 1;
+                }
+                return;
+            }
             interakcijaSaKorisnikom(rasporedA);
+
+
 
         }else if(linija.equals("4")){
             pretrazeneStvari = pretraga(rasporedA);
