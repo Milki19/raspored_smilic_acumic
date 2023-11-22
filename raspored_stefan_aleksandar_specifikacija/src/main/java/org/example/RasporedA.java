@@ -15,12 +15,14 @@ public abstract class RasporedA {
      * This method is used to readCSV file as well as config file
      * @param path This is the path to CSV file
      * @param konfig This is the path to config file
+     * @throws java.io.IOException
      */
     public abstract void ucitajCSV(String path, String konfig) throws IOException;
 
     /**
      * This method is used to readCSV file as well as config file
      * @param path This is the path to JSON file
+     * @throws java.io.IOException
      */
     public abstract void ucitajJSON(String path) throws IOException;
 
@@ -29,6 +31,7 @@ public abstract class RasporedA {
      * @param path This is the name you want to pick for your to CSV file
      * @param termini This is the list of termini you want to export
      * @param location This is the path to your exported CSV file
+     * @throws java.io.IOException
      */
     public abstract void exportCSV(String path, List<Termin> termini, String location) throws IOException;
 
@@ -37,6 +40,7 @@ public abstract class RasporedA {
      * @param path This is the name you want to pick for your to JSON file
      * @param termini This is the list of termini you want to export
      * @param location This is the path to your exported JSON file
+     * @throws java.io.IOException
      */
     public abstract void exportJSON(String path, List<Termin> termini, String location) throws IOException;
 
@@ -45,6 +49,7 @@ public abstract class RasporedA {
      * @param path This is the name you want to pick for your to PDF file
      * @param termini This is the list of termini you want to export
      * @param location This is the path to your exported PDF file
+     * @throws java.io.IOException
      */
     public abstract void exportPDF(String path, List<Termin> termini, String location) throws IOException;
 
@@ -130,6 +135,7 @@ public abstract class RasporedA {
     /**
      * This method is used to search through raspored using next parameters
      * @param mesto This is the mesto you want to search your raspored with
+     * @param datum This is the mesto you want to search your raspored with
      * @param pocetakVreme This is the pocetakVreme  you want to search your raspored with
      * @param krajVreme This is the dan  you want to search your raspored with
      * @return List This returns list of your searches
@@ -139,6 +145,7 @@ public abstract class RasporedA {
     /**
      * This method is used to search through raspored using next parameters
      * @param mesto This is the mesto you want to search your raspored with
+     * @param datum This is the mesto you want to search your raspored with
      * @param pocetakVreme This is the pocetakVreme  you want to search your raspored with
      * @param krajVreme This is the dan  you want to search your raspored with
      * @param dan This is the dan  you want to search your raspored with
@@ -245,7 +252,6 @@ public abstract class RasporedA {
      * @param krajRadnogVremena This is the ending hours of your raspored
      * @param pocetakDatum This is the starting date of your raspored
      * @param krajDatum This is the ending date of your raspored
-     * @return List This returns list of your searches
      */
     public abstract void generisiSlobodneTermine(String pocetakRadnogVremena, String krajRadnogVremena, String pocetakDatum, String krajDatum);
 
